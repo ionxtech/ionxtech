@@ -10,6 +10,7 @@
     --qr-color: #C599B6;
     --led-color: #E6B2BA;
     --call-color: #FAD0C4;
+    --display-color: #9BA9A6;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -132,6 +133,7 @@ h3 { font-size: 1.3rem; margin-bottom: 10px; color: var(--text); }
 .card.qr-style { border-color: var(--qr-color); }
 .card.led-style { border-color: var(--led-color); }
 .card.call-style { border-color: var(--call-color); }
+.card.display-style { border-color: var(--display-color); }
 
 .app-header { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
 .app-logo { width: 56px; height: 56px; object-fit: contain; border-radius: 8px; background: white; padding: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.04); }

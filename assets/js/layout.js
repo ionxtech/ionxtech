@@ -8,14 +8,18 @@ document.addEventListener("DOMContentLoaded", function () {
     if (path.includes("/privacy-policy/")) {
         rootPath = "../";
     } else if (path.includes("/apps/")) {
-        rootPath = "../../";
+        if (path.endsWith("/apps/") || path.endsWith("/apps/index.html")) {
+            rootPath = "../";
+        } else {
+            rootPath = "../../";
+        }
     }
 
     // 2. Define the Header HTML
     const headerHTML = `
     <div class="container navbar">
         <a href="${rootPath}index.html" class="brand">
-            <img src="${rootPath}assets/images/IonXtech.spng" alt="ionXtech" class="brand-logo-img">
+            <img src="${rootPath}assets/images/IonXtech.png" alt="ionXtech" class="brand-logo-img">
             <span class="brand-text">ionXtech</span>
         </a>
         <button class="nav-toggle" aria-controls="nav-menu" aria-expanded="false" aria-label="Toggle menu">
@@ -27,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <a href="${rootPath}apps/" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Apps</a>
                     <ul class="dropdown-menu" role="menu" aria-label="Apps submenu">
                         <li><a href="${rootPath}apps/qr-solution/">QR Solutions</a></li>
+                        <li><a href="${rootPath}apps/privacy-display/">Privacy Display</a></li>
                         <li><a href="${rootPath}privacy-policy/led-scroller.html">LED Scroller</a></li>
                         <li><a href="${rootPath}privacy-policy/auto-call-scheduler.html">Auto Call Scheduler</a></li>
                     </ul>
