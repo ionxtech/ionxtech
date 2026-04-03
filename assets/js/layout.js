@@ -32,8 +32,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     <ul class="dropdown-menu" role="menu" aria-label="Apps submenu">
                         <li><a href="${rootPath}apps/qr-solution/">QR Solutions</a></li>
                         <li><a href="${rootPath}apps/privacy-display/">Privacy Display</a></li>
-                        <li><a href="${rootPath}privacy-policy/led-scroller.html">LED Scroller</a></li>
-                        <li><a href="${rootPath}privacy-policy/auto-call-scheduler.html">Auto Call Scheduler</a></li>
+                        <li><a href="${rootPath}apps/led-scroller/">LED Scroller</a></li>
+                        <li><a href="${rootPath}apps/call-message-scheduler/">Call &amp; Message Scheduler</a></li>
                     </ul>
                 </li>
                 <li class="nav-item"><a href="${rootPath}about.html">About</a></li>
