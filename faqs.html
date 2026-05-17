@@ -5,49 +5,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQs - ionXtech</title>
     <meta name="description" content="Frequently asked questions about ionXtech apps.">
-    <link rel="icon" type="image/png" href="/assets/images/IonXtech.png">
+    <link rel="icon" type="image/png" href="/assets/images/IonXtech.webp">
     <link rel="stylesheet" href="assets/css/style.css">
+<script>if(localStorage.getItem('theme')==='dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-theme', 'dark');}</script>
 </head>
 <body>
     <header></header>
     <main id="main" class="container" style="margin-top:40px;">
         <h1>FAQs</h1>
-        <div class="card" style="margin-top:20px;">
-            <h3>Which apps does ionXtech build?</h3>
-            <p>We build Android utility apps focused on productivity and simplicity, including QR Solutions, LED Scroller, and Call &amp; Message Scheduler.</p>
+        <div class="faq-list" style="margin-top: 30px; margin-bottom: 60px;">
+            <details class="faq-accordion">
+                <summary>Which apps does ionXtech build?</summary>
+                <div class="faq-content"><p>We build Android utility apps focused on productivity and simplicity, including QR Solutions, LED Scroller, and Call &amp; Message Scheduler.</p></div>
+            </details>
 
-            <h3 style="margin-top: 18px;">Is QR Solutions free?</h3>
-            <p>QR Solutions is free to download. Some features may be supported by ads or optional upgrades depending on the app store version.</p>
+            <details class="faq-accordion">
+                <summary>Is QR Solutions free?</summary>
+                <div class="faq-content"><p>QR Solutions is free to download. Some features may be supported by ads or optional upgrades depending on the app store version.</p></div>
+            </details>
 
-            <h3 style="margin-top: 18px;">Why does QR Solutions need camera permission?</h3>
-            <p>The camera permission is used only to scan QR codes and barcodes. Images are processed on-device and not sent to our servers.</p>
+            <details class="faq-accordion">
+                <summary>Why does QR Solutions need camera permission?</summary>
+                <div class="faq-content"><p>The camera permission is used only to scan QR codes and barcodes. Images are processed on-device and not sent to our servers.</p></div>
+            </details>
 
-            <h3 style="margin-top: 18px;">Does LED Scroller collect my data?</h3>
-            <p>No. The text you type is processed locally. If ads are enabled, ad providers may collect device identifiers for ad delivery.</p>
+            <details class="faq-accordion">
+                <summary>Does LED Scroller collect my data?</summary>
+                <div class="faq-content"><p>No. The text you type is processed locally. If ads are enabled, ad providers may collect device identifiers for ad delivery.</p></div>
+            </details>
 
-            <h3 style="margin-top: 18px;">Why does Call &amp; Message Scheduler request call permissions?</h3>
-            <p>It uses call-related permissions to automate scheduled calls you create. Your call history and contacts remain on your device.</p>
+            <details class="faq-accordion">
+                <summary>Why does Call &amp; Message Scheduler request call permissions?</summary>
+                <div class="faq-content"><p>It uses call-related permissions to automate scheduled calls you create. Your call history and contacts remain on your device.</p></div>
+            </details>
 
-            <h3 style="margin-top: 18px;">What does Privacy Display do?</h3>
-            <p>Privacy Display adds an on-screen privacy overlay to help protect sensitive screen content in public places. It runs locally and does not collect personal data.</p>
+            <details class="faq-accordion">
+                <summary>What does Privacy Display do?</summary>
+                <div class="faq-content"><p>Privacy Display adds an on-screen privacy overlay to help protect sensitive screen content in public places. It runs locally and does not collect personal data.</p></div>
+            </details>
 
-            <h3 style="margin-top: 18px;">Do your apps work offline?</h3>
-            <p>Most core features work offline. Any ads, updates, or store-related features require an internet connection.</p>
+            <details class="faq-accordion">
+                <summary>Do your apps work offline?</summary>
+                <div class="faq-content"><p>Most core features work offline. Any ads, updates, or store-related features require an internet connection.</p></div>
+            </details>
 
-            <h3 style="margin-top: 18px;">How do I delete my data?</h3>
-            <p>App data is stored on your device. You can clear app data from your Android settings or uninstall the app.</p>
+            <details class="faq-accordion">
+                <summary>How do I delete my data?</summary>
+                <div class="faq-content"><p>App data is stored on your device. You can clear app data from your Android settings or uninstall the app.</p></div>
+            </details>
 
-            <h3 style="margin-top: 18px;">Where can I find the privacy policy?</h3>
-            <p>Visit the <a href="privacy-policy/index.html">Privacy Policy</a> page to read each app's policy.</p>
+            <details class="faq-accordion">
+                <summary>Where can I find the privacy policy?</summary>
+                <div class="faq-content"><p>Visit the <a href="privacy-policy/index.html">Privacy Policy</a> page to read each app's policy.</p></div>
+            </details>
 
-            <h3 style="margin-top: 18px;">I have a billing or refund question.</h3>
-            <p>All payments and refunds are handled by Google Play. Please contact Google Play support for billing issues.</p>
+            <details class="faq-accordion">
+                <summary>I have a billing or refund question.</summary>
+                <div class="faq-content"><p>All payments and refunds are handled by Google Play. Please contact Google Play support for billing issues.</p></div>
+            </details>
 
-            <h3 style="margin-top: 18px;">How can I contact support?</h3>
-            <p>Email us at <a href="mailto:ionxtechsolution@gmail.com">ionxtechsolution@gmail.com</a>. We typically respond within 2-3 business days.</p>
+            <details class="faq-accordion">
+                <summary>How can I contact support?</summary>
+                <div class="faq-content"><p>You can use our <a href="contact.html">Contact Form</a>. We typically respond within 2-3 business days.</p></div>
+            </details>
         </div>
     </main>
     <footer></footer>
     <script src="assets/js/layout.js"></script>
 </body>
 </html>
+
+

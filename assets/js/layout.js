@@ -19,12 +19,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const headerHTML = `
     <div class="container navbar">
         <a href="${rootPath}index.html" class="brand">
-            <img src="${rootPath}assets/images/IonXtech.png" alt="ionXtech" class="brand-logo-img">
+            <img src="${rootPath}assets/images/IonXtech.webp" alt="ionXtech" class="brand-logo-img">
             <span class="brand-text">ionXtech</span>
         </a>
-        <button class="nav-toggle" aria-controls="nav-menu" aria-expanded="false" aria-label="Toggle menu">
-            <i class="fa-solid fa-bars"></i>
-        </button>
         <nav id="nav-menu" class="nav-menu" aria-hidden="true">
             <ul>
                 <li class="nav-item dropdown">
@@ -39,6 +36,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 <li class="nav-item"><a href="${rootPath}about.html">About</a></li>
             </ul>
         </nav>
+        <div style="display: flex; align-items: center; gap: 12px; margin-left: auto;">
+            <button id="theme-toggle" aria-label="Toggle Dark Mode" style="background:none; border:none; color:var(--text); font-size:1.2rem; cursor:pointer;">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <button class="nav-toggle" aria-controls="nav-menu" aria-expanded="false" aria-label="Toggle menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
     </div>
     `;
 
@@ -235,4 +240,45 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
     });
+
+    // Dark Mode Toggle Logic
+    const themeToggle = document.getElementById('theme-toggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const currentTheme = localStorage.getItem('theme') || (prefersDark ? 'dark' : 'light');
+
+    if (currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        if(themeToggle) themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
+    }
+
+    if(themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            let theme = document.documentElement.getAttribute('data-theme');
+            if (theme === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+                themeToggle.innerHTML = '<i class="fa-solid fa-moon"></i>';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+                themeToggle.innerHTML = '<i class="fa-solid fa-sun"></i>';
+            }
+        });
+    }
+
+    // Add IntersectionObserver for fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+    document.querySelectorAll('.card, .hero h1, .hero p, h2').forEach(el => {
+        el.classList.add('fade-in');
+        observer.observe(el);
+    });
 });
+

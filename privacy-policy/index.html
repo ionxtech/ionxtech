@@ -8,19 +8,20 @@
     <meta name="theme-color" content="#C599B6">
     <meta property="og:title" content="ionXtech Privacy Policies">
     <meta property="og:description" content="Read privacy practices for our mobile apps.">
-    <meta property="og:image" content="/assets/images/og-image.png">
+    <meta property="og:image" content="/assets/images/og-image.webp">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image" content="/assets/images/og-image-square.png">
+    <meta property="og:image" content="/assets/images/og-image-square.webp">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="1200">
-    <meta property="og:image" content="/assets/images/og-image-small.png">
+    <meta property="og:image" content="/assets/images/og-image-small.webp">
     <meta property="og:image:width" content="600">
     <meta property="og:image:height" content="315">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="/assets/images/og-image.png">
-    <link rel="icon" type="image/png" href="/assets/images/IonXtech.png">
+    <meta name="twitter:image" content="/assets/images/og-image.webp">
+    <link rel="icon" type="image/png" href="/assets/images/IonXtech.webp">
     <link rel="stylesheet" href="../assets/css/style.css">
+<script>if(localStorage.getItem('theme')==='dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-theme', 'dark');}</script>
 </head>
 <body>
     <header></header>
@@ -29,13 +30,52 @@
         <h1>Privacy Policies</h1>
         <p>Below are the privacy policy pages for each of our applications. Click a link to view details.</p>
 
-        <div class="card" style="margin-top: 20px;">
-            <ul style="line-height: 1.8;">
-                <li><a href="qr-solution.html">QR Solutions - Privacy Policy</a></li>
-                <li><a href="led-scroller.html">LED Scroller - Privacy Policy</a></li>
-                <li><a href="auto-call-scheduler.html">Call &amp; Message Scheduler - Privacy Policy</a></li>
-                <li><a href="privacy-display.html">Privacy Display - Privacy Policy</a></li>
-            </ul>
+        <div class="app-grid" style="margin-top: 30px;">
+            
+            <div class="card qr-style card-link" data-page="qr-solution.html" tabindex="0">
+                <div class="app-header">
+                    <img src="../assets/images/QR Solution Logo.webp" alt="QR Solutions logo" class="app-logo">
+                    <h3>QR Solutions</h3>
+                </div>
+                <p>Read the privacy policy and data practices for the QR Solutions app.</p>
+                <div style="margin-top: 15px;" class="card-actions">
+                    <a href="qr-solution.html" class="btn">View Policy</a>
+                </div>
+            </div>
+
+            <div class="card led-style card-link" data-page="led-scroller.html" tabindex="0">
+                <div class="app-header">
+                    <img src="../assets/images/LEDScrollerLogo.webp" alt="LED Scroller logo" class="app-logo">
+                    <h3>LED Scroller</h3>
+                </div>
+                <p>Read the privacy policy and data practices for the LED Scroller app.</p>
+                <div style="margin-top: 15px;" class="card-actions">
+                    <a href="led-scroller.html" class="btn">View Policy</a>
+                </div>
+            </div>
+
+            <div class="card call-style card-link" data-page="auto-call-scheduler.html" tabindex="0">
+                <div class="app-header">
+                    <img src="../assets/images/CallMessageLogo.webp" alt="Call &amp; Message Scheduler logo" class="app-logo">
+                    <h3>Call &amp; Message Scheduler</h3>
+                </div>
+                <p>Read the privacy policy and data practices for the Call &amp; Message Scheduler app.</p>
+                <div style="margin-top: 15px;" class="card-actions">
+                    <a href="auto-call-scheduler.html" class="btn">View Policy</a>
+                </div>
+            </div>
+
+            <div class="card display-style card-link" data-page="privacy-display.html" tabindex="0">
+                <div class="app-header">
+                    <img src="../assets/images/PrivacyDisplayLogo.webp" alt="Privacy Display logo" class="app-logo">
+                    <h3>Privacy Display</h3>
+                </div>
+                <p>Read the privacy policy and data practices for the Privacy Display app.</p>
+                <div style="margin-top: 15px;" class="card-actions">
+                    <a href="privacy-display.html" class="btn">View Policy</a>
+                </div>
+            </div>
+
         </div>
     </main>
 
@@ -43,3 +83,5 @@
     <script src="../assets/js/layout.js"></script>
 </body>
 </html>
+
+

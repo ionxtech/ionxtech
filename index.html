@@ -8,21 +8,34 @@
     <meta name="theme-color" content="#C599B6">
     <meta property="og:title" content="ionXtech — Modern Apps">
     <meta property="og:description" content="Building reliable Android apps for modern digital needs. Try our QR generator, LED scroller, and call scheduler.">
-    <meta property="og:image" content="/assets/images/og-image.png">
+    <meta property="og:image" content="/assets/images/og-image.webp">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image" content="/assets/images/og-image-square.png">
+    <meta property="og:image" content="/assets/images/og-image-square.webp">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="1200">
-    <meta property="og:image" content="/assets/images/og-image-small.png">
+    <meta property="og:image" content="/assets/images/og-image-small.webp">
     <meta property="og:image:width" content="600">
     <meta property="og:image:height" content="315">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="/assets/images/og-image.png">
+    <meta name="twitter:image" content="/assets/images/og-image.webp">
     <meta property="og:type" content="website">
-    <link rel="icon" type="image/png" href="/assets/images/IonXtech.png">
+    <link rel="icon" type="image/png" href="/assets/images/IonXtech.webp">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Schema Markup for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "ionXtech",
+      "url": "https://www.ionxtech.com",
+      "logo": "https://www.ionxtech.com/assets/images/IonXtech.webp",
+      "description": "Building reliable Android apps for modern digital needs."
+    }
+    </script>
+<script>if(localStorage.getItem('theme')==='dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-theme', 'dark');}</script>
 </head>
 <body>
 
@@ -50,45 +63,61 @@
             
             <div class="card qr-style card-link" data-page="apps/qr-solution/" tabindex="0">
                 <div class="app-header">
-                    <img src="assets/images/QR Solution Logo.png" alt="QR Solutions logo" class="app-logo">
+                    <img src="assets/images/QR Solution Logo.webp" alt="QR Solutions logo" class="app-logo">
                     <h3>QR Solutions</h3>
                 </div>
                 <p>The fastest QR code generator and scanner. Scan history, create codes, and share instantly.</p>
+                <div style="display:flex; align-items:center; gap: 6px; margin-top: 12px; font-size: 0.85rem; font-weight: 600; color: var(--text-light);">
+                    <span style="color: #FFB800;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></span>
+                    <span>4.6 • 50K+ Downloads</span>
+                </div>
                 <div style="margin-top: 15px;" class="card-actions">
-                    <a href="https://play.google.com/store/apps/details?id=com.ionxtech.qrsolution" class="btn" target="_blank" rel="noopener noreferrer">Download App</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.ionxtech.qrsolution" class="btn" target="_blank" rel="noopener noreferrer">Get it on Google Play</a>
                 </div>
             </div>
 
             <div class="card led-style card-link" data-page="apps/led-scroller/" tabindex="0">
                 <div class="app-header">
-                    <img src="assets/images/LEDScrollerLogo.png" alt="LED Scroller logo" class="app-logo">
+                    <img src="assets/images/LEDScrollerLogo.webp" alt="LED Scroller logo" class="app-logo">
                     <h3>LED Scroller</h3>
                 </div>
                 <p>Turn your phone into a scrolling LED sign. Perfect for concerts, airports, and noisy places.</p>
+                <div style="display:flex; align-items:center; gap: 6px; margin-top: 12px; font-size: 0.85rem; font-weight: 600; color: var(--text-light);">
+                    <span style="color: #FFB800;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+                    <span>4.8 • 100K+ Downloads</span>
+                </div>
                 <div style="margin-top: 15px;" class="card-actions">
-                    <a href="https://play.google.com/store/apps/details?id=com.ionxtech.ledscroller" class="btn" target="_blank" rel="noopener noreferrer">Download App</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.ionxtech.ledscroller" class="btn" target="_blank" rel="noopener noreferrer">Get it on Google Play</a>
                 </div>
             </div>
 
             <div class="card call-style card-link" data-page="apps/call-message-scheduler/" tabindex="0">
                 <div class="app-header">
-                    <img src="assets/images/CallMessageLogo.png" alt="Call &amp; Message Scheduler logo" class="app-logo">
+                    <img src="assets/images/CallMessageLogo.webp" alt="Call &amp; Message Scheduler logo" class="app-logo">
                     <h3>Call &amp; Message Scheduler</h3>
                 </div>
                 <p>Automate your calls and SMS. Schedule important follow-ups and never miss a connection.</p>
+                <div style="display:flex; align-items:center; gap: 6px; margin-top: 12px; font-size: 0.85rem; font-weight: 600; color: var(--text-light);">
+                    <span style="color: #FFB800;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></span>
+                    <span>4.2 • 10K+ Downloads</span>
+                </div>
                 <div style="margin-top: 15px;" class="card-actions">
-                    <a href="https://play.google.com/store/apps/details?id=com.ionxtech.autocallscheduler" class="btn" target="_blank" rel="noopener noreferrer">Download App</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.ionxtech.autocallscheduler" class="btn" target="_blank" rel="noopener noreferrer">Get it on Google Play</a>
                 </div>
             </div>
 
             <div class="card display-style card-link" data-page="apps/privacy-display/" tabindex="0">
                 <div class="app-header">
-                    <img src="assets/images/PrivacyDisplayLogo.png" alt="Privacy Display logo" class="app-logo">
+                    <img src="assets/images/PrivacyDisplayLogo.webp" alt="Privacy Display logo" class="app-logo">
                     <h3>Privacy Display</h3>
                 </div>
                 <p>A simple privacy overlay utility to quickly hide sensitive content on your screen.</p>
+                <div style="display:flex; align-items:center; gap: 6px; margin-top: 12px; font-size: 0.85rem; font-weight: 600; color: var(--text-light);">
+                    <span style="color: #FFB800;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></span>
+                    <span>4.5 • 5K+ Downloads</span>
+                </div>
                 <div style="margin-top: 15px;" class="card-actions">
-                    <a href="https://play.google.com/store/apps/details?id=com.ionxtech.privacydisplay" class="btn" target="_blank" rel="noopener noreferrer">Download App</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.ionxtech.privacydisplay" class="btn" target="_blank" rel="noopener noreferrer">Get it on Google Play</a>
                 </div>
             </div>
 
@@ -100,3 +129,5 @@
     <script src="assets/js/layout.js"></script>
 </body>
 </html>
+
+
