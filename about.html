@@ -1,50 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-root="./">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - ionXtech</title>
-    <meta name="description" content="About ionXtech - our mission, team, and values.">
-    <link rel="icon" type="image/png" href="/assets/images/IonXtech.webp">
-    <link rel="stylesheet" href="assets/css/style.css">
-<script>if(localStorage.getItem('theme')==='dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-theme', 'dark');}</script>
+    <title>About ionXtech - Mission, Architecture &amp; Roadmap</title>
+    <meta name="description" content="Learn about ionXtech, an independent technology startup in Indore building privacy-first Android utility apps (ionXapps) and expanding into ionXhosting, ionXdomains, and ionXservices.">
+    <meta name="theme-color" content="#F8F7F4">
+    <link rel="canonical" href="https://ionxtech.dpdns.org/about.html">
+
+    <meta property="og:title" content="About ionXtech">
+    <meta property="og:description" content="Our mission, core engineering values, and roadmap across apps, hosting, domains, and services.">
+    <meta property="og:url" content="https://ionxtech.dpdns.org/about.html">
+    <meta property="og:image" content="https://ionxtech.dpdns.org/assets/images/og-image.webp">
+    <meta property="og:image:alt" content="About ionXtech">
+    <meta property="og:type" content="website">
+
+    <link rel="icon" type="image/webp" href="assets/images/IonXtech.webp">
+    <link rel="stylesheet" href="assets/css/style.css?v=3">
 </head>
 <body>
+
     <header></header>
-    <main id="main" class="container" style="margin-top:40px;">
-        <div style="text-align: center; margin-bottom: 50px;">
-            <h1 class="fade-in">About ionXtech</h1>
-            <p class="fade-in" style="font-size: 1.15rem; color: var(--text-light); max-width: 700px; margin: 15px auto;">We're a forward-thinking tech company dedicated to building cutting-edge applications that push boundaries and deliver real-world value.</p>
-        </div>
 
-        <h2 class="fade-in">Our Mission</h2>
-        <div class="company-card card fade-in" style="margin-bottom: 50px; text-align: center;">
-            <p style="font-size: 1.2rem; font-weight: 600; line-height: 1.8;">"At ionXtech, innovation meets execution. Our mission is to create tools that empower, simplify, and elevate everyday digital experiences."</p>
-        </div>
-
-        <h2 class="fade-in">Core Values</h2>
-        <div class="app-grid" style="margin-bottom: 60px;">
-            <div class="card fade-in" style="border-top: 5px solid #FFB800;">
-                <h3 style="display: flex; align-items: center; gap: 10px;"><i class="fa-solid fa-bolt" style="color:#FFB800;"></i> Simplicity</h3>
-                <p style="margin-top: 10px; color: var(--text-light);">We believe technology should make life easier, not more complicated. Our interfaces are designed to be intuitive and frictionless.</p>
-            </div>
-            <div class="card fade-in" style="border-top: 5px solid #4CAF50;">
-                <h3 style="display: flex; align-items: center; gap: 10px;"><i class="fa-solid fa-shield-halved" style="color:#4CAF50;"></i> Privacy First</h3>
-                <p style="margin-top: 10px; color: var(--text-light);">Your data is your own. We build apps that respect user privacy, processing data locally whenever possible.</p>
-            </div>
-            <div class="card fade-in" style="border-top: 5px solid #2196F3;">
-                <h3 style="display: flex; align-items: center; gap: 10px;"><i class="fa-solid fa-rocket" style="color:#2196F3;"></i> Performance</h3>
-                <p style="margin-top: 10px; color: var(--text-light);">We engineer our apps to be lightweight, fast, and reliable, ensuring they don't drain your battery or waste resources.</p>
-            </div>
-            <div class="card fade-in" style="border-top: 5px solid var(--primary);">
-                <h3 style="display: flex; align-items: center; gap: 10px;"><i class="fa-solid fa-users" style="color:var(--primary);"></i> User-Centric</h3>
-                <p style="margin-top: 10px; color: var(--text-light);">Every feature we develop is driven by user feedback and real-world needs, ensuring we deliver maximum value.</p>
+    <main id="main">
+        <div class="page-header">
+            <div class="container">
+                <h1>About ionXtech</h1>
+                <p>We are a product-focused technology company building fast, local-first utility applications and modern web infrastructure.</p>
             </div>
         </div>
 
+        <section class="section" style="padding-top: 0;">
+            <div class="container">
+                <div class="card" style="margin-bottom: 40px;">
+                    <span class="mono-label">Our Mission</span>
+                    <h2 style="margin-top: 6px; margin-bottom: 14px;">Software That Respects Your Time and Privacy</h2>
+                    <p style="margin-bottom: 14px;">At ionXtech, we believe everyday digital utilities should do their job immediately without bloated interfaces, dark patterns, or invasive cloud tracking. Our Android applications (QR Solutions, Privacy Display, Auto Call Scheduler, and LED Scroller) are trusted by more than 165,000 users worldwide because they prioritize speed, offline reliability, and local data ownership.</p>
+                    <p>As we grow, we are bringing that same minimalist engineering discipline to developer and startup infrastructure across five divisions: <strong>ionXtech</strong>, <strong>ionXapps</strong>, <strong>ionXhosting</strong>, <strong>ionXdomains</strong>, and <strong>ionXservices</strong>.</p>
+                </div>
+
+                <div class="section-header">
+                    <div class="section-header-left">
+                        <span class="mono-label">Core Values</span>
+                        <h2>Engineering Principles</h2>
+                    </div>
+                </div>
+                <div class="grid-4" data-component="principles-grid" style="margin-bottom: 48px;"></div>
+
+                <div class="section-header">
+                    <div class="section-header-left">
+                        <span class="mono-label">Product Divisions</span>
+                        <h2>The ionXtech Ecosystem</h2>
+                    </div>
+                </div>
+                <div class="division-list" data-component="divisions-grid"></div>
+            </div>
+        </section>
     </main>
+
     <footer></footer>
-    <script src="assets/js/layout.js"></script>
+
+    <script src="assets/js/site-data.js?v=3"></script>
+    <script src="assets/js/layout.js?v=3"></script>
 </body>
 </html>
-

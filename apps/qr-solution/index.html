@@ -1,80 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-root="../../">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Solutions - ionXtech</title>
-    <meta name="description" content="QR Solutions - fast QR code generator and scanner by ionXtech. Scan, create, and share QR codes instantly.">
-    <meta name="theme-color" content="#C599B6">
-    <meta property="og:title" content="QR Solutions - ionXtech">
-    <meta property="og:description" content="Fast QR code generator and scanner. Scan history and instant sharing.">
-    <meta property="og:image" content="/assets/images/og-image.webp">
+    <title>QR Solutions - Fast QR Code Scanner &amp; Generator App | ionXtech</title>
+    <meta name="description" content="Download QR Solutions by ionXtech for Android. Scan QR codes and barcodes instantly, generate custom QR codes offline, and manage local scan history with full privacy.">
+    <meta name="theme-color" content="#F8F7F4">
+    <link rel="canonical" href="https://ionxtech.dpdns.org/apps/qr-solution/">
+
+    <meta property="og:title" content="QR Solutions - QR Code Scanner &amp; Generator by ionXtech">
+    <meta property="og:description" content="Instant QR code scanner and custom generator for Android with offline support and local scan history.">
+    <meta property="og:url" content="https://ionxtech.dpdns.org/apps/qr-solution/">
+    <meta property="og:image" content="https://ionxtech.dpdns.org/assets/images/og-image.webp">
+    <meta property="og:image:alt" content="QR Solutions Android app by ionXtech">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image" content="/assets/images/og-image-square.webp">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="1200">
-    <meta property="og:image" content="/assets/images/og-image-small.webp">
-    <meta property="og:image:width" content="600">
-    <meta property="og:image:height" content="315">
+    <meta property="og:type" content="website">
+
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="/assets/images/og-image.webp">
-    <link rel="icon" type="image/png" href="/assets/images/IonXtech.webp">
-    <link rel="stylesheet" href="../../assets/css/style.css">
-<script>if(localStorage.getItem('theme')==='dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-theme', 'dark');}</script>
+    <meta name="twitter:title" content="QR Solutions - QR Code Scanner &amp; Generator by ionXtech">
+    <meta name="twitter:description" content="Instant QR code scanner and custom generator for Android with offline support and local scan history.">
+    <meta name="twitter:image" content="https://ionxtech.dpdns.org/assets/images/og-image.webp">
+    <meta name="twitter:image:alt" content="QR Solutions Android app by ionXtech">
+
+    <link rel="icon" type="image/webp" href="../../assets/images/IonXtech.webp">
+    <link rel="stylesheet" href="../../assets/css/style.css?v=3">
+
+    <script type="application/ld+json" id="schema-app-qr-solution">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "QR Solutions",
+      "operatingSystem": "Android",
+      "applicationCategory": "UtilitiesApplication",
+      "downloadUrl": "https://play.google.com/store/apps/details?id=com.ionxtech.qrsolution",
+      "description": "Instant QR code scanner and custom generator with local scan history, multi-format barcode support, and offline execution.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.6", "ratingCount": "640" },
+      "author": { "@type": "Organization", "name": "ionXtech", "url": "https://ionxtech.dpdns.org" }
+    }
+    </script>
+    <script type="application/ld+json" id="schema-faq-qr-solution">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is QR Solutions completely free to use on Android?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, QR Solutions is free to download and use from the Google Play Store. Core QR scanning, barcode reading, and QR code generation features are accessible without mandatory subscriptions." }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does QR Solutions request camera permission?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Camera permission is required strictly to read QR codes and barcodes in real time. Camera frames are analyzed locally on your Android device and are never uploaded or stored on ionXtech servers." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I generate QR codes without an internet connection?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Both scanning existing QR codes and generating new QR codes for text, URLs, Wi-Fi, or contacts work completely offline." }
+        },
+        {
+          "@type": "Question",
+          "name": "Where is my QR scan history stored?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Your scan and creation history is saved exclusively in your device's local application storage. You can clear individual entries or wipe the entire history at any time from inside the app." }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
-    <header>
-        <div class="container navbar">
-            <a href="../../" class="brand">
-                <img src="../../assets/images/IonXtech.webp" alt="ionXtech" class="brand-logo-img">
-                <span class="brand-text">ionXtech</span>
-            </a>
-            <button class="nav-toggle" aria-controls="nav-menu" aria-expanded="false" aria-label="Toggle menu">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-            <nav id="nav-menu" class="nav-menu" aria-hidden="true">
-                <ul>
-                    <li><a href="../../apps/">Apps</a></li>
-                    <li><a href="../../privacy-policy/">Privacy</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-    <script>
-    (function(){
-        const t = document.querySelector('.nav-toggle');
-        const n = document.querySelector('.nav-menu');
-        if (t && n) t.addEventListener('click', ()=>{ n.classList.toggle('open'); t.setAttribute('aria-expanded', n.classList.contains('open')); n.setAttribute('aria-hidden', !n.classList.contains('open')); });
-    })();
-    </script>
 
-    <main id="main">
-        <div class="container">
+    <header></header>
+
+    <main id="main" data-app-detail="qr-solution">
+        <div class="container" style="padding: 48px 24px;">
             <h1>QR Solutions</h1>
-            <img src="../../assets/images/QR Solution Logo.webp" alt="QR Solutions logo" class="app-logo" style="margin-top:12px;">
-            <p><strong>QR Code Generator & Scanner App</strong></p>
-            <div class="card" style="margin-top: 20px;">
-                <p>QR Solutions is a powerful QR code generator and QR scanner app for Android.</p>
-                <ul>
-                    <li>Generate and scan QR codes instantly</li>
-                    <li>Supports multiple formats</li>
-                    <li>History feature included</li>
-                </ul>
-                <a href="#" class="btn">Download on Google Play</a>
-            </div>
-            <div class="card" style="margin-top: 20px;">
-                <h3>Privacy Policy</h3>
-                <p>Read the QR Solutions privacy policy.</p>
-                <a href="../../privacy-policy/qr-solution.html" class="btn">View Privacy Policy</a>
+            <img src="../../assets/images/QR Solution Logo.webp" alt="QR Solutions Android app icon by ionXtech for scanning and generating QR codes" width="76" height="76" class="app-detail-logo">
+            <p>Instant QR code scanner and custom generator with local scan history, multi-format barcode support, and offline execution.</p>
+            <div style="margin-top: 20px; display: flex; gap: 12px; flex-wrap: wrap;">
+                <a href="https://play.google.com/store/apps/details?id=com.ionxtech.qrsolution" class="btn" target="_blank" rel="noopener noreferrer">Download on Google Play</a>
+                <a href="../../privacy-policy/qr-solution.html" class="btn btn-secondary">Privacy Policy</a>
             </div>
         </div>
     </main>
 
-    <footer>
-        <div class="container"><p>&copy; 2025 ionXtech.</p></div>
-    </footer>
+    <footer></footer>
+
+    <script src="../../assets/js/site-data.js?v=12"></script>
+    <script src="../../assets/js/layout.js?v=12"></script>
 </body>
 </html>
-
-

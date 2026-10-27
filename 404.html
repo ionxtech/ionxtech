@@ -1,25 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-root="./">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Not Found - ionXtech</title>
-    <meta name="description" content="The page you are looking for could not be found.">
-    <link rel="icon" type="image/png" href="/assets/images/IonXtech.webp">
+    <title>404 Page Not Found - ionXtech</title>
+    <meta name="description" content="The requested page could not be found on ionXtech. Return to the ionXtech homepage or browse our Android applications directory.">
+    <meta name="theme-color" content="#F8F7F4">
+    <link rel="icon" type="image/webp" href="assets/images/IonXtech.webp">
     <link rel="stylesheet" href="assets/css/style.css">
-<script>if(localStorage.getItem('theme')==='dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-theme', 'dark');}</script>
 </head>
 <body>
+
     <header></header>
-    <main id="main" class="container" style="margin-top:80px; text-align:center; min-height:50vh; display:flex; flex-direction:column; justify-content:center; align-items:center;">
-        <h1 style="font-size: 6rem; color: var(--primary); margin-bottom: 10px;">404</h1>
-        <h2>Page Not Found</h2>
-        <p style="color: var(--text-light); max-width: 500px; margin: 0 auto 30px auto;">Sorry, the page you are looking for doesn't exist or has been moved. Let's get you back on track.</p>
-        <a href="index.html" class="btn">Return to Homepage</a>
+
+    <main id="main" class="container" style="padding: 80px 24px; display: flex; align-items: center; justify-content: center;">
+        <div class="card" style="max-width: 540px; width: 100%; text-align: left;">
+            <span class="badge">ERROR 404</span>
+            <h1 style="margin-top: 12px; margin-bottom: 10px; font-size: 2.2rem;">Page Not Found</h1>
+            <p style="margin-bottom: 24px;">The page you requested does not exist or has been moved to a new URL. Use the links below to navigate back to ionXtech.</p>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                <a href="index.html" class="btn">Return to Homepage</a>
+                <a href="apps/" class="btn btn-secondary">Browse Applications</a>
+            </div>
+        </div>
     </main>
+
     <footer></footer>
+
+    <script src="assets/js/site-data.js"></script>
     <script src="assets/js/layout.js"></script>
 </body>
 </html>
-
-

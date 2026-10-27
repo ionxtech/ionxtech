@@ -1,78 +1,68 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-root="./">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQs - ionXtech</title>
-    <meta name="description" content="Frequently asked questions about ionXtech apps.">
-    <link rel="icon" type="image/png" href="/assets/images/IonXtech.webp">
-    <link rel="stylesheet" href="assets/css/style.css">
-<script>if(localStorage.getItem('theme')==='dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-theme', 'dark');}</script>
+    <title>Frequently Asked Questions (FAQs) - ionXtech</title>
+    <meta name="description" content="Frequently asked questions about ionXtech Android applications (QR Solutions, Privacy Display, Auto Call Scheduler, LED Scroller), local data privacy, permissions, and cloud infrastructure.">
+    <meta name="theme-color" content="#F8F7F4">
+    <link rel="canonical" href="https://ionxtech.dpdns.org/faqs.html">
+
+    <meta property="og:title" content="FAQs - ionXtech">
+    <meta property="og:description" content="Answers to common questions about ionXtech Android apps, data privacy, offline capabilities, and permissions.">
+    <meta property="og:url" content="https://ionxtech.dpdns.org/faqs.html">
+    <meta property="og:image" content="https://ionxtech.dpdns.org/assets/images/og-image.webp">
+    <meta property="og:image:alt" content="ionXtech Frequently Asked Questions">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FAQs - ionXtech">
+    <meta name="twitter:description" content="Answers to common questions about ionXtech Android apps, data privacy, offline capabilities, and permissions.">
+    <meta name="twitter:image" content="https://ionxtech.dpdns.org/assets/images/og-image.webp">
+    <meta name="twitter:image:alt" content="ionXtech Frequently Asked Questions">
+
+    <link rel="icon" type="image/webp" href="assets/images/IonXtech.webp">
+    <link rel="stylesheet" href="assets/css/style.css?v=3">
 </head>
 <body>
+
     <header></header>
-    <main id="main" class="container" style="margin-top:40px;">
-        <h1>FAQs</h1>
-        <div class="faq-list" style="margin-top: 30px; margin-bottom: 60px;">
-            <details class="faq-accordion">
-                <summary>Which apps does ionXtech build?</summary>
-                <div class="faq-content"><p>We build Android utility apps focused on productivity and simplicity, including QR Solutions, LED Scroller, and Call &amp; Message Scheduler.</p></div>
-            </details>
 
-            <details class="faq-accordion">
-                <summary>Is QR Solutions free?</summary>
-                <div class="faq-content"><p>QR Solutions is free to download. Some features may be supported by ads or optional upgrades depending on the app store version.</p></div>
-            </details>
-
-            <details class="faq-accordion">
-                <summary>Why does QR Solutions need camera permission?</summary>
-                <div class="faq-content"><p>The camera permission is used only to scan QR codes and barcodes. Images are processed on-device and not sent to our servers.</p></div>
-            </details>
-
-            <details class="faq-accordion">
-                <summary>Does LED Scroller collect my data?</summary>
-                <div class="faq-content"><p>No. The text you type is processed locally. If ads are enabled, ad providers may collect device identifiers for ad delivery.</p></div>
-            </details>
-
-            <details class="faq-accordion">
-                <summary>Why does Call &amp; Message Scheduler request call permissions?</summary>
-                <div class="faq-content"><p>It uses call-related permissions to automate scheduled calls you create. Your call history and contacts remain on your device.</p></div>
-            </details>
-
-            <details class="faq-accordion">
-                <summary>What does Privacy Display do?</summary>
-                <div class="faq-content"><p>Privacy Display adds an on-screen privacy overlay to help protect sensitive screen content in public places. It runs locally and does not collect personal data.</p></div>
-            </details>
-
-            <details class="faq-accordion">
-                <summary>Do your apps work offline?</summary>
-                <div class="faq-content"><p>Most core features work offline. Any ads, updates, or store-related features require an internet connection.</p></div>
-            </details>
-
-            <details class="faq-accordion">
-                <summary>How do I delete my data?</summary>
-                <div class="faq-content"><p>App data is stored on your device. You can clear app data from your Android settings or uninstall the app.</p></div>
-            </details>
-
-            <details class="faq-accordion">
-                <summary>Where can I find the privacy policy?</summary>
-                <div class="faq-content"><p>Visit the <a href="privacy-policy/index.html">Privacy Policy</a> page to read each app's policy.</p></div>
-            </details>
-
-            <details class="faq-accordion">
-                <summary>I have a billing or refund question.</summary>
-                <div class="faq-content"><p>All payments and refunds are handled by Google Play. Please contact Google Play support for billing issues.</p></div>
-            </details>
-
-            <details class="faq-accordion">
-                <summary>How can I contact support?</summary>
-                <div class="faq-content"><p>You can use our <a href="contact.html">Contact Form</a>. We typically respond within 2-3 business days.</p></div>
-            </details>
+    <main id="main">
+        <div class="page-header">
+            <div class="container">
+                <h1>Frequently Asked Questions</h1>
+                <p>Answers regarding ionXtech applications, Android system permissions, offline operation, privacy practices, and customer support.</p>
+            </div>
         </div>
+
+        <section class="section" style="padding-top: 0;">
+            <div class="container">
+                <div class="faq-list" data-component="company-faqs">
+                    <details class="faq-accordion" open>
+                        <summary>What does ionXtech build and offer?</summary>
+                        <div class="faq-content"><p>ionXtech is a technology startup building local-first Android utility applications (QR Solutions, Privacy Display, Auto Call Scheduler, and LED Scroller) while expanding into developer-friendly web infrastructure across hosting, domains, and services.</p></div>
+                    </details>
+                    <details class="faq-accordion">
+                        <summary>Which Android applications are currently published by ionXtech?</summary>
+                        <div class="faq-content"><p>We currently publish four production Android applications on Google Play: QR Solutions, Privacy Display, Auto Call Scheduler, and LED Scroller.</p></div>
+                    </details>
+                </div>
+
+                <div class="card" style="margin-top: 40px; display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap;">
+                    <div>
+                        <h3>Still have a specific question?</h3>
+                        <p>Reach out to our engineering and support team directly and we will respond within 2 to 3 business days.</p>
+                    </div>
+                    <a href="contact.html" class="btn">Contact Support</a>
+                </div>
+            </div>
+        </section>
     </main>
+
     <footer></footer>
-    <script src="assets/js/layout.js"></script>
+
+    <script src="assets/js/site-data.js?v=3"></script>
+    <script src="assets/js/layout.js?v=3"></script>
 </body>
 </html>
-
-

@@ -1,45 +1,171 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-root="./">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - ionXtech</title>
-    <meta name="description" content="Contact ionXtech.">
-    <link rel="icon" type="image/png" href="/assets/images/IonXtech.webp">
-    <link rel="stylesheet" href="assets/css/style.css">
-<script>if(localStorage.getItem('theme')==='dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.setAttribute('data-theme', 'dark');}</script>
+    <title>Contact Us - ionXtech Support &amp; Inquiries</title>
+    <meta name="description" content="Contact the ionXtech team in Indore, Madhya Pradesh for Android app support, business partnerships, or technical inquiries. Reach us via our contact form or email.">
+    <meta name="theme-color" content="#F8F7F4">
+    <link rel="canonical" href="https://ionxtech.dpdns.org/contact.html">
+
+    <meta property="og:title" content="Contact Us - ionXtech">
+    <meta property="og:description" content="Get in touch with ionXtech for product support, partnerships, or careers.">
+    <meta property="og:url" content="https://ionxtech.dpdns.org/contact.html">
+    <meta property="og:image" content="https://ionxtech.dpdns.org/assets/images/og-image.webp">
+    <meta property="og:image:alt" content="Contact ionXtech">
+    <meta property="og:type" content="website">
+
+    <link rel="icon" type="image/webp" href="assets/images/IonXtech.webp">
+    <link rel="stylesheet" href="assets/css/style.css?v=3">
 </head>
 <body>
+
     <header></header>
-    <main id="main" class="container" style="margin-top:40px;">
-        <h1>Contact Us</h1>
-        <div class="card" style="margin-top:20px;">
-            <h3>Head Office</h3>
-            <p>Anoop Nagar<br>Indore, Madhya Pradesh- 452018</p>
+
+    <main id="main">
+        <div class="page-header">
+            <div class="container">
+                <h1>Contact Us</h1>
+                <p>Have a question about our Android applications, infrastructure roadmap, or career opportunities? Reach out to our team below.</p>
+            </div>
         </div>
-        <div class="card" style="margin-top:30px;">
-            <h3>Send us a message</h3>
-            <p style="margin-bottom: 20px; color: var(--text-light);">Have a question or want to work with us? Fill out the form below.</p>
-            <form action="https://formspree.io/f/placeholder" method="POST">
-                <div class="form-group">
-                    <label class="form-label" for="name">Name</label>
-                    <input class="form-input" type="text" id="name" name="name" required placeholder="Your Name">
+
+        <section class="section" style="padding-top: 0;">
+            <div class="container">
+                <div class="app-detail-columns">
+                    <div class="card">
+                        <span class="mono-label">Message Form</span>
+                        <h2 style="margin-top: 6px; margin-bottom: 8px;">Send a Message</h2>
+                        <p style="margin-bottom: 24px;">Fill out the details below and we will get back to you within 2 to 3 business days.</p>
+
+                        <form id="contact-form" action="https://formspree.io/f/placeholder" method="POST">
+                            <div class="form-group">
+                                <label class="form-label" for="name">Full Name</label>
+                                <input class="form-input" type="text" id="name" name="name" required placeholder="Your full name">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="email">Email Address</label>
+                                <input class="form-input" type="email" id="email" name="email" required placeholder="you@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="topic">Inquiry Topic</label>
+                                <select class="form-select" id="topic" name="topic">
+                                    <option value="App Support">Application Support (QR, Privacy Display, Call Scheduler, LED Scroller)</option>
+                                    <option value="Infrastructure">Infrastructure (Hosting, Domains, Servers)</option>
+                                    <option value="Careers">Careers &amp; Internships</option>
+                                    <option value="Business">General / Business Inquiry</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="message">Message</label>
+                                <textarea class="form-textarea" id="message" name="message" required placeholder="Tell us how we can help..."></textarea>
+                            </div>
+                            <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                            <p id="contact-status" style="margin-top: 12px; font-size: 0.88rem; color: var(--accent); display: none;"></p>
+                        </form>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 24px;">
+                        <div class="card">
+                            <span class="mono-label">Headquarters</span>
+                            <h3 style="margin-top: 6px;">Office Location</h3>
+                            <p style="margin-top: 8px;">
+                                <strong>ionXtech</strong><br>
+                                Anoop Nagar<br>
+                                Indore, Madhya Pradesh - 452018<br>
+                                India
+                            </p>
+                        </div>
+
+                        <div class="card">
+                            <span class="mono-label">Electronic Mail</span>
+                            <h3 style="margin-top: 6px;">Direct Support Email</h3>
+                            <p style="margin-top: 8px; margin-bottom: 14px;">For direct technical support, privacy inquiries, or internship applications:</p>
+                            <a href="mailto:ionxtechsolution@gmail.com" class="btn btn-secondary btn-sm">ionxtechsolution@gmail.com</a>
+                        </div>
+
+                        <div class="card">
+                            <span class="mono-label">Self-Service Resources</span>
+                            <h3 style="margin-top: 6px;">Quick Documentation</h3>
+                            <p style="margin-top: 8px; margin-bottom: 14px;">Looking for answers on app permissions or data storage?</p>
+                            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                                <a href="faqs.html" class="btn btn-secondary btn-sm">Read FAQs</a>
+                                <a href="privacy-policy/" class="btn btn-secondary btn-sm">Privacy Policies</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label class="form-label" for="email">Email</label>
-                    <input class="form-input" type="email" id="email" name="email" required placeholder="your@email.com">
-                </div>
-                <div class="form-group">
-                    <label class="form-label" for="message">Message</label>
-                    <textarea class="form-textarea" id="message" name="message" required placeholder="How can we help?"></textarea>
-                </div>
-                <button type="submit" class="btn" style="width: 100%; border:none; cursor:pointer;">Send Message</button>
-            </form>
-        </div>
+            </div>
+        </section>
     </main>
+
     <footer></footer>
-    <script src="assets/js/layout.js"></script>
+
+    <script src="assets/js/site-data.js?v=13"></script>
+    <script src="assets/js/layout.js?v=13"></script>
+    <script>
+    (function () {
+        const form = document.getElementById("contact-form");
+        const status = document.getElementById("contact-status");
+        if (!form) return;
+        form.addEventListener("submit", async function (e) {
+            e.preventDefault();
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const topic = document.getElementById("topic").value;
+            const msg = document.getElementById("message").value.trim();
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const endpoint = window.IONX_DATA && window.IONX_DATA.company && window.IONX_DATA.company.r2WorkerEndpoint;
+
+            if (endpoint && !endpoint.includes("YOUR-SUBDOMAIN")) {
+                try {
+                    if (submitBtn) {
+                        submitBtn.disabled = true;
+                        submitBtn.textContent = "Sending...";
+                    }
+                    const res = await fetch(endpoint, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            type: "contact",
+                            name: name,
+                            email: email,
+                            topic: topic,
+                            message: msg
+                        })
+                    });
+                    const data = await res.json();
+                    if (res.ok && data.ok) {
+                        form.reset();
+                        if (status) {
+                            status.style.display = "block";
+                            status.textContent = "Thank you! Your message has been securely saved and received by our team.";
+                        }
+                        return;
+                    }
+                    throw new Error(data.error || "Submission failed");
+                } catch (err) {
+                    if (status) {
+                        status.style.display = "block";
+                        status.textContent = "Could not reach server. Opening your email client as backup...";
+                    }
+                } finally {
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = "Send Message";
+                    }
+                }
+            }
+
+            const subject = encodeURIComponent("[ionXtech " + topic + "] Inquiry from " + name);
+            const body = encodeURIComponent("Name: " + name + "\nEmail: " + email + "\nTopic: " + topic + "\n\nMessage:\n" + msg);
+            if (status) {
+                status.style.display = "block";
+                status.textContent = "Opening your email client to send your message directly to ionxtechsolution@gmail.com...";
+            }
+            window.location.href = "mailto:ionxtechsolution@gmail.com?subject=" + subject + "&body=" + body;
+        });
+    })();
+    </script>
 </body>
 </html>
-
-
