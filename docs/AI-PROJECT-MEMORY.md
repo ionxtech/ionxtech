@@ -263,22 +263,11 @@ This section documents features from the original website that were explicitly r
 
 > Append new decisions here in reverse chronological order.
 
-### 2026-10-30 (Session 22)
-- **Multi-Portal Subdomain Architecture on Single Cloudflare Pages Deployment (`functions/_middleware.js`, `functions/config/routes.js`):**
-  - Implemented centralized hostname-based routing in `functions/config/routes.js` registering all 12 hostnames: `ionxtech.in`, `www.ionxtech.in`, `domains.ionxtech.in` (enabled), and `hosting.ionxtech.in`, `services.ionxtech.in`, `apps.ionxtech.in`, `api.ionxtech.in`, `console.ionxtech.in`, `developers.ionxtech.in`, `docs.ionxtech.in`, `support.ionxtech.in`, `status.ionxtech.in` (disabled until launch).
-  - Created Cloudflare Pages middleware in `functions/_middleware.js` that:
-    - Passes static assets (`/assets/*`, `/robots.txt`, `/sitemap.xml`, `/app-ads.txt`, etc.) directly without rewriting.
-    - Serves the main homepage on `ionxtech.in` and `www.ionxtech.in` (and supports clean `/domains` path on the main domain).
-    - Internally rewrites `https://domains.ionxtech.in/` to `/domains.html` via `env.ASSETS.fetch()` without redirecting, preserving browser URL, HTTP method, headers, body, and query parameters.
-    - Dynamically rewrites `<link rel="canonical">` and `<meta property="og:url">` via `HTMLRewriter` so each enabled portal declares its own canonical subdomain URL (`https://domains.ionxtech.in/`).
-    - Returns a branded Warm Paper & Ink 404 (`X-Robots-Tag: noindex, nofollow`) for disabled or unknown subdomains so unimplemented portals are never exposed as broken or duplicate pages.
-  - Updated `domains.html` with root-relative asset paths (`/assets/...`), canonical URL `https://domains.ionxtech.in/`, and updated `sitemap.xml` and `assets/js/layout.js` (`getPortalContext`, `updatePortalCanonicalMeta`) for seamless cross-subdomain navigation.
-
 ### 2026-10-30 (Session 21)
 - **Single Production Domain (`ionxtech.in`) & Cloudflare Hosting Consolidation:**
   - Confirmed `https://ionxtech.in` (`ionxtech.in`) as the one and only production domain across all 20 HTML pages (`<link rel="canonical">`, `og:url`, `og:image`, `twitter:image`, JSON-LD `url`), `assets/js/site-data.js` (`domain: "https://ionxtech.in"`), `assets/js/layout.js` (JSON-LD `author.url`), `CNAME`, `robots.txt`, and `sitemap.xml`.
   - Removed all legacy `ionxtech.dpdns.org` and `ionxtech.com` domain references across the codebase and documentation.
-  - Updated `assets/js/cloudflare-r2-worker.js` CORS configuration (`ALLOWED_ORIGINS`, `origin.endsWith(".ionxtech.in")`, `Vary: Origin`, and fallback origin) to `https://ionxtech.in` and `https://www.ionxtech.in` (alongside `*.pages.dev` and `localhost` for testing).
+  - Updated `assets/js/cloudflare-r2-worker.js` CORS configuration (`ALLOWED_ORIGINS` and fallback origin) to `https://ionxtech.in` and `https://www.ionxtech.in` (alongside `*.pages.dev` and `localhost` for testing).
   - Updated `docs/AI-INSTRUCTIONS.md` and `docs/AI-PROJECT-MEMORY.md` to reflect that the site is hosted on **Cloudflare** at `ionxtech.in`.
 
 ### 2026-10-30 (Session 20)
