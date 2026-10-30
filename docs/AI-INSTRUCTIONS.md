@@ -33,7 +33,7 @@ ionXtech is an Indian technology startup headquartered in Indore, Madhya Pradesh
 | :- | :------- | :--------- | :---------------- |
 | 1 | QR Solutions | `com.ionxtech.qrsolution` | Live |
 | 2 | Privacy Display | `com.ionxtech.privacydisplay` | Live |
-| 3 | Auto Call Scheduler | `com.ionxtech.autocallscheduler` | Live |
+| 3 | Auto Call Scheduler | `com.ionxtech.callscheduler` | Live |
 | 4 | LED Scroller | `com.ionxtech.ledscroller` | Live |
 
 ---
@@ -62,6 +62,7 @@ ionXtech is an Indian technology startup headquartered in Indore, Madhya Pradesh
 - **Do NOT use bento grids, terminal window UI, or fake demo/mockup content.**
 - **Do NOT use purple, black backgrounds, radial orbs, dot-grid backgrounds, sparkle icons, rainbow coloring, or animated arrows.**
 - **Do NOT add hover scale/bounce animations.** Border-color change on hover for cards is acceptable.
+- **Do NOT add eyebrow labels (`<span class="mono-label">`) or extra sub-headings above section titles or card headings on any page.** Every page and card must open directly with its main heading (`<h1>`, `<h2>`, `<h3>`) without small uppercase eyebrow headers above it.
 - **Do NOT create dark mode.** The site is light-mode only with the Warm Paper & Ink palette.
 - **Do NOT bypass or modify the reusable component architecture.** If you need a new component, add it to `layout.js` as a new `data-component` type.
 - **Do NOT change the `CNAME` file** (`ionxtech.in`).

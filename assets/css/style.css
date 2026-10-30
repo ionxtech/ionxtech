@@ -157,7 +157,7 @@ header {
     top: 0;
     z-index: 100;
     background-color: var(--bg);
-    border-bottom: 1px solid var(--border);
+    border-bottom: none;
 }
 
 .navbar {
@@ -173,6 +173,10 @@ header {
     align-items: center;
     gap: 10px;
     text-decoration: none;
+}
+
+.navbar .brand-logo-img {
+    display: none;
 }
 
 .brand-logo-img {
@@ -191,9 +195,18 @@ header {
     letter-spacing: -0.03em;
 }
 
+.navbar .brand-text {
+    font-size: 1.65rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1;
+}
+
 .nav-menu {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
+    margin-left: auto;
     gap: 8px;
 }
 
@@ -518,7 +531,7 @@ header {
 /* Page Header for Inner Pages */
 .page-header {
     padding: 52px 0 36px;
-    border-bottom: 1px solid var(--border);
+    border-bottom: none;
     margin-bottom: 40px;
     background: var(--bg);
 }
@@ -542,11 +555,18 @@ header {
 /* Section Layout */
 .section {
     padding: 64px 0;
-    border-bottom: 1px solid var(--border);
+    border-bottom: none;
 }
 
-.section:last-child {
+.section:last-child,
+body.home-page .section,
+.section:has(+ .home-cta-section) {
     border-bottom: none;
+}
+
+.home-cta-section {
+    border-top: none !important;
+    border-bottom: none !important;
 }
 
 /* Desktop Enhanced Viewport-Snap Layout (Homepage only) */
@@ -571,10 +591,16 @@ header {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding: 40px 0;
+        padding: 20px 0;
         scroll-snap-align: start;
         scroll-snap-stop: always;
         box-sizing: border-box;
+    }
+
+    body.home-page .home-apps-section {
+        justify-content: flex-start;
+        padding-top: 28px;
+        padding-bottom: 16px;
     }
 
     body.home-page .home-cta-section {
@@ -590,16 +616,51 @@ header {
     }
 
     body.home-page .section-header {
-        margin-bottom: 24px;
+        margin-bottom: 18px;
     }
 
     body.home-page .home-showcase-card {
-        padding: 24px 28px;
+        padding: 20px 24px;
     }
 
     body.home-page .home-showcase-card .kp-description {
-        margin: 12px 0 18px 0;
+        margin: 10px 0 14px 0;
     }
+}
+
+/* Home Overall Users Counter Showcase */
+.home-users-showcase {
+    margin-top: 28px;
+    padding: 16px 0 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-users-number {
+    font-size: clamp(3.6rem, 8.5vw, 6.4rem);
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    line-height: 1;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+    display: inline-flex;
+    align-items: baseline;
+}
+
+.home-users-plus {
+    color: var(--accent);
+    margin-left: 2px;
+}
+
+.home-users-label {
+    margin-top: 8px;
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    font-weight: 600;
+    color: var(--text-secondary);
+    letter-spacing: -0.01em;
 }
 
 .section-header {
@@ -1112,14 +1173,15 @@ footer {
 
 .footer-brand-wrap {
     display: flex;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
 }
 
 .footer-tagline {
     font-size: 0.88rem;
     color: var(--text-muted);
+    display: block;
 }
 
 .footer-company-nav {
