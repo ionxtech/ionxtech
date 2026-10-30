@@ -99,13 +99,13 @@ When creating any new page, follow this exact template:
     <title>{Page Title} - ionXtech</title>
     <meta name="description" content="{Unique 150-160 char description with target keywords}">
     <meta name="theme-color" content="#F8F7F4">
-    <link rel="canonical" href="https://ionxtech.dpdns.org/{path}">
+    <link rel="canonical" href="https://ionxtech.in/{path}">
 
     <!-- Open Graph -->
     <meta property="og:title" content="{title}">
     <meta property="og:description" content="{description}">
-    <meta property="og:url" content="https://ionxtech.dpdns.org/{path}">
-    <meta property="og:image" content="https://ionxtech.dpdns.org/assets/images/og-image.webp">
+    <meta property="og:url" content="https://ionxtech.in/{path}">
+    <meta property="og:image" content="https://ionxtech.in/assets/images/og-image.webp">
     <meta property="og:image:alt" content="{descriptive alt text}">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -115,7 +115,7 @@ When creating any new page, follow this exact template:
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{title}">
     <meta name="twitter:description" content="{description}">
-    <meta name="twitter:image" content="https://ionxtech.dpdns.org/assets/images/og-image.webp">
+    <meta name="twitter:image" content="https://ionxtech.in/assets/images/og-image.webp">
     <meta name="twitter:image:alt" content="{descriptive alt text}">
 
     <link rel="icon" type="image/webp" href="{rootPath}assets/images/IonXtech.webp">
@@ -215,7 +215,7 @@ These decisions were made explicitly by the project owner. Do not revert them.
 | :------ | :------------- |
 | **JSON-LD Structured Data** | `Organization` schema on home page. `SoftwareApplication` + `FAQPage` schemas on each app detail page (injected both as static `<script>` tags in HTML and dynamically by `layout.js`). `Person` schema on team page. `ItemList` schema on apps directory. |
 | **FAQ Rich Results** | `layout.js` automatically injects `FAQPage` JSON-LD for every FAQ list it renders (company FAQs and per-app FAQs). |
-| **Canonical URLs** | Every page has `<link rel="canonical" href="https://ionxtech.dpdns.org/...">`. |
+| **Canonical URLs** | Every page has `<link rel="canonical" href="https://ionxtech.in/...">`. |
 | **Sitemap** | `sitemap.xml` at project root lists all 17+ pages with priority and change frequency. Must be updated when pages are added. |
 | **robots.txt** | Allows all crawlers, points to sitemap. |
 | **Alt text standard** | Every image `alt` attribute is a full descriptive sentence for SEO, not just the app name. Example: "QR Solutions Android app icon by ionXtech for scanning and generating QR codes". |
@@ -251,8 +251,8 @@ This section documents features from the original website that were explicitly r
 
 | Constraint | Details |
 | :--------- | :------ |
-| **No build step** | The site deploys as raw static files to GitHub Pages. No webpack, no Vite, no Astro. |
-| **No server-side code** | No PHP, no Node.js server, no API endpoints. Contact form uses a client-side Formspree integration (currently set to a placeholder endpoint). |
+| **No build step** | The site deploys as raw static files to Cloudflare (`ionxtech.in`). No webpack, no Vite, no Astro. |
+| **Serverless form storage** | No PHP or Node.js server. Contact Us and Waitlist forms post to a Cloudflare Worker (`assets/js/cloudflare-r2-worker.js`) bound to Cloudflare R2 (`IONX_BUCKET`) and Slack (`SLACK_WEBHOOK_URL`). |
 | **Image filenames with spaces** | `QR Solution Logo.webp` and `QR Solution.webp` have spaces in their filenames. This is legacy and works, but new images should use hyphens. |
 | **Logo filename casing** | The logo file is `IonXtech.webp` (capital I). This cannot be renamed as it's referenced externally. |
 | **JS-injected header/footer** | Search engine crawlers that don't execute JS will not see the full navigation. This is a known trade-off for maintaining DRY code without a build system. Each page's static HTML includes enough content and internal links to partially compensate. |
@@ -263,16 +263,23 @@ This section documents features from the original website that were explicitly r
 
 > Append new decisions here in reverse chronological order.
 
-### 2026-10-28 (Session 19)
-- **Git Branching, GitHub Push & Cloudflare Pages Deployment Documentation (`docs/README.md`):**
-  - Updated `docs/README.md` with step-by-step instructions on creating a new Git branch (`git checkout -b ...`), staging/committing changes, pushing to GitHub (`git push -u origin ...`), merging to `main`, and deploying on Cloudflare Pages Free Tier.
-  - Updated `getCorsHeaders` in `assets/js/cloudflare-r2-worker.js` to automatically allow `*.pages.dev`, `*.ionxtech.dpdns.org`, and `*.ionxtech.com` origins.
+### 2026-10-30 (Session 21)
+- **Single Production Domain (`ionxtech.in`) & Cloudflare Hosting Consolidation:**
+  - Confirmed `https://ionxtech.in` (`ionxtech.in`) as the one and only production domain across all 20 HTML pages (`<link rel="canonical">`, `og:url`, `og:image`, `twitter:image`, JSON-LD `url`), `assets/js/site-data.js` (`domain: "https://ionxtech.in"`), `assets/js/layout.js` (JSON-LD `author.url`), `CNAME`, `robots.txt`, and `sitemap.xml`.
+  - Removed all legacy `ionxtech.dpdns.org` and `ionxtech.com` domain references across the codebase and documentation.
+  - Updated `assets/js/cloudflare-r2-worker.js` CORS configuration (`ALLOWED_ORIGINS` and fallback origin) to `https://ionxtech.in` and `https://www.ionxtech.in` (alongside `*.pages.dev` and `localhost` for testing).
+  - Updated `docs/AI-INSTRUCTIONS.md` and `docs/AI-PROJECT-MEMORY.md` to reflect that the site is hosted on **Cloudflare** at `ionxtech.in`.
 
 ### 2026-10-30 (Session 20)
 - **Production Form CORS for `ionxtech.in`:**
   - Added `https://ionxtech.in` and `https://www.ionxtech.in` to the Cloudflare form Worker CORS allowlist so browser submissions from both production hostnames can reach R2.
   - Contact form Worker failures now show an error and retain the entered form values instead of unexpectedly opening a mail client. Direct support email remains available as a separate link.
-  - The Worker script must be deployed separately in Cloudflare after editing; uploading the static website to Hostinger does not update the Worker.
+  - The Worker script (`assets/js/cloudflare-r2-worker.js`) is deployed separately in Cloudflare Workers.
+
+### 2026-10-28 (Session 19)
+- **Git Branching, GitHub Push & Cloudflare Pages Deployment Documentation (`docs/README.md`):**
+  - Updated `docs/README.md` with step-by-step instructions on creating a new Git branch (`git checkout -b ...`), staging/committing changes, pushing to GitHub (`git push -u origin ...`), merging to `main`, and deploying on Cloudflare Pages Free Tier.
+  - Updated `getCorsHeaders` in `assets/js/cloudflare-r2-worker.js` to automatically allow `*.pages.dev` and approved ionXtech origins.
 
 ### 2026-10-28 (Session 18)
 - **Cloudflare R2 Bucket Integration for Contact Us & Waitlist Forms:**
@@ -401,8 +408,8 @@ This section documents features from the original website that were explicitly r
 ### 2026-10-27 (Session 3)
 - **Mandatory Ownership Rule - Continuous Memory Maintenance:** Whenever any developer or AI assistant makes code, layout, style, content, or architectural modifications, they own the responsibility of immediately documenting the changes in `docs/AI-PROJECT-MEMORY.md` to ensure seamless knowledge transfer.
 - **Hybrid Multi-Architecture Strategy Approved (Approach 1 - Subdomain Isolation):**
-  - **Marketing & Public Documentation:** Keeps the current zero-dependency, ultra-fast static HTML/CSS/JS architecture on CDN/GitHub Pages (`ionxtech.com` / `ionxtech.dpdns.org`). Zero server maintenance, 100% uptime, maximum SEO.
-  - **Dynamic Products (ionXhosting, ionXdomains, ionXservices console):** Will be built as independent Next.js / Node.js web applications hosted on the user's dedicated VPS under subdomains (e.g., `console.ionxtech.com` or `app.ionxtech.com`), decoupled from the static marketing site.
+  - **Marketing & Public Documentation:** Hosted as a zero-dependency static HTML/CSS/JS site on **Cloudflare** at the official domain `ionxtech.in` (`https://ionxtech.in`).
+  - **Dynamic Products (ionXhosting, ionXdomains, ionXservices console):** Will be built as independent Next.js / Node.js web applications hosted on the user's dedicated VPS under subdomains (e.g., `console.ionxtech.in` or `app.ionxtech.in`), decoupled from the static marketing site.
   - **Decoupled Security & Reliability:** Any VPS restart, maintenance, or high CPU spike in the customer backend will never impact the public-facing marketing site, app landing pages, or Google Play store references.
 
 ### 2026-10-27 (Session 2)
