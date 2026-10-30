@@ -8,12 +8,12 @@ window.IONX_DATA = {
         heroSubtitle: "Building reliable tech for modern Digital India",
         heroRotatingWords: ["tech", "apps", "hosting", "domains", "services"],
         metrics: [
-            { value: "165K+", label: "Installs on Google Play" },
+            { value: "15K+", label: "Installs on Google Play" },
             { value: "4", label: "Production Android apps" },
             { value: "100%", label: "Core features work offline" },
             { value: "0", label: "Personal data sold, ever" }
         ],
-        email: "ionxtechsolution@gmail.com",
+        email: "hello@ionxtech.in",
         address: {
             street: "Anoop Nagar",
             city: "Indore",
@@ -120,7 +120,7 @@ window.IONX_DATA = {
             rating: "4.6 / 5.0",
             ratingValue: "4.6",
             ratingCount: "640",
-            downloads: "50,000+",
+            downloads: "500+",
             dataPolicy: "On-device camera & local history",
             offlineSupport: "100% Offline scanning & generation",
             androidVersion: "Android 8.0 and up",
@@ -274,11 +274,11 @@ window.IONX_DATA = {
             name: "Auto Call Scheduler",
             tagline: "Automated Phone Call Scheduler and Reminder Utility for Android",
             category: "Communication & Automation",
-            packageId: "com.ionxtech.autocallscheduler",
+            packageId: "com.ionxtech.callscheduler",
             rating: "4.2 / 5.0",
             ratingValue: "4.2",
             ratingCount: "310",
-            downloads: "10,000+",
+            downloads: "5,000+",
             dataPolicy: "On-device call schedules & contacts",
             offlineSupport: "Offline scheduling engine",
             androidVersion: "Android 8.0 and up",
@@ -288,7 +288,7 @@ window.IONX_DATA = {
             bannerAlt: "Auto Call Scheduler Android app preview showing scheduled phone call automation",
             pageSlug: "apps/call-message-scheduler/",
             privacySlug: "privacy-policy/auto-call-scheduler.html",
-            playStoreUrl: "https://play.google.com/store/apps/details?id=com.ionxtech.autocallscheduler",
+            playStoreUrl: "https://play.google.com/store/apps/details?id=com.ionxtech.callscheduler&hl=en_IN",
             shortDescription: "Schedule automatic phone calls and follow-up reminders at exact dates and times with persistent reboot recovery.",
             overview: [
                 "Auto Call Scheduler (also listed on Google Play as Call & Message Scheduler) is a precision communication automation tool developed by ionXtech. It enables professionals and busy individuals to schedule outbound phone calls in advance so critical client follow-ups, family check-ins, and timed calls happen right on schedule.",
@@ -314,7 +314,7 @@ window.IONX_DATA = {
             ],
             specs: [
                 { label: "Application Name", value: "Auto Call Scheduler" },
-                { label: "Package Identifier", value: "com.ionxtech.autocallscheduler" },
+                { label: "Package Identifier", value: "com.ionxtech.callscheduler" },
                 { label: "Category", value: "Communication / Productivity" },
                 { label: "Schedule Storage", value: "100% Local On-Device Database" },
                 { label: "Reboot Persistence", value: "Supported (BOOT_COMPLETED)" },
@@ -357,7 +357,7 @@ window.IONX_DATA = {
             rating: "4.8 / 5.0",
             ratingValue: "4.8",
             ratingCount: "1250",
-            downloads: "100,000+",
+            downloads: "500+",
             dataPolicy: "100% local text rendering",
             offlineSupport: "Works offline anytime",
             androidVersion: "Android 8.0 and up",
@@ -475,7 +475,7 @@ window.IONX_DATA = {
         },
         {
             question: "How can I contact ionXtech support or report a bug?",
-            answer: "You can reach our team via our Contact Us page or by emailing ionxtechsolution@gmail.com directly. We typically respond to all technical and support inquiries within 2 to 3 business days."
+            answer: "You can reach our team via our Contact Us page or by emailing hello@ionxtech.in directly. We typically respond to all technical and support inquiries within 2 to 3 business days."
         }
     ],
 
@@ -498,7 +498,7 @@ window.IONX_DATA = {
 
     careers: {
         intro: "We build practical software used by over 165,000+ users worldwide. At ionXtech, we value clean engineering, autonomous execution, and respect for user privacy.",
-        email: "ionxtechsolution@gmail.com",
+        email: "hello@ionxtech.in",
         openRoles: [
             {
                 title: "Android Application Engineering Intern",

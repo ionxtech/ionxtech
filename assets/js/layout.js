@@ -34,10 +34,10 @@
         return (
             '<div class="container navbar">' +
                 '<a href="' + rootPath + 'index.html" class="brand" aria-label="ionXtech Home">' +
-                    '<img src="' + rootPath + data.company.logo.path + '" alt="' + escapeHtml(data.company.logo.alt) + '" width="36" height="36" class="brand-logo-img">' +
-                    '<span class="brand-text">ionXtech</span>' +
+                '' +
+                    '<span class="brand-text" style="font-size: 1.65rem; font-weight: 800; letter-spacing: -0.04em; line-height: 1;">ionXtech</span>' +
                 '</a>' +
-                '<nav id="nav-menu" class="nav-menu" aria-label="Primary Navigation">' +
+                '<nav id="nav-menu" class="nav-menu" aria-label="Primary Navigation" style="margin-left: auto;">' +
                     '<ul>' +
                         '<li class="nav-item"><a href="' + rootPath + 'apps/" class="' + (isApps ? 'active' : '') + '">ionXapps</a></li>' +
                         '<li class="nav-item"><a href="' + rootPath + 'domains.html" class="' + (isDomains ? 'active' : '') + '">ionXdomains</a></li>' +
@@ -46,7 +46,7 @@
                     '</ul>' +
                 '</nav>' +
                 '<div class="header-actions">' +
-                    '<a href="' + rootPath + 'contact.html" class="btn btn-sm">Talk to Sales</a>' +
+                    '<a href="' + rootPath + 'apps/" class="btn btn-sm">Try Our Apps</a>' +
                     '<button class="nav-toggle" aria-controls="nav-menu" aria-expanded="false" aria-label="Toggle navigation menu">Menu</button>' +
                 '</div>' +
             '</div>'
@@ -64,7 +64,7 @@
 
         return (
             '<div class="container footer-horizontal">' +
-                '<div class="footer-brand-wrap">' +
+                '<div class="footer-brand-wrap" style="display: flex; flex-direction: column; align-items: flex-start; gap: 6px;">' +
                     '<a href="' + rootPath + 'index.html" class="brand">' +
                         '<img src="' + rootPath + data.company.logo.path + '" alt="' + escapeHtml(data.company.logo.alt) + '" width="32" height="32" class="brand-logo-img">' +
                         '<span class="brand-text">ionXtech</span>' +
@@ -333,7 +333,7 @@
 
                 '<section class="app-detail-columns">' +
                     '<div class="card">' +
-                        '<span class="mono-label">Product Documentation</span>' +
+                        '' +
                         '<h2 style="margin-top: 6px;">About ' + escapeHtml(app.name) + '</h2>' +
                         overviewHtml +
                         '<h3 style="margin-top: 24px;">Key Capabilities</h3>' +
@@ -343,14 +343,14 @@
                     '</div>' +
                     '<div style="display: flex; flex-direction: column; gap: 24px;">' +
                         '<div class="card">' +
-                            '<span class="mono-label">Technical Profile</span>' +
+                            '' +
                             '<h3 style="margin-top: 6px;">Specifications</h3>' +
                             '<table class="spec-table">' +
                                 '<tbody>' + specsHtml + '</tbody>' +
                             '</table>' +
                         '</div>' +
                         '<div class="card">' +
-                            '<span class="mono-label">Data Governance</span>' +
+                            '' +
                             '<h3 style="margin-top: 6px;">Privacy &amp; Permissions</h3>' +
                             '<p style="margin-bottom: 16px;">We document every Android system permission requested by ' + escapeHtml(app.name) + ' and explain how your data stays protected on your device.</p>' +
                             '<div style="display: flex; flex-wrap: wrap; gap: 10px;">' +
@@ -364,7 +364,7 @@
                 '<section class="section" style="padding-top: 16px;">' +
                     '<div class="section-header">' +
                         '<div class="section-header-left">' +
-                            '<span class="mono-label">Knowledge Base &amp; Search Console FAQ</span>' +
+                            '' +
                             '<h2>Frequently Asked Questions: ' + escapeHtml(app.name) + '</h2>' +
                             '<p>Common questions about features, offline usage, Android permissions, and data privacy for ' + escapeHtml(app.name) + '.</p>' +
                         '</div>' +
@@ -377,7 +377,7 @@
                 '<section class="section">' +
                     '<div class="section-header">' +
                         '<div class="section-header-left">' +
-                            '<span class="mono-label">More from ionXtech</span>' +
+                            '' +
                             '<h2>Explore Other Applications</h2>' +
                         '</div>' +
                         '<a href="' + rootPath + 'apps/" class="btn btn-secondary btn-sm">All Apps</a>' +
@@ -598,7 +598,7 @@
                                         '<h3>' + escapeHtml(app.name) + '</h3>' +
                                     '</div>' +
                                 '</div>' +
-                                '<span class="badge">POLICY</span>' +
+                                '' +
                             '</div>' +
                             '<p class="kp-description">Read the complete privacy policy, Android permission disclosures, and local data storage practices for ' + escapeHtml(app.name) + '.</p>' +
                         '</div>' +
@@ -627,6 +627,61 @@
         initCardLinkDelegation();
         initHeroWordRotator(data);
         initInfinityLoopAnimations();
+        initHomeUsersCounter();
+    }
+
+    function initHomeUsersCounter() {
+        const counterEl = document.getElementById("home-user-counter");
+        if (!counterEl) return;
+
+        const target = parseInt(counterEl.getAttribute("data-target") || "15000", 10);
+        const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        let hasAnimated = false;
+
+        function runAnimation() {
+            if (hasAnimated) return;
+            hasAnimated = true;
+
+            if (reduceMotion) {
+                counterEl.textContent = target.toLocaleString("en-US");
+                return;
+            }
+
+            const duration = 1800;
+            let startTime = null;
+
+            function step(timestamp) {
+                if (!startTime) startTime = timestamp;
+                const progress = Math.min((timestamp - startTime) / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                const currentVal = Math.floor(eased * target);
+                counterEl.textContent = currentVal.toLocaleString("en-US");
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                } else {
+                    counterEl.textContent = target.toLocaleString("en-US");
+                }
+            }
+
+            window.requestAnimationFrame(step);
+        }
+
+        if ("IntersectionObserver" in window) {
+            const observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        runAnimation();
+                        observer.disconnect();
+                    }
+                });
+            }, { threshold: 0.25 });
+            observer.observe(counterEl);
+        } else {
+            runAnimation();
+        }
+    }
+    // end initHomeUsersCounter
+    {
     }
 
     function renderWaitlistComingSoon(container, data) {

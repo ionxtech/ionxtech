@@ -200,11 +200,12 @@ These decisions were made explicitly by the project owner. Do not revert them.
 | Rule | Details |
 | :--- | :------ |
 | **Name casing** | `ionXtech`, `ionXapps`, `ionXhosting`, `ionXdomains`, `ionXservices`. Only the `X` is capitalized. See `AI-INSTRUCTIONS.md` section 6 for the full table. |
+| **No Eyebrow / Extra Section Headings** | Never add `<span class="mono-label">` or extra sub-headings above section titles or card headings on any page. Cards and sections open directly with their main heading. |
 | **No emojis** | Never use emoji characters in page content. |
 | **No em dashes** | Use commas, periods, or semicolons instead of `—`. |
 | **No "demo" or mockup content** | Every piece of content must be real. No placeholder screenshots, fake testimonials, or lorem ipsum. |
 | **Privacy policy content is sacred** | Do not modify the text of any privacy policy page unless the project owner explicitly provides new legal text. These are linked from Google Play Console. |
-| **Contact email** | `ionxtechsolution@gmail.com` everywhere. |
+| **Contact email** | `hello@ionxtech.in` everywhere. |
 | **Copyright line** | `© 2025 - 2026 ionXtech. All rights reserved.` |
 
 ---
@@ -260,6 +261,37 @@ This section documents features from the original website that were explicitly r
 ---
 
 ## 10. Decision Log
+
+### 2026-10-31 (Session 26)
+- **Navbar CTA Changed to "Try Our Apps", Auto Call Scheduler Play Store Link Fixed & App Install Counts Updated:**
+  - Changed the header navbar CTA button in `buildHeaderHTML` (`assets/js/layout.js`) from `"Talk to Sales"` (`contact.html`) to **`"Try Our Apps"`** (`apps/`), matching the home page hero CTA.
+  - Updated the Google Play Store download link and package ID for **Auto Call Scheduler** to `https://play.google.com/store/apps/details?id=com.ionxtech.callscheduler&hl=en_IN` (`com.ionxtech.callscheduler`) across `assets/js/site-data.js`, `index.html`, `apps/index.html`, `apps/call-message-scheduler/index.html`, and `privacy-policy/auto-call-scheduler.html`.
+  - Updated app install counts in `assets/js/site-data.js` and `index.html`:
+    - **QR Solutions:** `500+`
+    - **Privacy Display:** `5,000+`
+    - **Auto Call Scheduler:** `5,000+`
+    - **LED Scroller:** `500+`
+
+### 2026-10-30 (Session 25)
+- **Permanent Rule Against Extra Eyebrow Headings, Hero Button Changed to "Try Our Apps", and `15,000+` Animated Users Counter Added on Home Page:**
+  - Added permanent project rule in `docs/AI-INSTRUCTIONS.md` and `docs/AI-PROJECT-MEMORY.md`: never add `<span class="mono-label">` eyebrow labels or extra sub-headings above section/card headings on any page (also cleaned remaining ones from `about.html`, `team.html`, and `careers.html`).
+  - Changed the main hero CTA button on `index.html` from `"Talk to Sales"` (`contact.html`) to **`"Try Our Apps"`** redirecting to `apps/` (`/apps/` directory page).
+  - Moved the **Featured Android Apps** section slightly higher (`.home-apps-section`) and added a large, high-impact animated counter below the featured apps cards (`#home-user-counter` inside `.home-users-showcase`) that smoothly counts from `0` to **`15,000+`** overall users when scrolled into view (`initHomeUsersCounter` in `assets/js/layout.js`).
+
+### 2026-10-30 (Session 24)
+- **Contact Us & App Detail Eyebrow Labels Removed, Official Email Updated to `hello@ionxtech.in`, Stacked Footer Tagline & Badge Cleanup:**
+  - Removed `<span class="mono-label">` eyebrow labels (`Message Form`, `Headquarters`, `Electronic Mail`, and `Self-Service Resources`) from the cards on `contact.html`.
+  - Removed `<span class="mono-label">` eyebrow labels (`Product Documentation`, `Technical Profile`, `Data Governance`, `Knowledge Base & Search Console FAQ`, and `More from ionXtech`) from `renderAppDetailPage` in `assets/js/layout.js` across all 4 app detail pages.
+  - Replaced `ionxtechsolution@gmail.com` with the official email `hello@ionxtech.in` across `contact.html`, `assets/js/site-data.js`, `index.html`, `careers.html`, `terms.html`, `privacy-policy/qr-solution.html`, `privacy-policy/privacy-display.html`, `privacy-policy/auto-call-scheduler.html`, and `privacy-policy/led-scroller.html`.
+  - Positioned the footer tagline (*"Building reliable tech for modern Digital India"*) directly below the `ionXtech` logo/brand in `.footer-brand-wrap` (`flex-direction: column; align-items: flex-start`) in `assets/css/style.css` and `assets/js/layout.js`.
+  - Removed the `POLICY` badge from the privacy policy app cards (`privacy-grid` in `assets/js/layout.js`) and removed the `FOUNDER & CEO` badge from `team.html`.
+
+### 2026-10-30 (Session 23)
+- **Header Navbar Logo Removal, Larger Wordmark, Right-Aligned Nav Links & Global Horizontal Divider Line Removal:**
+  - Removed the `<img>` logo icon (`.brand-logo-img`) from the header navbar in `buildHeaderHTML` (`assets/js/layout.js`) and added `.navbar .brand-logo-img { display: none; }` in `assets/css/style.css` so the top-left brand link displays the clean `ionXtech` wordmark text only (footer brand logo remains intact).
+  - Increased the header `ionXtech` brand wordmark size (`.navbar .brand-text`) to `1.65rem` (`font-weight: 800; letter-spacing: -0.04em; line-height: 1`) for stronger visual presence in the navbar.
+  - Right-aligned the header navigation page buttons (`ionXapps`, `ionXdomains`, `ionXhosting`, `ionXservices`) by adding `margin-left: auto; justify-content: flex-end;` to `.nav-menu` in `assets/css/style.css` and `assets/js/layout.js` so the links sit flush on the right side next to the **Talk to Sales** CTA button.
+  - Removed all full-width thin horizontal divider lines (`border-bottom`) across the entire website (`header`, `.page-header`, and `.section` in `assets/css/style.css` and `index.html`).
 
 > Append new decisions here in reverse chronological order.
 
