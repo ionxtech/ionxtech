@@ -105,6 +105,10 @@ ionxtech/
 │   ├── js/layout.js            # Shared header/footer & component renderer
 │   ├── js/cloudflare-r2-worker.js # Cloudflare Worker script for R2 + Slack
 │   └── images/                 # WebP/SVG logos, icons, and OG banners
+├── functions/                  # Cloudflare Pages Functions (Multi-Portal Subdomain Routing)
+│   ├── _middleware.js          # Hostname-based request rewrite middleware
+│   └── config/
+│       └── routes.js           # Centralized subdomain route table
 └── tools/                      # Optional Python image processing scripts
     ├── convert_to_webp.py
     └── generate_og_variants.py

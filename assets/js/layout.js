@@ -24,29 +24,52 @@
             .replace(/"/g, "&quot;");
     }
 
+    function getPortalContext(data) {
+        const hostname = (window.location.hostname || "").toLowerCase().replace(/\.$/, "");
+        const mainOrigin = (data && data.company && data.company.domain) || "https://ionxtech.in";
+        const isPortalSubdomain =
+            hostname.endsWith(".ionxtech.in") &&
+            hostname !== "ionxtech.in" &&
+            hostname !== "www.ionxtech.in";
+        const subdomainKey = isPortalSubdomain ? hostname.replace(/\.ionxtech\.in$/, "") : "";
+        return {
+            hostname: hostname,
+            isPortalSubdomain: isPortalSubdomain,
+            subdomainKey: subdomainKey,
+            mainOrigin: mainOrigin
+        };
+    }
+
     function buildHeaderHTML(data, rootPath) {
         const path = window.location.pathname.replace(/\\/g, "/");
-        const isApps = path.includes("/apps/");
-        const isDomains = path.endsWith("/domains.html") || path.endsWith("/domains/");
-        const isHosting = path.endsWith("/hosting.html") || path.endsWith("/hosting/");
-        const isServices = path.endsWith("/services.html") || path.endsWith("/services/");
+        const portal = getPortalContext(data);
+        const siteBase = portal.isPortalSubdomain ? (portal.mainOrigin + "/") : rootPath;
+        const isLocal = portal.hostname === "localhost" || portal.hostname === "127.0.0.1" || portal.hostname.endsWith(".pages.dev");
+        const domainsUrl = (!isLocal && data && data.company && data.company.portals && data.company.portals.domains)
+            ? (portal.hostname === "domains.ionxtech.in" ? "/" : data.company.portals.domains)
+            : (siteBase + "domains.html");
+
+        const isApps = path.includes("/apps/") || portal.subdomainKey === "apps";
+        const isDomains = path.endsWith("/domains.html") || path.endsWith("/domains") || path.endsWith("/domains/") || portal.subdomainKey === "domains";
+        const isHosting = path.endsWith("/hosting.html") || path.endsWith("/hosting") || path.endsWith("/hosting/") || portal.subdomainKey === "hosting";
+        const isServices = path.endsWith("/services.html") || path.endsWith("/services") || path.endsWith("/services/") || portal.subdomainKey === "services";
 
         return (
             '<div class="container navbar">' +
-                '<a href="' + rootPath + 'index.html" class="brand" aria-label="ionXtech Home">' +
+                '<a href="' + siteBase + (portal.isPortalSubdomain ? '' : 'index.html') + '" class="brand" aria-label="ionXtech Home">' +
                     '<img src="' + rootPath + data.company.logo.path + '" alt="' + escapeHtml(data.company.logo.alt) + '" width="36" height="36" class="brand-logo-img">' +
                     '<span class="brand-text">ionXtech</span>' +
                 '</a>' +
                 '<nav id="nav-menu" class="nav-menu" aria-label="Primary Navigation">' +
                     '<ul>' +
-                        '<li class="nav-item"><a href="' + rootPath + 'apps/" class="' + (isApps ? 'active' : '') + '">ionXapps</a></li>' +
-                        '<li class="nav-item"><a href="' + rootPath + 'domains.html" class="' + (isDomains ? 'active' : '') + '">ionXdomains</a></li>' +
-                        '<li class="nav-item"><a href="' + rootPath + 'hosting.html" class="' + (isHosting ? 'active' : '') + '">ionXhosting</a></li>' +
-                        '<li class="nav-item"><a href="' + rootPath + 'services.html" class="' + (isServices ? 'active' : '') + '">ionXservices</a></li>' +
+                        '<li class="nav-item"><a href="' + siteBase + 'apps/" class="' + (isApps ? 'active' : '') + '">ionXapps</a></li>' +
+                        '<li class="nav-item"><a href="' + domainsUrl + '" class="' + (isDomains ? 'active' : '') + '">ionXdomains</a></li>' +
+                        '<li class="nav-item"><a href="' + siteBase + 'hosting.html" class="' + (isHosting ? 'active' : '') + '">ionXhosting</a></li>' +
+                        '<li class="nav-item"><a href="' + siteBase + 'services.html" class="' + (isServices ? 'active' : '') + '">ionXservices</a></li>' +
                     '</ul>' +
                 '</nav>' +
                 '<div class="header-actions">' +
-                    '<a href="' + rootPath + 'contact.html" class="btn btn-sm">Talk to Sales</a>' +
+                    '<a href="' + siteBase + 'contact.html" class="btn btn-sm">Talk to Sales</a>' +
                     '<button class="nav-toggle" aria-controls="nav-menu" aria-expanded="false" aria-label="Toggle navigation menu">Menu</button>' +
                 '</div>' +
             '</div>'
@@ -54,6 +77,9 @@
     }
 
     function buildFooterHTML(data, rootPath) {
+        const portal = getPortalContext(data);
+        const siteBase = portal.isPortalSubdomain ? (portal.mainOrigin + "/") : rootPath;
+
         const socialItems = data.company.socials.map(function (s) {
             return (
                 '<a href="' + escapeHtml(s.url) + '" class="social" target="_blank" rel="noopener noreferrer" aria-label="' + escapeHtml(s.alt) + '">' +
@@ -65,18 +91,18 @@
         return (
             '<div class="container footer-horizontal">' +
                 '<div class="footer-brand-wrap">' +
-                    '<a href="' + rootPath + 'index.html" class="brand">' +
+                    '<a href="' + siteBase + (portal.isPortalSubdomain ? '' : 'index.html') + '" class="brand">' +
                         '<img src="' + rootPath + data.company.logo.path + '" alt="' + escapeHtml(data.company.logo.alt) + '" width="32" height="32" class="brand-logo-img">' +
                         '<span class="brand-text">ionXtech</span>' +
                     '</a>' +
                     '<span class="footer-tagline">' + escapeHtml(data.company.tagline) + '</span>' +
                 '</div>' +
                 '<nav class="footer-company-nav" aria-label="Company Links">' +
-                    '<a href="' + rootPath + 'about.html">About</a>' +
-                    '<a href="' + rootPath + 'team.html">Our Team</a>' +
-                    '<a href="' + rootPath + 'careers.html">Careers</a>' +
-                    '<a href="' + rootPath + 'faqs.html">FAQs</a>' +
-                    '<a href="' + rootPath + 'contact.html">Contact Us</a>' +
+                    '<a href="' + siteBase + 'about.html">About</a>' +
+                    '<a href="' + siteBase + 'team.html">Our Team</a>' +
+                    '<a href="' + siteBase + 'careers.html">Careers</a>' +
+                    '<a href="' + siteBase + 'faqs.html">FAQs</a>' +
+                    '<a href="' + siteBase + 'contact.html">Contact Us</a>' +
                 '</nav>' +
                 '<div class="footer-socials-inline" aria-label="Connect with ionXtech on social media">' +
                     socialItems +
@@ -511,7 +537,26 @@
         });
     }
 
+    function updatePortalCanonicalMeta(data) {
+        const portal = getPortalContext(data);
+        if (!portal.isPortalSubdomain) return;
+        const cleanPath = (window.location.pathname === "/" || window.location.pathname === "/index.html")
+            ? "/"
+            : window.location.pathname;
+        const canonicalHref = "https://" + portal.hostname + cleanPath;
+        const canonicalEl = document.querySelector('link[rel="canonical"]');
+        if (canonicalEl) {
+            canonicalEl.setAttribute("href", canonicalHref);
+        }
+        const ogUrlEl = document.querySelector('meta[property="og:url"]');
+        if (ogUrlEl) {
+            ogUrlEl.setAttribute("content", canonicalHref);
+        }
+    }
+
     function renderReusableSections(data, rootPath) {
+        updatePortalCanonicalMeta(data);
+
         if (!document.querySelector(".skip-link")) {
             document.body.insertAdjacentHTML("afterbegin", '<a href="#main" class="skip-link">Skip to main content</a>');
         }
