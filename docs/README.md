@@ -1,6 +1,6 @@
 # ionXtech Official Website
 
-The official static website for **ionXtech** (`ionxtech.dpdns.org`), showcasing Android utility applications (**QR Solutions**, **Privacy Display**, **Auto Call Scheduler**, **LED Scroller**) and digital infrastructure divisions.
+The official static website for **ionXtech** (`ionxtech.in`), showcasing Android utility applications (**QR Solutions**, **Privacy Display**, **Auto Call Scheduler**, **LED Scroller**) and digital infrastructure divisions.
 
 ---
 

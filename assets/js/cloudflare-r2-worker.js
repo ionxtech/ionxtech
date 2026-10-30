@@ -10,7 +10,6 @@
  */
 
 const ALLOWED_ORIGINS = [
-    "https://ionxtech.dpdns.org",
     "https://ionxtech.in",
     "https://www.ionxtech.in",
     "http://localhost:8000",
@@ -23,10 +22,8 @@ function getCorsHeaders(request) {
     const origin = request.headers.get("Origin") || "";
     const isAllowed =
         ALLOWED_ORIGINS.includes(origin) ||
-        origin.endsWith(".pages.dev") ||
-        origin.endsWith("ionxtech.dpdns.org") ||
-        origin.endsWith("ionxtech.com");
-    const allowOrigin = isAllowed ? origin : "https://ionxtech.dpdns.org";
+        origin.endsWith(".pages.dev");
+    const allowOrigin = isAllowed ? origin : "https://ionxtech.in";
     return {
         "Access-Control-Allow-Origin": allowOrigin,
         "Access-Control-Allow-Methods": "POST, OPTIONS",

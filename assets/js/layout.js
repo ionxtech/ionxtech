@@ -245,7 +245,7 @@
             "author": {
                 "@type": "Organization",
                 "name": "ionXtech",
-                "url": "https://ionxtech.dpdns.org"
+                "url": "https://ionxtech.in"
             }
         };
 

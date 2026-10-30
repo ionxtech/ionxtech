@@ -10,10 +10,10 @@
 | Field | Value |
 | :---- | :---- |
 | **Project** | ionXtech Official Website |
-| **Domain** | `ionxtech.dpdns.org` |
-| **Hosting** | GitHub Pages (static files, no server-side runtime) |
+| **Domain** | `ionxtech.in` (`https://ionxtech.in`) |
+| **Hosting** | Cloudflare Pages & DNS (connected to GitHub) |
 | **Tech Stack** | Pure HTML5 + CSS3 + Vanilla JavaScript. **Zero npm dependencies, zero build step.** |
-| **Hybrid Strategy** | Approach 1 (Subdomain Decoupling): Main marketing site is static (CDN/GitHub Pages). Future interactive SaaS/console for hosting/domains will run on Next.js/Node.js on dedicated VPS under subdomains (e.g., `console.ionxtech.com`). |
+| **Hybrid Strategy** | The public marketing site is a static website hosted on Cloudflare at `ionxtech.in` (the one and only domain). Future interactive SaaS/console products may run on subdomains (e.g., `console.ionxtech.in`). |
 | **Repository** | `c:\Users\Lenovo\ionxtech\ionxtech` |
 
 ### What ionXtech Is
@@ -52,7 +52,7 @@ ionXtech is an Indian technology startup headquartered in Indore, Madhya Pradesh
 - **Test mobile responsiveness.** The CSS is designed for desktop-first with breakpoints at 960px, 768px, and 480px.
 
 ### DO NOT
-- **Do NOT install npm, Node.js frameworks, React, Astro, or any build tooling.** This is a zero-dependency static site deployed directly to GitHub Pages.
+- **Do NOT install npm, Node.js frameworks, React, Astro, or any build tooling.** This is a zero-dependency static site deployed directly to Cloudflare.
 - **Do NOT use Lucide Icons, FontAwesome, or any icon library.** The design is intentionally icon-free and typographic.
 - **Do NOT use emojis** anywhere in the rendered website.
 - **Do NOT use em dashes (—).** Use commas, periods, or rewrite the sentence.
@@ -64,7 +64,7 @@ ionXtech is an Indian technology startup headquartered in Indore, Madhya Pradesh
 - **Do NOT add hover scale/bounce animations.** Border-color change on hover for cards is acceptable.
 - **Do NOT create dark mode.** The site is light-mode only with the Warm Paper & Ink palette.
 - **Do NOT bypass or modify the reusable component architecture.** If you need a new component, add it to `layout.js` as a new `data-component` type.
-- **Do NOT change the `CNAME` file** (`ionxtech.dpdns.org`).
+- **Do NOT change the `CNAME` file** (`ionxtech.in`).
 - **Do NOT hardcode header/footer HTML into page files.** Every page uses `<header></header>` and `<footer></footer>` as empty shells that `layout.js` fills.
 
 ---
@@ -207,5 +207,5 @@ Open http://localhost:8080/ in a browser. Use Ctrl+Shift+R to bypass cache after
 
 ## 8. Deployment
 
-The site deploys automatically via **GitHub Pages** when changes are pushed to the `main` branch. The `CNAME` file points to `ionxtech.dpdns.org`. No CI/CD pipeline, no build step.
+The production website is hosted on **Cloudflare** at `ionxtech.in` (`https://ionxtech.in`), which is the single official domain for **ionXtech**. Pushes to the connected GitHub repository automatically deploy static site changes to Cloudflare. Form submissions (`contact.html` and waitlist pages) are handled by the Cloudflare Worker (`assets/js/cloudflare-r2-worker.js`) bound to R2 (`IONX_BUCKET`) and Slack (`SLACK_WEBHOOK_URL`). No build step is required.
 

@@ -2,7 +2,7 @@ window.IONX_DATA = {
     company: {
         name: "ionXtech",
         legalName: "ionXtech",
-        domain: "https://ionxtech.dpdns.org",
+        domain: "https://ionxtech.in",
         r2WorkerEndpoint: "https://ionxtech-forms.ionxtechsolution.workers.dev/",
         tagline: "Building reliable tech for modern Digital India",
         heroSubtitle: "Building reliable tech for modern Digital India",

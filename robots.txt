@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ionxtech.dpdns.org/sitemap.xml
+Sitemap: https://ionxtech.in/sitemap.xml
 
