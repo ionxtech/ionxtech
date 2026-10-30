@@ -3,10 +3,6 @@ window.IONX_DATA = {
         name: "ionXtech",
         legalName: "ionXtech",
         domain: "https://ionxtech.in",
-        portals: {
-            main: "https://ionxtech.in",
-            domains: "https://domains.ionxtech.in"
-        },
         r2WorkerEndpoint: "https://ionxtech-forms.ionxtechsolution.workers.dev/",
         tagline: "Building reliable tech for modern Digital India",
         heroSubtitle: "Building reliable tech for modern Digital India",
