@@ -4,8 +4,8 @@ window.IONX_DATA = {
         legalName: "ionXtech",
         domain: "https://ionxtech.in",
         r2WorkerEndpoint: "https://ionxtech-forms.ionxtechsolution.workers.dev/",
-        tagline: "Building reliable tech for modern Digital India",
-        heroSubtitle: "Building reliable tech for modern Digital India",
+        tagline: "Building reliable tech for modern Digital Needs",
+        heroSubtitle: "Building reliable tech for modern Digital Needs",
         heroRotatingWords: ["tech", "apps", "hosting", "domains", "services"],
         metrics: [
             { value: "15K+", label: "Installs on Google Play" },

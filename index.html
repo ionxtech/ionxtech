@@ -26,6 +26,42 @@
 
     <link rel="icon" type="image/webp" href="assets/images/IonXtech.webp">
     <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        @media (max-width: 899px) {
+            .home-view-all-desktop,
+            .section-header .home-view-all-desktop {
+                display: none !important;
+            }
+            .home-view-all-mobile {
+                display: flex !important;
+                justify-content: center;
+                margin: 20px 0 24px;
+                width: 100%;
+            }
+            .home-view-all-mobile .btn {
+                width: 100%;
+                padding: 13px 24px;
+                font-size: 0.95rem;
+                font-weight: 600;
+                text-align: center;
+                justify-content: center;
+            }
+            body.home-page .hero {
+                padding-bottom: 20px;
+            }
+            body.home-page .home-apps-section {
+                padding-top: 36px !important;
+                padding-bottom: 28px !important;
+            }
+            body.home-page .home-apps-section .section-header {
+                margin-bottom: 18px !important;
+            }
+            body.home-page .home-users-showcase {
+                margin-top: 12px !important;
+                padding-top: 6px !important;
+            }
+        }
+    </style>
 
     <script type="application/ld+json">
     {
