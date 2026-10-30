@@ -262,6 +262,11 @@ This section documents features from the original website that were explicitly r
 
 ## 10. Decision Log
 
+### 2026-10-31 (Session 27)
+- **Mobile "View All Apps" Placement & 3-Line (`☰` -> `✕`) Mobile Navigation Toggle:**
+  - Repositioned the **"View All Apps"** button on mobile (`max-width: 768px`) so it appears directly below the second Featured Android App card and above the **`15,000+`** overall users counter (`.home-view-all-mobile` in `index.html` and `assets/css/style.css`), while keeping it in `.section-header` on desktop (`.home-view-all-desktop`).
+  - Replaced the text `"Menu"` / `"Close"` mobile nav toggle button with a clean CSS 3-line hamburger icon (`.nav-toggle-bars`) that smoothly morphs into an `✕` close sign when `.nav-toggle.open` is active (`assets/js/layout.js` and `assets/css/style.css`).
+
 ### 2026-10-31 (Session 26)
 - **Navbar CTA Changed to "Try Our Apps", Auto Call Scheduler Play Store Link Fixed & App Install Counts Updated:**
   - Changed the header navbar CTA button in `buildHeaderHTML` (`assets/js/layout.js`) from `"Talk to Sales"` (`contact.html`) to **`"Try Our Apps"`** (`apps/`), matching the home page hero CTA.
