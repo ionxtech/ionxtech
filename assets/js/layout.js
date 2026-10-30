@@ -47,7 +47,7 @@
                 '</nav>' +
                 '<div class="header-actions">' +
                     '<a href="' + rootPath + 'apps/" class="btn btn-sm">Try Our Apps</a>' +
-                    '<button class="nav-toggle" aria-controls="nav-menu" aria-expanded="false" aria-label="Toggle navigation menu">Menu</button>' +
+                    '<button class="nav-toggle" aria-controls="nav-menu" aria-expanded="false" aria-label="Toggle navigation menu"><span class="nav-toggle-bars"><span></span><span></span><span></span></span></button>' +
                 '</div>' +
             '</div>'
         );
@@ -426,14 +426,14 @@
             navMenu.classList.toggle("open");
             const isOpen = navMenu.classList.contains("open");
             toggleBtn.setAttribute("aria-expanded", String(isOpen));
-            toggleBtn.textContent = isOpen ? "Close" : "Menu";
+            toggleBtn.classList.toggle("open", isOpen);
         });
 
         document.addEventListener("click", function (e) {
             if (!navMenu.contains(e.target) && !toggleBtn.contains(e.target) && navMenu.classList.contains("open")) {
                 navMenu.classList.remove("open");
                 toggleBtn.setAttribute("aria-expanded", "false");
-                toggleBtn.textContent = "Menu";
+                toggleBtn.classList.remove("open");
             }
         });
 
@@ -442,7 +442,7 @@
                 if (navMenu.classList.contains("open")) {
                     navMenu.classList.remove("open");
                     toggleBtn.setAttribute("aria-expanded", "false");
-                    toggleBtn.textContent = "Menu";
+                    toggleBtn.classList.remove("open");
                     toggleBtn.focus();
                 }
                 document.querySelectorAll(".nav-item.dropdown.open").forEach(function (d) {

@@ -297,12 +297,44 @@ header {
     background: var(--surface);
     border: 1px solid var(--border-strong);
     color: var(--text);
-    padding: 8px 12px;
+    width: 38px;
+    height: 36px;
+    padding: 0;
     border-radius: var(--radius-sm);
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    font-weight: 600;
     cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-toggle-bars {
+    width: 18px;
+    height: 14px;
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.nav-toggle-bars span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--text);
+    border-radius: 2px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    transform-origin: center;
+}
+
+.nav-toggle.open .nav-toggle-bars span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
+
+.nav-toggle.open .nav-toggle-bars span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.open .nav-toggle-bars span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
 }
 
 /* Buttons */
@@ -625,6 +657,28 @@ body.home-page .section,
 
     body.home-page .home-showcase-card .kp-description {
         margin: 10px 0 14px 0;
+    }
+}
+
+/* Home View All Apps Responsive Placement */
+.home-view-all-mobile {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .home-view-all-desktop {
+        display: none !important;
+    }
+
+    .home-view-all-mobile {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    .home-view-all-mobile .btn {
+        width: 100%;
     }
 }
 
