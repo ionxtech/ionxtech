@@ -147,8 +147,9 @@
                 } catch (err) {
                     if (status) {
                         status.style.display = "block";
-                        status.textContent = "Could not reach server. Opening your email client as backup...";
+                        status.textContent = "We could not submit your message. Please try again or use the direct support email.";
                     }
+                    return;
                 } finally {
                     if (submitBtn) {
                         submitBtn.disabled = false;

@@ -268,6 +268,12 @@ This section documents features from the original website that were explicitly r
   - Updated `docs/README.md` with step-by-step instructions on creating a new Git branch (`git checkout -b ...`), staging/committing changes, pushing to GitHub (`git push -u origin ...`), merging to `main`, and deploying on Cloudflare Pages Free Tier.
   - Updated `getCorsHeaders` in `assets/js/cloudflare-r2-worker.js` to automatically allow `*.pages.dev`, `*.ionxtech.dpdns.org`, and `*.ionxtech.com` origins.
 
+### 2026-10-30 (Session 20)
+- **Production Form CORS for `ionxtech.in`:**
+  - Added `https://ionxtech.in` and `https://www.ionxtech.in` to the Cloudflare form Worker CORS allowlist so browser submissions from both production hostnames can reach R2.
+  - Contact form Worker failures now show an error and retain the entered form values instead of unexpectedly opening a mail client. Direct support email remains available as a separate link.
+  - The Worker script must be deployed separately in Cloudflare after editing; uploading the static website to Hostinger does not update the Worker.
+
 ### 2026-10-28 (Session 18)
 - **Cloudflare R2 Bucket Integration for Contact Us & Waitlist Forms:**
   - Created the Cloudflare Worker script at `assets/js/cloudflare-r2-worker.js` using native R2 binding (`IONX_BUCKET`) to store Contact Us messages (`contacts/{timestamp}_{email}.json`) and Waitlist signups (`waitlist/{division}/{timestamp}_{email}.json`) without exposing credentials in frontend code, plus instant Slack notifications via `env.SLACK_WEBHOOK_URL`.
