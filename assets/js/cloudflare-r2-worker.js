@@ -22,12 +22,14 @@ function getCorsHeaders(request) {
     const origin = request.headers.get("Origin") || "";
     const isAllowed =
         ALLOWED_ORIGINS.includes(origin) ||
+        origin.endsWith(".ionxtech.in") ||
         origin.endsWith(".pages.dev");
     const allowOrigin = isAllowed ? origin : "https://ionxtech.in";
     return {
         "Access-Control-Allow-Origin": allowOrigin,
         "Access-Control-Allow-Methods": "POST, OPTIONS",
         "Access-Control-Allow-Headers": "Content-Type",
+        "Vary": "Origin",
         "Content-Type": "application/json"
     };
 }

@@ -9,11 +9,11 @@
 
 | Field | Value |
 | :---- | :---- |
-| **Project** | ionXtech Official Website |
-| **Domain** | `ionxtech.in` (`https://ionxtech.in`) |
-| **Hosting** | Cloudflare Pages & DNS (connected to GitHub) |
-| **Tech Stack** | Pure HTML5 + CSS3 + Vanilla JavaScript. **Zero npm dependencies, zero build step.** |
-| **Hybrid Strategy** | The public marketing site is a static website hosted on Cloudflare at `ionxtech.in` (the one and only domain). Future interactive SaaS/console products may run on subdomains (e.g., `console.ionxtech.in`). |
+| **Project** | ionXtech Official Website & Multi-Portal Architecture |
+| **Domain** | `ionxtech.in` (`https://ionxtech.in`) + Subdomain Portals (`domains.ionxtech.in`, etc.) |
+| **Hosting** | Single Cloudflare Pages project (`ionxtech`) with Cloudflare Pages Functions middleware (`functions/_middleware.js`) |
+| **Tech Stack** | Pure HTML5 + CSS3 + Vanilla JavaScript + Cloudflare Pages Functions (`functions/`). **Zero npm dependencies, zero build step.** |
+| **Multi-Portal Strategy** | One GitHub repository and one Cloudflare Pages project serve the main website (`ionxtech.in`, `www.ionxtech.in`) and subdomain portals (`domains.ionxtech.in` -> `/domains.html`) via centralized hostname routing (`functions/config/routes.js`). |
 | **Repository** | `c:\Users\Lenovo\ionxtech\ionxtech` |
 
 ### What ionXtech Is
@@ -84,8 +84,12 @@ ionxtech/
 ├── 404.html                             # Custom 404 page
 ├── sitemap.xml                          # XML sitemap for crawlers
 ├── robots.txt                           # Crawler directives
-├── CNAME                                # GitHub Pages custom domain
+├── CNAME                                # Custom domain reference (ionxtech.in)
 ├── app-ads.txt                          # Google AdMob ads.txt
+├── functions/                           # Cloudflare Pages Functions (Multi-Portal Routing)
+│   ├── _middleware.js                   # Hostname-based subdomain routing middleware
+│   └── config/
+│       └── routes.js                    # Centralized subdomain-to-route registry
 ├── apps/
 │   ├── index.html                       # Apps directory (all 4 apps)
 │   ├── qr-solution/index.html           # Dedicated QR Solutions page
