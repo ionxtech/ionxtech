@@ -282,7 +282,7 @@ window.IONX_DATA = {
             dataPolicy: "On-device call schedules & contacts",
             offlineSupport: "Offline scheduling engine",
             androidVersion: "Android 8.0 and up",
-            logo: "assets/images/CallMessageLogo.webp",
+            logo: "assets/images/CallMessageLogo.webp?v=2",
             logoAlt: "Auto Call Scheduler Android app logo by ionXtech for scheduling automatic phone calls",
             banner: "assets/images/CallMessageImage.webp",
             bannerAlt: "Auto Call Scheduler Android app preview showing scheduled phone call automation",

@@ -397,6 +397,16 @@ This section documents features from the original website that were explicitly r
   - The divisions remain accessible through the dedicated navbar links (`ionXapps`, `ionXdomains`, `ionXhosting`, `ionXservices`) and on `about.html`.
   - The desktop snap scroll sequence now glides directly: **Hero** -> **Featured Android Apps** -> **FAQs** -> **Closing CTA**.
 
+### 2026-11-03 (Session 29)
+- **Auto Call Scheduler New Logo Integration:**
+  - Replaced the Auto Call Scheduler app icon with the user-provided high-resolution asset (`Automated Green Communication Clock.png`), processed into 512x512 WebP (`CallMessageLogo.webp`) and PNG (`CallMessageLogo.png`).
+  - Updated all references across `site-data.js`, `index.html`, `/apps/call-message-scheduler/index.html`, `/privacy-policy/auto-call-scheduler.html`, and `/privacy-policy/index.html` with cache-busting `?v=2`.
+- **Card App Icon Redesign (Eliminating Clumsy Framed Box):**
+  - **Removed Inset Box & Borders:** Stripped away the inner padding (`padding: 6px/8px -> 0`) and the hard outer border (`border: 1px solid var(--border) -> border: none; background: var(--surface)`), eliminating the ugly "framed picture inside a card" look.
+  - **Modern App Squircle Shape:** Applied smooth squircle curvature (`border-radius: 14px` for 56px icons, `16px` for 68px showcase icons, and `18px` for 76px detail hero icons).
+  - **Edge-to-Edge Fill:** Set `object-fit: cover` so the artwork naturally and crisply occupies the entire app tile geometry.
+  - **Physical Elevation & Micro-interaction:** Added soft ambient drop shadows (`box-shadow: 0 4px 12px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.04), inset 0 0 0 1px rgba(0,0,0,0.06)`) with a subtle tactile lift on card hover (`translateY(-2px)`), making app cards look like authentic Google Play tiles.
+
 ### 2026-10-31 (Session 28)
 - **Footer Brand Tagline Update:**
   - Replaced `"Building reliable tech for modern Digital India"` with `"Building reliable tech for modern Digital Needs"` in `assets/js/site-data.js` (`IONX_DATA.company.tagline` and `heroSubtitle`), updating the footer text across all pages.
