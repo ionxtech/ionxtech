@@ -81,8 +81,8 @@ window.IONX_DATA = {
             index: "05",
             key: "services",
             title: "ionXservices",
-            status: "Coming Soon",
-            description: "Managed cloud servers, custom software development, and technical consulting for teams that need dependable infrastructure."
+            status: "Live Service",
+            description: "Production cloud microservices and digital utilities, featuring ionXlinks URL shortener (links.ionxtech.in), custom APIs, and managed infrastructure."
         }
     ],
 
