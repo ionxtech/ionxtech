@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" data-root="../../">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy: Auto Call Scheduler (Call &amp; Message Scheduler) - ionXtech</title>
+    <meta name="description" content="Official Privacy Policy for Auto Call Scheduler / Call &amp; Message Scheduler (com.ionxtech.callscheduler, v1.0.32) developed by ionXtech. Learn how call and SMS schedules, dual-SIM routing, and Android permissions are protected on your device.">
+    <meta name="theme-color" content="#F8F7F4">
+    <link rel="canonical" href="https://ionxtech.in/apps/call-message-scheduler/privacy-policy.html">
+
+    <meta property="og:title" content="Auto Call Scheduler Privacy Policy - ionXtech">
+    <meta property="og:description" content="Learn how Auto Call Scheduler (Call &amp; Message Scheduler v1.0.32) protects your privacy and handles Android call, SMS, and reminder permissions locally.">
+    <meta property="og:url" content="https://ionxtech.in/apps/call-message-scheduler/privacy-policy.html">
+    <meta property="og:image" content="https://ionxtech.in/assets/images/og-image.png">
+    <meta property="og:image:alt" content="Auto Call Scheduler Privacy Policy">
+    <meta property="og:type" content="article">
+
+    <link rel="icon" type="image/png" href="../../assets/images/IonXtech.png">
+    <link rel="icon" type="image/webp" href="../../assets/images/IonXtech.webp">
+    <link rel="apple-touch-icon" href="../../assets/images/IonXtech.png">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+
+    <header></header>
+
+    <main id="main">
+        <div class="page-header">
+            <div class="container">
+                <div style="display: flex; align-items: center; gap: 16px;">
+                    <img src="../../assets/images/CallMessageLogo.webp?v=2" alt="Auto Call Scheduler Android app logo by ionXtech" width="56" height="56" class="app-logo">
+                    <div>
+                        <span class="mono-label">Package: com.ionxtech.callscheduler &middot; Version: 1.0.32 (Code 12)</span>
+                        <h1 style="margin: 2px 0 0 0; font-size: clamp(1.6rem, 3.5vw, 2.3rem);">Privacy Policy: Auto Call Scheduler (Call &amp; Message Scheduler)</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="section" style="padding-top: 0;">
+            <div class="container">
+                <div class="card prose">
+                    <p><strong>Last Updated:</strong> November 3, 2026 &middot; <strong>Applies To:</strong> Version 1.0.32 (Version Code 12)</p>
+                    <p>This Privacy Policy describes how the <strong>Auto Call Scheduler</strong> (listed on Google Play as <strong>Call &amp; Message Scheduler</strong>, package <code>com.ionxtech.callscheduler</code>) mobile application developed by <strong>ionXtech</strong> collects, uses, and protects information when you use our app. Your privacy is important to us and we are committed to full transparency about our data practices.</p>
+                    <p>Call &amp; Message Scheduler lets you schedule automatic outbound phone calls and automatic SMS text messages at an exact date and time you choose, with repeat rules, dual-SIM selection (SIM 1 / SIM 2), active-call collision handling (Snooze, Skip, or Force), and a 1-minute pre-execution reminder overlay. Core scheduling and communication workflows run directly on your device.</p>
+
+                    <hr>
+
+                    <h3>1. Data We Collect and Process</h3>
+                    <p>All personal scheduling data accessed by the application stays on your device. The only information transmitted off-device is limited to standard advertising requests and optional, anonymised analytics and crash diagnostics.</p>
+
+                    <h4>a) Scheduled Call &amp; SMS Data (Stored Locally, Never Transmitted)</h4>
+                    <p>Schedule titles, recipient phone numbers, SMS message content, scheduled dates and times, repeat rules, SIM card preferences (SIM 1 or SIM 2), and execution history logs are stored exclusively in your device's local Room SQLite database. This data is <strong>never uploaded or transmitted to ionXtech or any third party</strong>. When a scheduled time arrives, outbound calls and SMS messages are placed directly through your device's cellular carrier using Android's native telephony APIs.</p>
+
+                    <h4>b) Contacts (Optional, On-Device Only)</h4>
+                    <p>If you use the in-app searchable contact picker to select a recipient, the app queries your device's address book locally (`ContactsContract`) to display and search contact names and phone numbers. Contact data is processed strictly in local device memory to populate your schedule and is never transmitted off your device.</p>
+
+                    <h4>c) SIM &amp; Call State Metadata (On-Device Only)</h4>
+                    <p>To support dual-SIM routing (SIM 1 / SIM 2) and active-call collision rules (such as snoozing or skipping a scheduled call if you are already on another phone call), the app checks active SIM subscription slots and call state locally on your device. SIM identifiers and call states are never logged externally or transmitted off your device.</p>
+
+                    <h4>d) Shared Schedule Receipts (User-Initiated, On-Device Generation)</h4>
+                    <p>When you tap "Share" on a completed or past schedule in the History screen, the app generates a visual receipt image locally in your device's temporary cache directory and opens Android's system share sheet via `FileProvider`. Temporary receipt images older than 24 hours are automatically purged from cache.</p>
+
+                    <h4>e) Analytics Data (Optional, Anonymised)</h4>
+                    <p>To understand how users interact with app screens and features (such as schedule creation counts, repeat mode usage, and session stability), the app uses Google Analytics for Firebase:</p>
+                    <ul>
+                        <li>Analytics events are <strong>anonymised</strong> and never include recipient phone numbers, contact names, or SMS message bodies.</li>
+                        <li>Collection is <strong>optional</strong>. You can opt out of analytics collection from the app's Settings screen (turning analytics off in Settings may require viewing a rewarded advertisement).</li>
+                    </ul>
+
+                    <h4>f) Crash Logs &amp; Diagnostics (Optional, Anonymised)</h4>
+                    <p>If the app encounters an unexpected runtime error, diagnostic information (device model, Android OS version, and code stack trace) may be sent via Firebase Crashlytics so we can identify and fix bugs:</p>
+                    <ul>
+                        <li>Crash logs never include your contact list, scheduled phone numbers, or SMS text content.</li>
+                        <li>Diagnostic collection follows your analytics consent preference in the app's Settings screen.</li>
+                    </ul>
+
+                    <hr>
+
+                    <h3>2. Android Permissions We Request and Why</h3>
+                    <p>Up to version 1.0.32 (Version Code 12), the application requests the following Android permissions strictly to power user-scheduled features:</p>
+                    <ul>
+                        <li><strong>CALL_PHONE:</strong> Required to place scheduled outbound phone calls automatically at the exact scheduled time via Android's `TelecomManager` and telephony intents.</li>
+                        <li><strong>SEND_SMS:</strong> Required to automatically dispatch scheduled single and multipart SMS text messages at the scheduled time without manual intervention.</li>
+                        <li><strong>READ_CONTACTS (Optional):</strong> Allows you to search and select a recipient's name and phone number using the in-app contact picker bottom sheet.</li>
+                        <li><strong>READ_PHONE_STATE &amp; READ_PHONE_NUMBERS:</strong> Used locally to route scheduled calls and SMS messages through your chosen SIM slot (SIM 1 or SIM 2) and to detect whether your device is currently in an active call when applying Snooze or Skip collision rules.</li>
+                        <li><strong>SCHEDULE_EXACT_ALARM:</strong> Allows the app to register exact wakeup alarms with Android's `AlarmManager` so calls and messages execute at the exact minute configured.</li>
+                        <li><strong>SYSTEM_ALERT_WINDOW (Display Over Other Apps - Optional):</strong> Used to display the draggable 1-minute countdown reminder bubble before a scheduled call or message executes, allowing you to trigger or dismiss the action early.</li>
+                        <li><strong>FOREGROUND_SERVICE &amp; FOREGROUND_SERVICE_DATA_SYNC:</strong> Required by Android 12+ to reliably execute due call/SMS schedules and run the 1-minute countdown overlay service when the app is in the background.</li>
+                        <li><strong>POST_NOTIFICATIONS &amp; USE_FULL_SCREEN_INTENT:</strong> Used to display schedule status notifications, countdown reminders, and lock-screen call fallback alerts, as well as periodic in-app engagement reminders (which only trigger when the screen is unlocked and interactive).</li>
+                        <li><strong>RECEIVE_BOOT_COMPLETED:</strong> Allows `BootReceiver` to automatically restore pending future alarms and handle missed schedules (via Snooze or Missed status updates) after your device restarts or the app updates.</li>
+                        <li><strong>REQUEST_IGNORE_BATTERY_OPTIMIZATIONS &amp; WAKE_LOCK:</strong> Ensures OEM battery savers and device sleep states do not block or delay time-critical scheduled calls and messages.</li>
+                        <li><strong>INTERNET, ACCESS_NETWORK_STATE &amp; com.google.android.gms.permission.AD_ID:</strong> Used to load Google AdMob advertisements (App Open, Adaptive Banner, Interstitial, and Rewarded ads) and transmit optional anonymised Firebase analytics/crash reports.</li>
+                    </ul>
+
+                    <hr>
+
+                    <h3>3. Data Storage &amp; Retention</h3>
+                    <p>All scheduled calls, scheduled SMS messages, and execution history logs are stored locally on your device inside the app's private database (`call_scheduler_database`). You can edit or cancel schedules at any time. Clearing the application's storage or uninstalling the app permanently deletes all locally stored schedules, history records, and preferences.</p>
+
+                    <hr>
+
+                    <h3>4. Data Sharing</h3>
+                    <p>We do <strong>not sell, rent, trade, or share</strong> your personal contacts, phone numbers, or SMS contents with any third party. Off-device network communication is limited strictly to the Google third-party SDKs listed below.</p>
+
+                    <hr>
+
+                    <h3>5. Third-Party Services</h3>
+                    <p>The app integrates the following standard Google LLC services, each governed by Google's privacy disclosures:</p>
+                    <ul>
+                        <li><strong>Google AdMob:</strong> Serves in-app advertisements (banners, app open, interstitial, and rewarded ads) and may use your device's Advertising ID in accordance with your Android ad settings (<a href="https://support.google.com/admob/answer/6128543" target="_blank" rel="noopener noreferrer">support.google.com/admob/answer/6128543</a>)</li>
+                        <li><strong>Google Analytics for Firebase:</strong> Optional anonymised product usage statistics (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>)</li>
+                        <li><strong>Firebase Crashlytics:</strong> Optional crash reporting and stability diagnostics (<a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">firebase.google.com/support/privacy</a>)</li>
+                    </ul>
+
+                    <hr>
+
+                    <h3>6. User Choice &amp; Controls</h3>
+                    <ul>
+                        <li><strong>Analytics &amp; Crash Opt-Out:</strong> Toggle "Share analytics data" off in the app's Settings screen.</li>
+                        <li><strong>Ad Personalisation Controls:</strong> Reset or delete your Advertising ID or opt out of personalised ads via Android Settings &gt; Google &gt; Ads.</li>
+                        <li><strong>Permission Management:</strong> Grant or revoke Call, SMS, Contacts, Overlay, Notification, or Exact Alarm permissions at any time from the app's Settings screen or Android System Settings.</li>
+                        <li><strong>Complete Data Deletion:</strong> Clear app storage or uninstall the app to erase all local schedules and history immediately.</li>
+                    </ul>
+
+                    <hr>
+
+                    <h3>7. Security &amp; Children's Privacy</h3>
+                    <p>All network traffic to Google Firebase and AdMob endpoints is encrypted in transit using HTTPS/TLS. This application is a general-audience productivity and communication utility and is not directed toward children under the age of 13.</p>
+
+                    <hr>
+
+                    <h3>8. Contact Us</h3>
+                    <p>If you have any questions or concerns about this Privacy Policy, please contact us:</p>
+                    <p>
+                        <strong>Developer:</strong> ionXtech<br>
+                        <strong>Email:</strong> <a href="mailto:hello@ionxtech.in">hello@ionxtech.in</a><br>
+                        <strong>Website:</strong> <a href="https://ionxtech.in">https://ionxtech.in</a>
+                    </p>
+
+                    <div style="margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; gap: 12px; flex-wrap: wrap;">
+                        <a href="./" class="btn btn-secondary btn-sm">Back to Auto Call Scheduler Page</a>
+                        <a href="https://play.google.com/store/apps/details?id=com.ionxtech.callscheduler&amp;hl=en_IN" class="btn btn-sm" target="_blank" rel="noopener noreferrer">View on Google Play</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer></footer>
+
+    <script src="../../assets/js/site-data.js"></script>
+    <script src="../../assets/js/layout.js"></script>
+</body>
+</html>

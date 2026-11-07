@@ -107,8 +107,29 @@
     }
 
     function renderHomeShowcaseCard(app, rootPath) {
+        const isExtension = app.platform === "chrome-extension" || app.category === "Chrome Extension";
         const stars = getRatingStars(app.ratingValue);
         const taglineText = app.tagline || app.shortDescription;
+        const repoUrl = app.githubUrl || app.playStoreUrl || "https://github.com/ARSN72/WorkHour";
+
+        const subStripHtml = isExtension
+            ? '<div class="app-rating-strip" aria-label="Chrome Extension for Keka HRMS">' +
+                  '<span class="rating-num">Chrome Extension</span>' +
+                  '<span class="rating-divider">•</span>' +
+                  '<span class="downloads-count">Open Source (Keka HRMS)</span>' +
+              '</div>'
+            : '<div class="app-rating-strip" aria-label="Rating ' + escapeHtml(app.ratingValue) + ' out of 5 stars, ' + escapeHtml(app.downloads) + ' downloads">' +
+                  '<span class="stars" aria-hidden="true">' + stars + '</span>' +
+                  '<span class="rating-num">' + escapeHtml(app.ratingValue) + '</span>' +
+                  '<span class="rating-divider">•</span>' +
+                  '<span class="downloads-count">' + escapeHtml(app.downloads) + ' Downloads</span>' +
+              '</div>';
+
+        const actionsHtml = isExtension
+            ? '<a href="' + escapeHtml(repoUrl) + '" class="btn btn-sm" target="_blank" rel="noopener noreferrer">GitHub Repository &nearr;</a>' +
+              '<a href="' + rootPath + app.pageSlug + '" class="btn btn-secondary btn-sm">View Extension</a>'
+            : '<a href="' + escapeHtml(app.playStoreUrl) + '" class="btn btn-sm" target="_blank" rel="noopener noreferrer">Download app</a>' +
+              '<a href="' + rootPath + app.pageSlug + '" class="btn btn-secondary btn-sm">View App</a>';
 
         return (
             '<article class="knowledge-panel home-showcase-card card-link" data-page="' + rootPath + app.pageSlug + '" tabindex="0" role="link" aria-label="' + escapeHtml(app.name) + ' - Click to view app details">' +
@@ -118,12 +139,7 @@
                             '<img src="' + rootPath + app.logo + '" alt="' + escapeHtml(app.logoAlt) + '" width="68" height="68" loading="lazy" class="app-logo">' +
                             '<div class="app-title-group">' +
                                 '<h3>' + escapeHtml(app.name) + '</h3>' +
-                                '<div class="app-rating-strip" aria-label="Rating ' + escapeHtml(app.ratingValue) + ' out of 5 stars, ' + escapeHtml(app.downloads) + ' downloads">' +
-                                    '<span class="stars" aria-hidden="true">' + stars + '</span>' +
-                                    '<span class="rating-num">' + escapeHtml(app.ratingValue) + '</span>' +
-                                    '<span class="rating-divider">•</span>' +
-                                    '<span class="downloads-count">' + escapeHtml(app.downloads) + ' Downloads</span>' +
-                                '</div>' +
+                                subStripHtml +
                             '</div>' +
                         '</div>' +
                     '</div>' +
@@ -131,8 +147,7 @@
                 '</div>' +
                 '<div class="kp-footer">' +
                     '<div class="card-actions">' +
-                        '<a href="' + escapeHtml(app.playStoreUrl) + '" class="btn btn-sm" target="_blank" rel="noopener noreferrer">Download app</a>' +
-                        '<a href="' + rootPath + app.pageSlug + '" class="btn btn-secondary btn-sm">View App</a>' +
+                        actionsHtml +
                     '</div>' +
                 '</div>' +
             '</article>'
@@ -140,8 +155,30 @@
     }
 
     function renderKnowledgePanelCard(app, rootPath) {
+        const isExtension = app.platform === "chrome-extension" || app.category === "Chrome Extension";
+        const pageUrl = (app.pageSlug && (app.pageSlug.startsWith("http://") || app.pageSlug.startsWith("https://")))
+            ? app.pageSlug
+            : (rootPath + app.pageSlug);
+        const repoUrl = app.githubUrl || app.playStoreUrl || "https://github.com/ARSN72/WorkHour";
+        const primaryBtn = isExtension
+            ? '<a href="' + escapeHtml(repoUrl) + '" class="btn btn-sm" target="_blank" rel="noopener noreferrer">GitHub Repository &nearr;</a>'
+            : '<a href="' + escapeHtml(app.playStoreUrl) + '" class="btn btn-sm" target="_blank" rel="noopener noreferrer">Google Play Store</a>';
+        const secondaryBtn = '<a href="' + rootPath + app.privacySlug + '" class="btn btn-secondary btn-sm">Privacy Policy</a>';
+
+        const meta1Label = isExtension ? "Platform" : "Rating &amp; Installs";
+        const meta1Value = isExtension ? escapeHtml(app.platformLabel || "Chrome Extension") : (escapeHtml(app.rating) + ' (' + escapeHtml(app.downloads) + ')');
+
+        const meta2Label = isExtension ? "Target Portal" : "Data Architecture";
+        const meta2Value = isExtension ? escapeHtml(app.targetPortal || "Keka HRMS") : escapeHtml(app.dataPolicy);
+
+        const meta3Label = isExtension ? "Identifier / Repo" : "Package ID";
+        const meta3Value = '<code>' + escapeHtml(app.packageId) + '</code>';
+
+        const meta4Label = isExtension ? "Architecture" : "Offline Mode";
+        const meta4Value = isExtension ? escapeHtml(app.dataPolicy) : escapeHtml(app.offlineSupport);
+
         return (
-            '<article class="knowledge-panel card-link" data-page="' + rootPath + app.pageSlug + '" tabindex="0" role="link" aria-label="' + escapeHtml(app.name) + ' Knowledge Panel - Click to open dedicated app page">' +
+            '<article class="knowledge-panel card-link" data-page="' + escapeHtml(pageUrl) + '" tabindex="0" role="link" aria-label="' + escapeHtml(app.name) + ' Knowledge Panel">' +
                 '<div>' +
                     '<div class="kp-top">' +
                         '<div class="app-header">' +
@@ -152,29 +189,29 @@
                         '</div>' +
                     '</div>' +
                     '<p class="kp-description">' + escapeHtml(app.shortDescription) + '</p>' +
-                    '<div class="kp-meta-table" aria-label="App Knowledge Panel Specifications">' +
+                    '<div class="kp-meta-table" aria-label="Specifications">' +
                         '<div class="kp-meta-item">' +
-                            '<span class="kp-meta-label">Rating &amp; Installs</span>' +
-                            '<span class="kp-meta-value">' + escapeHtml(app.rating) + ' (' + escapeHtml(app.downloads) + ')</span>' +
+                            '<span class="kp-meta-label">' + meta1Label + '</span>' +
+                            '<span class="kp-meta-value">' + meta1Value + '</span>' +
                         '</div>' +
                         '<div class="kp-meta-item">' +
-                            '<span class="kp-meta-label">Data Architecture</span>' +
-                            '<span class="kp-meta-value">' + escapeHtml(app.dataPolicy) + '</span>' +
+                            '<span class="kp-meta-label">' + meta2Label + '</span>' +
+                            '<span class="kp-meta-value">' + meta2Value + '</span>' +
                         '</div>' +
                         '<div class="kp-meta-item">' +
-                            '<span class="kp-meta-label">Package ID</span>' +
-                            '<span class="kp-meta-value"><code>' + escapeHtml(app.packageId) + '</code></span>' +
+                            '<span class="kp-meta-label">' + meta3Label + '</span>' +
+                            '<span class="kp-meta-value">' + meta3Value + '</span>' +
                         '</div>' +
                         '<div class="kp-meta-item">' +
-                            '<span class="kp-meta-label">Offline Mode</span>' +
-                            '<span class="kp-meta-value">' + escapeHtml(app.offlineSupport) + '</span>' +
+                            '<span class="kp-meta-label">' + meta4Label + '</span>' +
+                            '<span class="kp-meta-value">' + meta4Value + '</span>' +
                         '</div>' +
                     '</div>' +
                 '</div>' +
                 '<div class="kp-footer">' +
                     '<div class="card-actions">' +
-                        '<a href="' + escapeHtml(app.playStoreUrl) + '" class="btn btn-sm" target="_blank" rel="noopener noreferrer">Google Play Store</a>' +
-                        '<a href="' + rootPath + app.privacySlug + '" class="btn btn-secondary btn-sm">Privacy Policy</a>' +
+                        primaryBtn +
+                        secondaryBtn +
                     '</div>' +
                 '</div>' +
             '</article>'
@@ -223,13 +260,14 @@
         const scriptId = "schema-app-" + app.id;
         if (document.getElementById(scriptId)) return;
 
+        const isExtension = app.platform === "chrome-extension" || app.category === "Chrome Extension";
         const schema = {
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
             "name": app.name,
-            "operatingSystem": "Android",
-            "applicationCategory": "UtilitiesApplication",
-            "downloadUrl": app.playStoreUrl,
+            "operatingSystem": isExtension ? "Chrome, Chromium-based browsers" : "Android",
+            "applicationCategory": isExtension ? "BrowserExtension" : "UtilitiesApplication",
+            "downloadUrl": isExtension ? (app.githubUrl || app.playStoreUrl) : app.playStoreUrl,
             "softwareVersion": "Latest",
             "description": app.shortDescription,
             "offers": {
@@ -237,17 +275,20 @@
                 "price": "0",
                 "priceCurrency": "USD"
             },
-            "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": app.ratingValue,
-                "ratingCount": app.ratingCount
-            },
             "author": {
                 "@type": "Organization",
                 "name": "ionXtech",
                 "url": "https://ionxtech.in"
             }
         };
+
+        if (!isExtension && app.ratingValue && app.ratingCount) {
+            schema.aggregateRating = {
+                "@type": "AggregateRating",
+                "ratingValue": app.ratingValue,
+                "ratingCount": app.ratingCount
+            };
+        }
 
         const script = document.createElement("script");
         script.type = "application/ld+json";
@@ -260,6 +301,9 @@
         const appId = container.getAttribute("data-app-detail");
         const app = data.apps.find(function (a) { return a.id === appId; });
         if (!app) return;
+
+        const isExtension = app.platform === "chrome-extension" || app.category === "Chrome Extension";
+        const repoUrl = app.githubUrl || app.playStoreUrl || "https://github.com/ARSN72/WorkHour";
 
         const overviewHtml = app.overview.map(function (p) {
             return '<p style="margin-bottom: 14px;">' + escapeHtml(p) + '</p>';
@@ -289,6 +333,70 @@
                 return renderKnowledgePanelCard(a, rootPath);
             }).join("");
 
+        const heroActionsHtml = isExtension
+            ? '<a href="' + escapeHtml(repoUrl) + '" class="btn" target="_blank" rel="noopener noreferrer">GitHub Repository &nearr;</a>' +
+              '<a href="' + rootPath + app.privacySlug + '" class="btn btn-secondary">Privacy Policy</a>'
+            : '<a href="' + escapeHtml(app.playStoreUrl) + '" class="btn" target="_blank" rel="noopener noreferrer">Download on Google Play</a>' +
+              '<a href="' + rootPath + app.privacySlug + '" class="btn btn-secondary">Privacy Policy</a>';
+
+        const identitySubHtml = isExtension
+            ? '<p style="font-family: var(--font-mono); font-size: 0.84rem; color: var(--text-muted);">Repository / ID: ' + escapeHtml(app.packageId) + '</p>'
+            : '<p style="font-family: var(--font-mono); font-size: 0.84rem; color: var(--text-muted);">Package: ' + escapeHtml(app.packageId) + '</p>';
+
+        const specsStripHtml = isExtension
+            ? '<div>' +
+                  '<span class="kp-meta-label">Platform</span>' +
+                  '<div class="kp-meta-value" style="margin-top: 4px;">' + escapeHtml(app.platformLabel || "Chrome Extension") + '</div>' +
+              '</div>' +
+              '<div>' +
+                  '<span class="kp-meta-label">Target Portal</span>' +
+                  '<div class="kp-meta-value" style="margin-top: 4px;">' + escapeHtml(app.targetPortal || "Keka HRMS") + '</div>' +
+              '</div>' +
+              '<div>' +
+                  '<span class="kp-meta-label">Compatibility</span>' +
+                  '<div class="kp-meta-value" style="margin-top: 4px;">' + escapeHtml(app.androidVersion || "Chrome 88+") + '</div>' +
+              '</div>' +
+              '<div>' +
+                  '<span class="kp-meta-label">Privacy Model</span>' +
+                  '<div class="kp-meta-value" style="margin-top: 4px;">' + escapeHtml(app.dataPolicy) + '</div>' +
+              '</div>'
+            : '<div>' +
+                  '<span class="kp-meta-label">User Rating</span>' +
+                  '<div class="kp-meta-value" style="margin-top: 4px;">' + escapeHtml(app.rating) + '</div>' +
+              '</div>' +
+              '<div>' +
+                  '<span class="kp-meta-label">Total Installs</span>' +
+                  '<div class="kp-meta-value" style="margin-top: 4px;">' + escapeHtml(app.downloads) + ' Downloads</div>' +
+              '</div>' +
+              '<div>' +
+                  '<span class="kp-meta-label">Compatibility</span>' +
+                  '<div class="kp-meta-value" style="margin-top: 4px;">' + escapeHtml(app.androidVersion) + '</div>' +
+              '</div>' +
+              '<div>' +
+                  '<span class="kp-meta-label">Privacy Model</span>' +
+                  '<div class="kp-meta-value" style="margin-top: 4px;">' + escapeHtml(app.dataPolicy) + '</div>' +
+              '</div>';
+
+        const privacyBoxHtml = isExtension
+            ? '<div class="card">' +
+                  '<h3 style="margin-top: 6px;">Privacy &amp; Permissions</h3>' +
+                  '<p style="margin-bottom: 16px;">' + escapeHtml(app.name) + ' executes exclusively within your local browser runtime. It does not transmit authentication tokens, session cookies, or work hour logs to any external server.</p>' +
+                  '<div style="display: flex; flex-wrap: wrap; gap: 10px;">' +
+                      '<a href="' + rootPath + app.privacySlug + '" class="btn btn-secondary btn-sm">Read ' + escapeHtml(app.name) + ' Privacy Policy</a>' +
+                      '<a href="' + escapeHtml(repoUrl) + '" class="btn btn-sm" target="_blank" rel="noopener noreferrer">View on GitHub &nearr;</a>' +
+                  '</div>' +
+              '</div>'
+            : '<div class="card">' +
+                  '<h3 style="margin-top: 6px;">Privacy &amp; Permissions</h3>' +
+                  '<p style="margin-bottom: 16px;">We document every Android system permission requested by ' + escapeHtml(app.name) + ' and explain how your data stays protected on your device.</p>' +
+                  '<div style="display: flex; flex-wrap: wrap; gap: 10px;">' +
+                      '<a href="' + rootPath + app.privacySlug + '" class="btn btn-secondary btn-sm">Read ' + escapeHtml(app.name) + ' Privacy Policy</a>' +
+                      '<a href="' + escapeHtml(app.playStoreUrl) + '" class="btn btn-sm" target="_blank" rel="noopener noreferrer">Get App on Play Store</a>' +
+                  '</div>' +
+              '</div>';
+
+        const otherHeading = isExtension ? "Explore Other Applications &amp; Extensions" : "Explore Other Applications";
+
         container.innerHTML =
             '<div class="page-header">' +
                 '<div class="container">' +
@@ -303,37 +411,20 @@
                             '<img src="' + rootPath + app.logo + '" alt="' + escapeHtml(app.logoAlt) + '" width="76" height="76" class="app-detail-logo">' +
                             '<div>' +
                                 '<h2 style="margin-bottom: 4px; font-size: 1.6rem;">' + escapeHtml(app.name) + '</h2>' +
-                                '<p style="font-family: var(--font-mono); font-size: 0.84rem; color: var(--text-muted);">Package: ' + escapeHtml(app.packageId) + '</p>' +
+                                identitySubHtml +
                             '</div>' +
                         '</div>' +
                         '<div class="app-detail-actions">' +
-                            '<a href="' + escapeHtml(app.playStoreUrl) + '" class="btn" target="_blank" rel="noopener noreferrer">Download on Google Play</a>' +
-                            '<a href="' + rootPath + app.privacySlug + '" class="btn btn-secondary">Privacy Policy</a>' +
+                            heroActionsHtml +
                         '</div>' +
                     '</div>' +
                     '<div class="app-specs-strip">' +
-                        '<div>' +
-                            '<span class="kp-meta-label">User Rating</span>' +
-                            '<div class="kp-meta-value" style="margin-top: 4px;">' + escapeHtml(app.rating) + '</div>' +
-                        '</div>' +
-                        '<div>' +
-                            '<span class="kp-meta-label">Total Installs</span>' +
-                            '<div class="kp-meta-value" style="margin-top: 4px;">' + escapeHtml(app.downloads) + ' Downloads</div>' +
-                        '</div>' +
-                        '<div>' +
-                            '<span class="kp-meta-label">Compatibility</span>' +
-                            '<div class="kp-meta-value" style="margin-top: 4px;">' + escapeHtml(app.androidVersion) + '</div>' +
-                        '</div>' +
-                        '<div>' +
-                            '<span class="kp-meta-label">Privacy Model</span>' +
-                            '<div class="kp-meta-value" style="margin-top: 4px;">' + escapeHtml(app.dataPolicy) + '</div>' +
-                        '</div>' +
+                        specsStripHtml +
                     '</div>' +
                 '</section>' +
 
                 '<section class="app-detail-columns">' +
                     '<div class="card">' +
-                        '' +
                         '<h2 style="margin-top: 6px;">About ' + escapeHtml(app.name) + '</h2>' +
                         overviewHtml +
                         '<h3 style="margin-top: 24px;">Key Capabilities</h3>' +
@@ -343,30 +434,20 @@
                     '</div>' +
                     '<div style="display: flex; flex-direction: column; gap: 24px;">' +
                         '<div class="card">' +
-                            '' +
                             '<h3 style="margin-top: 6px;">Specifications</h3>' +
                             '<table class="spec-table">' +
                                 '<tbody>' + specsHtml + '</tbody>' +
                             '</table>' +
                         '</div>' +
-                        '<div class="card">' +
-                            '' +
-                            '<h3 style="margin-top: 6px;">Privacy &amp; Permissions</h3>' +
-                            '<p style="margin-bottom: 16px;">We document every Android system permission requested by ' + escapeHtml(app.name) + ' and explain how your data stays protected on your device.</p>' +
-                            '<div style="display: flex; flex-wrap: wrap; gap: 10px;">' +
-                                '<a href="' + rootPath + app.privacySlug + '" class="btn btn-secondary btn-sm">Read ' + escapeHtml(app.name) + ' Privacy Policy</a>' +
-                                '<a href="' + escapeHtml(app.playStoreUrl) + '" class="btn btn-sm" target="_blank" rel="noopener noreferrer">Get App on Play Store</a>' +
-                            '</div>' +
-                        '</div>' +
+                        privacyBoxHtml +
                     '</div>' +
                 '</section>' +
 
                 '<section class="section" style="padding-top: 16px;">' +
                     '<div class="section-header">' +
                         '<div class="section-header-left">' +
-                            '' +
                             '<h2>Frequently Asked Questions: ' + escapeHtml(app.name) + '</h2>' +
-                            '<p>Common questions about features, offline usage, Android permissions, and data privacy for ' + escapeHtml(app.name) + '.</p>' +
+                            '<p>Common questions about features, offline usage, permissions, and data privacy for ' + escapeHtml(app.name) + '.</p>' +
                         '</div>' +
                     '</div>' +
                     '<div class="faq-list">' +
@@ -377,8 +458,7 @@
                 '<section class="section">' +
                     '<div class="section-header">' +
                         '<div class="section-header-left">' +
-                            '' +
-                            '<h2>Explore Other Applications</h2>' +
+                            '<h2>' + otherHeading + '</h2>' +
                         '</div>' +
                         '<a href="' + rootPath + 'apps/" class="btn btn-secondary btn-sm">All Apps</a>' +
                     '</div>' +
@@ -494,7 +574,11 @@
             if (e.target.closest("a") || e.target.closest("button")) return;
             const page = card.getAttribute("data-page");
             if (page) {
-                window.location.href = page;
+                if (page.startsWith("http://") || page.startsWith("https://")) {
+                    window.open(page, "_blank", "noopener,noreferrer");
+                } else {
+                    window.location.href = page;
+                }
             }
         });
 
@@ -570,7 +654,6 @@
             el.innerHTML = data.principles.map(function (p) {
                 return (
                     '<div class="spec-box">' +
-                        '<span class="spec-index">PRINCIPLE ' + escapeHtml(p.index) + '</span>' +
                         '<h3>' + escapeHtml(p.title) + '</h3>' +
                         '<p>' + escapeHtml(p.description) + '</p>' +
                     '</div>'
@@ -687,18 +770,19 @@
     function renderWaitlistComingSoon(container, data) {
         document.body.classList.add("waitlist-page");
         if (window.innerWidth >= 992) {
-            document.body.style.height = "100vh";
-            document.body.style.overflow = "hidden";
+            document.body.style.minHeight = "100vh";
+            document.body.style.overflowX = "hidden";
+            document.body.style.overflowY = "auto";
             document.body.style.display = "flex";
             document.body.style.flexDirection = "column";
             document.body.style.justifyContent = "space-between";
             const mainEl = document.querySelector("main");
             if (mainEl) {
-                mainEl.style.flex = "1";
+                mainEl.style.flex = "1 0 auto";
                 mainEl.style.display = "flex";
                 mainEl.style.alignItems = "center";
                 mainEl.style.justifyContent = "center";
-                mainEl.style.minHeight = "0";
+                mainEl.style.padding = "16px 0 32px";
                 mainEl.style.width = "100%";
             }
             const footerEl = document.querySelector("footer");
@@ -725,7 +809,7 @@
             '<div class="container" style="display: flex; justify-content: center; align-items: center; width: 100%;">' +
                 '<div class="waitlist-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; max-width: 680px; width: 100%; margin: 0 auto; padding: 8px 20px; background: transparent; border: none;">' +
                     '<div class="infinity-loop-wrap" aria-hidden="true" style="display: flex; justify-content: center; align-items: center; width: 100%; margin: 0 auto 8px;">' +
-                        '<svg class="infinity-loop-svg" width="500" height="250" style="width: min(500px, 86vw); height: auto; max-height: 230px; display: block; margin: 0 auto;" viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg">' +
+                        '<svg class="infinity-loop-svg" width="500" height="250" style="width: min(460px, 84vw); height: auto; max-height: 190px; display: block; margin: 0 auto;" viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg">' +
                             '<defs>' +
                                 '<filter id="infinity-red-glow-' + escapeHtml(divKey) + '" x="-60%" y="-60%" width="220%" height="220%">' +
                                     '<feGaussianBlur stdDeviation="3.2" result="blur" />' +

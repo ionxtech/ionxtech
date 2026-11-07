@@ -28,6 +28,12 @@ window.IONX_DATA = {
         },
         socials: [
             {
+                name: "X (Twitter)",
+                url: "https://x.com/ionxtech",
+                icon: "assets/images/social-x.svg",
+                alt: "ionXtech on X"
+            },
+            {
                 name: "LinkedIn",
                 url: "https://in.linkedin.com/company/ionxtechnology",
                 icon: "assets/images/social-linkedin.svg",
@@ -129,7 +135,7 @@ window.IONX_DATA = {
             banner: "assets/images/QR Solution.webp",
             bannerAlt: "QR Solutions app interface showing instant QR code scanning and generation features",
             pageSlug: "apps/qr-solution/",
-            privacySlug: "privacy-policy/qr-solution.html",
+            privacySlug: "apps/qr-solution/privacy-policy.html",
             playStoreUrl: "https://play.google.com/store/apps/details?id=com.ionxtech.qrsolution",
             shortDescription: "Instant QR code scanner and custom generator with local scan history, multi-format barcode support, and offline execution.",
             overview: [
@@ -208,7 +214,7 @@ window.IONX_DATA = {
             banner: "assets/images/PrivacyDisplayLogo.webp",
             bannerAlt: "Privacy Display screen filter utility icon by ionXtech",
             pageSlug: "apps/privacy-display/",
-            privacySlug: "privacy-policy/privacy-display.html",
+            privacySlug: "apps/privacy-display/privacy-policy.html",
             playStoreUrl: "https://play.google.com/store/apps/details?id=com.ionxtech.privacydisplay",
             shortDescription: "Protect sensitive on-screen information in public spaces with an adjustable privacy overlay and anti-shoulder-surfing filter.",
             overview: [
@@ -287,7 +293,7 @@ window.IONX_DATA = {
             banner: "assets/images/CallMessageImage.webp",
             bannerAlt: "Auto Call Scheduler Android app preview showing scheduled phone call automation",
             pageSlug: "apps/call-message-scheduler/",
-            privacySlug: "privacy-policy/auto-call-scheduler.html",
+            privacySlug: "apps/call-message-scheduler/privacy-policy.html",
             playStoreUrl: "https://play.google.com/store/apps/details?id=com.ionxtech.callscheduler&hl=en_IN",
             shortDescription: "Schedule automatic phone calls and follow-up reminders at exact dates and times with persistent reboot recovery.",
             overview: [
@@ -366,7 +372,7 @@ window.IONX_DATA = {
             banner: "assets/images/LEDScrollerImage.webp",
             bannerAlt: "LED Scroller app display banner showing customizable scrolling text on an Android phone",
             pageSlug: "apps/led-scroller/",
-            privacySlug: "privacy-policy/led-scroller.html",
+            privacySlug: "apps/led-scroller/privacy-policy.html",
             playStoreUrl: "https://play.google.com/store/apps/details?id=com.ionxtech.ledscroller",
             shortDescription: "Transform your phone into a high-visibility scrolling LED matrix sign for concerts, airport pickups, live events, and noisy venues.",
             overview: [
@@ -423,6 +429,77 @@ window.IONX_DATA = {
                 {
                     question: "Does LED Scroller require camera or microphone permissions?",
                     answer: "No. LED Scroller does not request access to your camera, microphone, contacts, or location."
+                }
+            ]
+        },
+        {
+            id: "keka-work-time-tracker",
+            order: 5,
+            platform: "chrome-extension",
+            platformLabel: "Chrome Extension",
+            name: "Keka Work Time Tracker",
+            tagline: "Automated Work Hour & Daily Progress Tracker for Keka HR Portal",
+            category: "Chrome Extension",
+            packageId: "ARSN72/WorkHour",
+            targetPortal: "Keka HRMS",
+            rating: "Open Source",
+            ratingValue: "5.0",
+            ratingCount: "GitHub",
+            downloads: "GitHub",
+            dataPolicy: "100% Local Browser Storage",
+            offlineSupport: "Runs in Browser",
+            androidVersion: "Chrome 88+ / Chromium",
+            logo: "assets/images/KekaWorkHourLogo.webp",
+            logoAlt: "Keka Work Time Tracker Chrome extension logo by ionXtech for tracking work hours on Keka HR",
+            banner: "assets/images/KekaWorkHourLogo.webp",
+            bannerAlt: "Keka Work Time Tracker Chrome extension by ionXtech",
+            pageSlug: "apps/keka-work-time-tracker/",
+            githubUrl: "https://github.com/ARSN72/WorkHour",
+            playStoreUrl: "https://github.com/ARSN72/WorkHour",
+            privacySlug: "apps/keka-work-time-tracker/privacy-policy.html",
+            shortDescription: "Automated work duration and active hour tracker Chrome extension for the Keka HR portal. Calculates real-time gross hours, break deductions, and daily completion countdown directly inside your browser.",
+            overview: [
+                "Keka Work Time Tracker is a pure Google Chrome extension built by ionXtech for employees using the Keka HR portal. It eliminates the manual friction of estimating remaining work hours and break deductions by reading active session times directly from your authenticated Keka dashboard.",
+                "Engineered with a local-first philosophy, the extension runs entirely in your local browser sandbox. It contains zero tracking scripts, requires no external server communication, and stores configuration preferences exclusively within Chrome local storage."
+            ],
+            features: [
+                {
+                    title: "Real-Time Work Duration Calculation",
+                    description: "Automatically computes effective work hours, active logged intervals, and total break time from your daily Keka timeline."
+                },
+                {
+                    title: "Daily Target Countdown",
+                    description: "Displays exact hours and minutes remaining until your mandatory daily work shift target is fulfilled."
+                },
+                {
+                    title: "Zero-Overhead Manifest V3",
+                    description: "Built on modern Chrome Manifest V3 standards with ultra-fast execution and zero background battery drain."
+                },
+                {
+                    title: "Open Source Transparency",
+                    description: "Full source code available on GitHub for community auditing, contributions, and developer customization."
+                }
+            ],
+            specs: [
+                { label: "Extension Name", value: "Keka Work Time Tracker" },
+                { label: "Platform", value: "Google Chrome / Chromium" },
+                { label: "Architecture", value: "Manifest V3 Pure Extension" },
+                { label: "Target Portal", value: "Keka HR Management System" },
+                { label: "Data Storage", value: "Chrome Local Storage (No Cloud Sync)" },
+                { label: "Source Code", value: "https://github.com/ARSN72/WorkHour" }
+            ],
+            faqs: [
+                {
+                    question: "What is Keka Work Time Tracker?",
+                    answer: "Keka Work Time Tracker is a Google Chrome extension that helps employees track and calculate their work duration, shift progress, and remaining time on the Keka HR portal in real time."
+                },
+                {
+                    question: "Does the extension send my Keka login or data to any server?",
+                    answer: "No. The extension operates completely locally in your browser. It does not communicate with any external backend or ionXtech server. All processing is on-client."
+                },
+                {
+                    question: "Where can I get and install the extension?",
+                    answer: "You can download, inspect, and install the extension from the official GitHub repository at https://github.com/ARSN72/WorkHour."
                 }
             ]
         }
@@ -497,7 +574,7 @@ window.IONX_DATA = {
     ],
 
     careers: {
-        intro: "We build practical software used by over 165,000+ users worldwide. At ionXtech, we value clean engineering, autonomous execution, and respect for user privacy.",
+        intro: "We build practical software used by over 15,000+ users worldwide. At ionXtech, we value clean engineering, autonomous execution, and respect for user privacy.",
         email: "hello@ionxtech.in",
         openRoles: [
             {
