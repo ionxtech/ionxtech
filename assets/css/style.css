@@ -182,10 +182,10 @@ header {
 .brand-logo-img {
     width: 36px;
     height: 36px;
-    border-radius: var(--radius-sm);
+    border-radius: 50%;
     object-fit: contain;
-    border: 1px solid var(--border);
-    background: var(--surface);
+    border: none;
+    background: transparent;
 }
 
 .brand-text {
@@ -1046,6 +1046,12 @@ body.home-page .section,
     margin-bottom: 40px;
 }
 
+.app-detail-columns > *,
+.app-grid > *,
+.app-specs-strip > * {
+    min-width: 0;
+}
+
 .feature-list {
     list-style: none;
     margin-top: 16px;
@@ -1071,6 +1077,7 @@ body.home-page .section,
     width: 100%;
     border-collapse: collapse;
     margin-top: 12px;
+    table-layout: fixed;
 }
 
 .spec-table th,
@@ -1079,6 +1086,8 @@ body.home-page .section,
     padding: 10px 0;
     border-bottom: 1px solid var(--border);
     font-size: 0.9rem;
+    word-break: break-word;
+    overflow-wrap: anywhere;
 }
 
 .spec-table th {
@@ -1088,6 +1097,7 @@ body.home-page .section,
     color: var(--text-muted);
     font-weight: 500;
     width: 42%;
+    padding-right: 12px;
 }
 
 .spec-table td {
@@ -1209,8 +1219,8 @@ body.home-page .section,
     aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: var(--radius-md);
-    border: 1px solid var(--border);
-    background: var(--surface-subtle);
+    border: none;
+    background: transparent;
 }
 
 /* Legal & Policy Content */
@@ -1358,6 +1368,7 @@ footer {
     .footer-bottom .bottom-right {
         font-size: 0.75rem;
     }
+}
 
 /* Responsive Breakpoints (Tablet & Mobile) */
 @media (max-width: 960px) {
@@ -1477,8 +1488,26 @@ footer {
         gap: 20px;
     }
 
-    .app-detail-identity {
+    .app-detail-top {
         flex-direction: column;
+        align-items: stretch;
+        gap: 18px;
+    }
+
+    .app-detail-identity {
+        flex-direction: row;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .app-detail-actions {
+        width: 100%;
+    }
+
+    .app-detail-actions .btn {
+        flex: 1 1 auto;
+        justify-content: center;
+        text-align: center;
     }
 
     .footer-horizontal {
@@ -1611,20 +1640,21 @@ footer {
 
 @media (min-width: 992px) {
     body.waitlist-page {
-        height: 100vh;
-        overflow: hidden;
+        min-height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
     }
 
     body.waitlist-page main {
-        flex: 1;
+        flex: 1 0 auto;
         display: flex;
         align-items: center;
         justify-content: center;
-        min-height: 0;
         width: 100%;
+        padding: 16px 0 32px;
     }
 
     body.waitlist-page .waitlist-section {
@@ -1646,7 +1676,7 @@ footer {
 .waitlist-card {
     background: transparent;
     border: none;
-    padding: 8px 20px;
+    padding: 8px 20px 16px;
     max-width: 720px;
     width: 100%;
     margin: 0 auto;
@@ -1658,10 +1688,10 @@ footer {
 }
 
 .infinity-loop-wrap {
-    width: min(500px, 86vw);
-    height: 250px;
-    max-height: 28vh;
-    margin: 0 auto 10px;
+    width: min(460px, 84vw);
+    height: auto;
+    max-height: 24vh;
+    margin: 0 auto 6px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1669,9 +1699,9 @@ footer {
 
 .infinity-loop-svg {
     width: 100%;
-    height: 100%;
-    max-width: 500px;
-    max-height: 250px;
+    height: auto;
+    max-width: 460px;
+    max-height: 200px;
     display: block;
     margin: 0 auto;
     overflow: visible;

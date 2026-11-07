@@ -2,4 +2,6 @@ User-agent: *
 Allow: /
 
 Sitemap: https://ionxtech.in/sitemap.xml
+Sitemap: https://links.ionxtech.in/sitemap.xml
+
 

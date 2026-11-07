@@ -262,6 +262,17 @@ This section documents features from the original website that were explicitly r
 
 ## 10. Decision Log
 
+### 2026-11-08 (Session 28)
+- **Keka Work Time Tracker Chrome Extension, Forest Green X Brand Logo, OG Link Previews, Standardized `/apps/{app}/privacy-policy.html` Routes, Mobile UI Fixes, Waitlist Footer Fix & `ionXlinks` Sitemap Integration:**
+  - Added **Keka Work Time Tracker** (`https://github.com/ARSN72/WorkHour`) under a dedicated **Chrome Extensions** category on `/apps/` (`apps/index.html`, `assets/js/site-data.js`, `assets/js/layout.js`), created its dedicated detail page (`apps/keka-work-time-tracker/index.html`) and privacy policy (`apps/keka-work-time-tracker/privacy-policy.html`), and featured it on the home page (`index.html`) below the `15,000+` counter.
+  - Updated the brand logo across the site to the Forest Green X Circle Logo (`assets/images/IonXtech.png` and `assets/images/IonXtech.webp`), generated branded 1200×630 Open Graph preview banners (`assets/images/og-image.png`, `.webp`), and updated all HTML `<head>` blocks to reference PNG Open Graph images and PNG/Apple Touch favicons for universal WhatsApp/Twitter/Telegram link previews.
+  - Added official X profile (`https://x.com/ionxtech`) with the vector X logo (`assets/images/social-x.svg`) to the footer.
+  - Standardized all app privacy policy URLs under `/apps/{app}/privacy-policy.html` (`apps/qr-solution/privacy-policy.html`, `apps/privacy-display/privacy-policy.html`, `apps/call-message-scheduler/privacy-policy.html`, `apps/led-scroller/privacy-policy.html`, `apps/keka-work-time-tracker/privacy-policy.html`) while keeping redirect stubs at the legacy `/privacy-policy/*.html` paths.
+  - Fixed mobile responsiveness on `/apps/keka-work-time-tracker/` by closing an unclosed `@media (max-width: 768px)` block in `assets/css/style.css` and adding `min-width: 0` + `table-layout: fixed; overflow-wrap: anywhere` for `.spec-table`.
+  - Fixed waitlist footer overlap on `domains.html` and `hosting.html` by changing `.waitlist-viewport` from `height: 100vh; overflow: hidden;` to `min-height: 100vh; overflow-y: auto;`.
+  - Updated `services.html` (`ionXlinks - URL Shortener & Dynamic QR Generator` with real-user non-technical use-case cards and `Domain Name & Hosting Information`), `team.html` (removed subtitle and photo border), `about.html` (removed `PRINCIPLE 01`–`04` labels), and `careers.html` (removed numbered eyebrow labels, added a **Software Developer (Web & Cloud Services)** opening, and updated `165,000+` to `15,000+`).
+  - Integrated the `ionXlinks` microservice (`https://links.ionxtech.in/`, `/login`, `/register`, `/forgot-password`) into `sitemap.xml` and `robots.txt`, and created matching `sitemap.xml` and `robots.txt` inside `C:\Users\Lenovo\ionxtech\URL-shortner\apps\dashboard\public\`.
+
 ### 2026-10-31 (Session 27)
 - **Mobile "View All Apps" Placement & 3-Line (`☰` -> `✕`) Mobile Navigation Toggle:**
   - Repositioned the **"View All Apps"** button on mobile (`max-width: 768px`) so it appears directly below the second Featured Android App card and above the **`15,000+`** overall users counter (`.home-view-all-mobile` in `index.html` and `assets/css/style.css`), while keeping it in `.section-header` on desktop (`.home-view-all-desktop`).
@@ -396,6 +407,77 @@ This section documents features from the original website that were explicitly r
   - Completely removed the 5-division showcase list (*"The ionX Family / One company, five divisions"*) from `index.html`.
   - The divisions remain accessible through the dedicated navbar links (`ionXapps`, `ionXdomains`, `ionXhosting`, `ionXservices`) and on `about.html`.
   - The desktop snap scroll sequence now glides directly: **Hero** -> **Featured Android Apps** -> **FAQs** -> **Closing CTA**.
+
+### 2026-11-08 (Session 34)
+- **Waitlist Page Footer Overlap Fixed (`domains.html`, `hosting.html`, `layout.js`, `style.css`):**
+  - Replaced `height: 100vh; overflow: hidden;` and `main { min-height: 0 }` on `body.waitlist-page` in both [`assets/css/style.css`](file:///c:/Users/Lenovo/ionxtech/ionxtech/assets/css/style.css) and `renderWaitlistComingSoon` in [`assets/js/layout.js`](file:///c:/Users/Lenovo/ionxtech/ionxtech/assets/js/layout.js) with `min-height: 100vh; overflow-y: auto;` and `main { flex: 1 0 auto; padding: 16px 0 32px; }`.
+  - Adjusted `.infinity-loop-svg` `max-height` from `230px` to `190px` so the waitlist card and `"Zero spam. Priority launch updates for ionXdomains / ionXhosting."` text always sit cleanly above the footer without overlapping on any screen height.
+- **Mobile Responsiveness Fixed for App Detail Pages (`style.css`):**
+  - Fixed a missing closing brace `}` on the `@media (max-width: 768px)` block at line 1366 of [`assets/css/style.css`](file:///c:/Users/Lenovo/ionxtech/ionxtech/assets/css/style.css) that was preventing the `@media (max-width: 960px)`, `768px`, and `480px` responsive rules from applying properly.
+  - Added `min-width: 0` to `.app-detail-columns > *`, `.app-grid > *`, and `.app-specs-strip > *`, and added `table-layout: fixed; word-break: break-word; overflow-wrap: anywhere` to `.spec-table` so long URLs like `https://github.com/ARSN72/WorkHour` on `/apps/keka-work-time-tracker/` wrap cleanly without horizontal mobile overflow.
+  - Improved `.app-detail-top` and `.app-detail-actions` stacking on mobile screens.
+- **Software Developer Role & User Count Updated on Careers (`careers.html`, `about.html`, `site-data.js`):**
+  - Added a new **Software Developer (Web & Cloud Services)** opening card above the Android Application Engineering Intern opening on [`careers.html`](file:///c:/Users/Lenovo/ionxtech/ionxtech/careers.html).
+  - Updated the user count from `165,000+` to `15,000+` across [`careers.html`](file:///c:/Users/Lenovo/ionxtech/ionxtech/careers.html), [`about.html`](file:///c:/Users/Lenovo/ionxtech/ionxtech/about.html), and [`assets/js/site-data.js`](file:///c:/Users/Lenovo/ionxtech/ionxtech/assets/js/site-data.js).
+- **Our Team (`team.html` & `style.css`):**
+  - Removed the subtitle line `"Founder and Chief Executive Officer, ionXtech"` under Arshan Mansuri's heading.
+  - Removed the border (`border: none; background: transparent`) around `.team-photo`.
+- **Brand Logo Border Removed (`style.css`):**
+  - Removed the square border and background from `.brand-logo-img` (`border: none; background: transparent; border-radius: 50%`) so `IonXtech.webp` displays cleanly as a circle.
+- **Keka Work Time Tracker Added to Home Page (`index.html` & `layout.js`):**
+  - Added a **"Featured Chrome Extension"** section directly below the `15,000+` counter on [`index.html`](file:///c:/Users/Lenovo/ionxtech/ionxtech/index.html) showcasing **Keka Work Time Tracker** (`data-apps="keka-work-time-tracker"`), without a secondary "View All Tools" header button.
+  - Updated `renderHomeShowcaseCard` in [`assets/js/layout.js`](file:///c:/Users/Lenovo/ionxtech/ionxtech/assets/js/layout.js) to support Chrome extension metadata and action buttons on the home page.
+- **About & Careers Cards Cleaned Up (`layout.js` & `careers.html`):**
+  - Removed `PRINCIPLE 01` – `PRINCIPLE 04` `.spec-index` labels from the 4 Engineering Principles cards in `layout.js` (`[data-component="principles-grid"]`).
+  - Removed `01 / REAL PRODUCTION IMPACT` and `02 / CRAFTSMANSHIP & CLARITY` `.spec-index` labels from [`careers.html`](file:///c:/Users/Lenovo/ionxtech/ionxtech/careers.html).
+- **Services Page Overhaul (`services.html`):**
+  - Updated the service heading to **`ionXlinks - URL Shortener & Dynamic QR Generator`**.
+  - Removed the technical Cloudflare edge routing sentence and replaced the 4 technical sub-cards with everyday user-friendly use cases (*Share Clean, Short Links*, *Custom Named Links*, *Ready-to-Print QR Codes*, *Safe & Private by Default*).
+  - Replaced the *Custom APIs & Microservices* card with a **Domain Name & Hosting Information** card.
+- **Privacy Policy Architecture Restructured (`apps/{app}/privacy-policy.html`):**
+  - Co-located every app's privacy policy directly inside its own `apps/{app}/` folder alongside `index.html`:
+    - `apps/qr-solution/privacy-policy.html`
+    - `apps/privacy-display/privacy-policy.html`
+    - `apps/call-message-scheduler/privacy-policy.html`
+    - `apps/led-scroller/privacy-policy.html`
+    - `apps/keka-work-time-tracker/privacy-policy.html`
+  - Updated `privacySlug` across [`assets/js/site-data.js`](file:///c:/Users/Lenovo/ionxtech/ionxtech/assets/js/site-data.js), [`apps/index.html`](file:///c:/Users/Lenovo/ionxtech/ionxtech/apps/index.html), [`privacy-policy/index.html`](file:///c:/Users/Lenovo/ionxtech/ionxtech/privacy-policy/index.html), and [`sitemap.xml`](file:///c:/Users/Lenovo/ionxtech/ionxtech/sitemap.xml) to point to `apps/{app}/privacy-policy.html`.
+
+### 2026-11-08 (Session 33)
+- **Official X (Twitter) Profile Added to Footer:**
+  - Replaced [`assets/images/social-x.svg`](file:///c:/Users/Lenovo/ionxtech/ionxtech/assets/images/social-x.svg) with the official 24×24 vector X brand icon (`fill="currentColor"`), matching the styling of `social-linkedin.svg`, `social-instagram.svg`, and `social-youtube.svg`.
+  - Added X (`https://x.com/ionxtech`) to `IONX_DATA.company.socials` in [`assets/js/site-data.js`](file:///c:/Users/Lenovo/ionxtech/ionxtech/assets/js/site-data.js) and `sameAs` in [`index.html`](file:///c:/Users/Lenovo/ionxtech/ionxtech/index.html) Organization JSON-LD schema, rendering the X link and icon in the reusable footer across all pages.
+- **Website Brand Logo Updated to Forest Green X Circle Logo:**
+  - Replaced [`assets/images/IonXtech.webp`](file:///c:/Users/Lenovo/ionxtech/ionxtech/assets/images/IonXtech.webp) and [`assets/images/IonXtech.png`](file:///c:/Users/Lenovo/ionxtech/ionxtech/assets/images/IonXtech.png) with high-resolution 512×512 assets generated from `"C:\Users\Lenovo\Downloads\Forest Green X Circle Logo.png"`.
+  - Updated [`assets/images/favicon.svg`](file:///c:/Users/Lenovo/ionxtech/ionxtech/assets/images/favicon.svg) to render the Forest Green X Circle vector mark instead of the legacy purple `#6366f1` icon.
+- **Open Graph Link Preview & Social Icon Fix (WhatsApp / Social Crawlers):**
+  - **Root Cause Identified:** Previously, [`assets/images/og-image.webp`](file:///c:/Users/Lenovo/ionxtech/ionxtech/assets/images/og-image.webp) and `og-image.png` were a blank solid `#6366f1` purple rectangle leftover from the legacy site, causing WhatsApp and social platforms to display a solid purple box with no logo when sharing `ionxtech.in`. Additionally, many mobile link previewers prefer `image/png` over `.webp` for `og:image`.
+  - **Branded Preview Cards Generated:** Generated new 1200×630 (`og-image.png` & `.webp`), 600×315 (`og-image-small.png` & `.webp`), and 600×600 (`og-image-square.png` & `.webp`) preview cards featuring the Forest Green X Circle Logo, **ionXtech** typography, division subtitle, and `ionxtech.in` badge on the Warm Minimalist Paper (`#F8F7F4`) background.
+  - **Meta Tags & Favicons Updated Across All 22 HTML Pages:** Pointed `og:image` and `twitter:image` to `https://ionxtech.in/assets/images/og-image.png` (busting WhatsApp's `.webp` cache and ensuring universal crawler compatibility) and added `<link rel="icon" type="image/png">` and `<link rel="apple-touch-icon">` alongside the WebP icon.
+
+### 2026-11-08 (Session 32)
+- **Dedicated App Details Page for Keka Work Time Tracker:**
+  - Created [`apps/keka-work-time-tracker/index.html`](file:///c:/Users/Lenovo/ionxtech/ionxtech/apps/keka-work-time-tracker/index.html) with full static SEO metadata, Open Graph tags, JSON-LD `SoftwareApplication` (BrowserExtension) and `FAQPage` schemas.
+  - Linked to hydration runtime via `<main id="main" data-app-detail="keka-work-time-tracker">`.
+  - Added URL to [`sitemap.xml`](file:///c:/Users/Lenovo/ionxtech/ionxtech/sitemap.xml) (`https://ionxtech.in/apps/keka-work-time-tracker/`).
+- **Official Extension Logo Updated:**
+  - Processed user download `icon128.png` and generated [`assets/images/KekaWorkHourLogo.webp`](file:///c:/Users/Lenovo/ionxtech/ionxtech/assets/images/KekaWorkHourLogo.webp) and `KekaWorkHourLogo.png`.
+- **New Brand Website Logo Replaced Across Entire Site:**
+  - Processed user download `IonXTech Green Circle Logo.png` and generated high-resolution 512x512 circular [`assets/images/IonXtech.webp`](file:///c:/Users/Lenovo/ionxtech/ionxtech/assets/images/IonXtech.webp) and `IonXtech.png`.
+  - Replaced the previous square logo directly at the canonical image asset location, instantly updating the navbar header, footer, favicon, and brand marks across all 20+ site pages.
+- **Dynamic Extension Rendering in `layout.js`:**
+  - Extended `renderAppDetailPage` to detect `isExtension` (`platform === "chrome-extension"`).
+  - Configured extension-appropriate actions ("GitHub Repository ↗" and "Documentation"), metadata strip ("Platform: Chrome Extension", "Target Portal: Keka HRMS", "Compatibility: Chrome 88+"), and privacy disclosure without Android Play Store assumptions.
+  - Extended `injectAppSchema` to dynamically output `BrowserExtension` and `operatingSystem: "Chrome, Chromium-based browsers"`.
+- **Card Navigation Wired on `/apps/` (`apps/index.html`):**
+  - Updated Keka card `data-page="keka-work-time-tracker/"` and `site-data.js` `pageSlug: "apps/keka-work-time-tracker/"` so clicking the card navigates directly to the new dedicated app page just like the other 4 Android apps.
+
+### 2026-11-08 (Session 31)
+- **Keka Work Time Tracker Chrome Extension Added to Apps Directory:**
+  - **New Extension Registered:** Added `Keka Work Time Tracker` (`id: "keka-work-time-tracker"`), an open-source Chrome extension for tracking active work hours and break deductions on the Keka HR portal, linking directly to GitHub (`https://github.com/ARSN72/WorkHour`).
+  - **Asset Created:** Created web-optimized 512x512 logo assets [`KekaWorkHourLogo.webp`](file:///c:/Users/Lenovo/ionxtech/ionxtech/assets/images/KekaWorkHourLogo.webp) and `KekaWorkHourLogo.png`.
+  - **Directory Categorization on `/apps/` (`apps/index.html`):** Restructured the applications page into two clean sections: **Android Applications** (the 4 Google Play apps) and **Chrome Extensions** (Keka Work Time Tracker). Both sections use `data-component="app-knowledge-grid"` with dedicated `data-apps` filters.
+  - **Template Adaptability in `layout.js`:** Enhanced `renderKnowledgePanelCard` to detect Chrome extensions (`app.platform === "chrome-extension"`) and adapt the knowledge panel metadata (Platform, Target Portal, Repository, Local Storage Architecture) and primary action button (`GitHub Repository ↗`). Also updated card-link delegation to cleanly open external GitHub URLs in a new tab.
 
 ### 2026-11-04 (Session 30)
 - **ionXservices Transformed from Coming Soon to Production Services Page:**

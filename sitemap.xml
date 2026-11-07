@@ -31,6 +31,11 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://ionxtech.in/apps/keka-work-time-tracker/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://ionxtech.in/domains.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -44,6 +49,27 @@
     <loc>https://ionxtech.in/services.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <!-- ionXlinks Microservice (https://links.ionxtech.in) -->
+  <url>
+    <loc>https://links.ionxtech.in/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://links.ionxtech.in/login</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://links.ionxtech.in/register</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://links.ionxtech.in/forgot-password</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://ionxtech.in/faqs.html</loc>
@@ -81,22 +107,27 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://ionxtech.in/privacy-policy/qr-solution.html</loc>
+    <loc>https://ionxtech.in/apps/qr-solution/privacy-policy.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://ionxtech.in/privacy-policy/privacy-display.html</loc>
+    <loc>https://ionxtech.in/apps/privacy-display/privacy-policy.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://ionxtech.in/privacy-policy/auto-call-scheduler.html</loc>
+    <loc>https://ionxtech.in/apps/call-message-scheduler/privacy-policy.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://ionxtech.in/privacy-policy/led-scroller.html</loc>
+    <loc>https://ionxtech.in/apps/led-scroller/privacy-policy.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://ionxtech.in/apps/keka-work-time-tracker/privacy-policy.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
