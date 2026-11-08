@@ -276,7 +276,20 @@ This section documents features from the original website that were explicitly r
     - Forest Green (`#1B4332`) / Red (`#E01E5A`) color bar
     - Dynamic fields: Service, Status, Branch, Commit SHA/Message, Author, Duration, Production URL, and Live Health Check
     - Action buttons: `Open ionXtech`, `View Run Logs`, `GitHub Repo`, and `Open ionXlinks`
-    - Seamlessly authenticated via GitHub Actions Secret `SLACK_WEBHOOK_URL`.
+    - Seamlessly authenticated via dedicated GitHub Actions Secret `SLACK_DEPLOY_WEBHOOK_URL` (with fallback to `SLACK_WEBHOOK_URL`), keeping deployment notifications isolated from form/waitlist alerts.
+- **Single-Screen No-Scroll Waitlist Pages (`domains.html` & `hosting.html`):**
+  - Re-established `height: 100vh; height: 100dvh; overflow: hidden;` across `body.waitlist-page` in both `assets/css/style.css` and `assets/js/layout.js` (`renderWaitlistComingSoon`).
+  - Optimized the vertical proportions to comfortably fit all screen heights without scrolling:
+    - Infinity Loop SVG: `height: clamp(65px, 11vh, 110px); width: auto; max-width: min(260px, 70vw);`
+    - Typography & Margins: Compact fluid clamp sizing for title, loop heading, subtitle, and CTA line.
+    - Footer: Compact padding (`10px 0 8px`) with `flex-shrink: 0`.
+    - Guarantees 100% visibility of the entire card (including the "Zero spam. Priority launch updates..." note) and footer without any overlap or scrollbar.
+- **Mobile Footer Redesign (`@media (max-width: 768px)` in `assets/css/style.css` & `assets/js/layout.js`):**
+  - Re-architected `.footer-horizontal` into a clean 2-column CSS Grid (`grid-template-areas: "brand socials" "tagline tagline" "nav nav"`):
+    - Row 1: The `ionXtech` brand logo and text sit on the left, with the 4 social media buttons (`X`, `LinkedIn`, `Instagram`, `YouTube`) right-aligned on the exact same horizontal line.
+    - Row 2: The company tagline sits underneath the brand header.
+    - Row 3: `.footer-company-nav` displays all 5 links (`About`, `Our Team`, `Careers`, `FAQs`, and `Contact Us`) across one clean single horizontal line.
+  - Aligned `.footer-bottom` elements (`© 2025 - 2026` on left, `ionXtech. All rights reserved.` on right).
 
 ### 2026-11-08 (Session 28)
 - **Keka Work Time Tracker Chrome Extension, Forest Green X Brand Logo, OG Link Previews, Standardized `/apps/{app}/privacy-policy.html` Routes, Mobile UI Fixes, Waitlist Footer Fix & `ionXlinks` Sitemap Integration:**

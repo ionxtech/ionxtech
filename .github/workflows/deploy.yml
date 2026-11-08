@@ -59,7 +59,7 @@ jobs:
         if: always()
         continue-on-error: true
         env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_DEPLOY_WEBHOOK_URL: ${{ secrets.SLACK_DEPLOY_WEBHOOK_URL || secrets.SLACK_WEBHOOK_URL }}
           DEPLOY_STATUS: ${{ job.status }}
           BRANCH: ${{ github.ref_name }}
           ACTOR: ${{ github.actor }}
