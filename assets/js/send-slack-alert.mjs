@@ -4,9 +4,9 @@
  * Spec: Sends structured Block Kit notifications to Slack upon production deployment.
  */
 
-const webhookUrl = process.env.SLACK_WEBHOOK_URL;
+const webhookUrl = process.env.SLACK_DEPLOY_WEBHOOK_URL || process.env.SLACK_WEBHOOK_URL;
 if (!webhookUrl) {
-  console.log("[Slack Alert] SLACK_WEBHOOK_URL not configured. Skipping Slack alert.");
+  console.log("[Slack Alert] Neither SLACK_DEPLOY_WEBHOOK_URL nor SLACK_WEBHOOK_URL configured. Skipping Slack alert.");
   process.exit(0);
 }
 

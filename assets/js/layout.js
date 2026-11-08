@@ -64,7 +64,7 @@
 
         return (
             '<div class="container footer-horizontal">' +
-                '<div class="footer-brand-wrap" style="display: flex; flex-direction: column; align-items: flex-start; gap: 6px;">' +
+                '<div class="footer-brand-wrap">' +
                     '<a href="' + rootPath + 'index.html" class="brand">' +
                         '<img src="' + rootPath + data.company.logo.path + '" alt="' + escapeHtml(data.company.logo.alt) + '" width="32" height="32" class="brand-logo-img">' +
                         '<span class="brand-text">ionXtech</span>' +
@@ -769,28 +769,28 @@
 
     function renderWaitlistComingSoon(container, data) {
         document.body.classList.add("waitlist-page");
-        if (window.innerWidth >= 992) {
-            document.body.style.minHeight = "100vh";
-            document.body.style.overflowX = "hidden";
-            document.body.style.overflowY = "auto";
-            document.body.style.display = "flex";
-            document.body.style.flexDirection = "column";
-            document.body.style.justifyContent = "space-between";
-            const mainEl = document.querySelector("main");
-            if (mainEl) {
-                mainEl.style.flex = "1 0 auto";
-                mainEl.style.display = "flex";
-                mainEl.style.alignItems = "center";
-                mainEl.style.justifyContent = "center";
-                mainEl.style.padding = "16px 0 32px";
-                mainEl.style.width = "100%";
-            }
-            const footerEl = document.querySelector("footer");
-            if (footerEl) {
-                footerEl.style.marginTop = "0";
-                footerEl.style.padding = "18px 0 14px";
-                footerEl.style.flexShrink = "0";
-            }
+        document.body.style.height = "100vh";
+        document.body.style.height = "100dvh";
+        document.body.style.overflow = "hidden";
+        document.body.style.display = "flex";
+        document.body.style.flexDirection = "column";
+        document.body.style.justifyContent = "space-between";
+        const mainEl = document.querySelector("main");
+        if (mainEl) {
+            mainEl.style.flex = "1 1 auto";
+            mainEl.style.minHeight = "0";
+            mainEl.style.overflow = "hidden";
+            mainEl.style.display = "flex";
+            mainEl.style.alignItems = "center";
+            mainEl.style.justifyContent = "center";
+            mainEl.style.padding = "4px 0";
+            mainEl.style.width = "100%";
+        }
+        const footerEl = document.querySelector("footer");
+        if (footerEl) {
+            footerEl.style.marginTop = "0";
+            footerEl.style.padding = "10px 0 8px";
+            footerEl.style.flexShrink = "0";
         }
         container.style.width = "100%";
         container.style.display = "flex";
@@ -807,9 +807,9 @@
 
         container.innerHTML =
             '<div class="container" style="display: flex; justify-content: center; align-items: center; width: 100%;">' +
-                '<div class="waitlist-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; max-width: 680px; width: 100%; margin: 0 auto; padding: 8px 20px; background: transparent; border: none;">' +
-                    '<div class="infinity-loop-wrap" aria-hidden="true" style="display: flex; justify-content: center; align-items: center; width: 100%; margin: 0 auto 8px;">' +
-                        '<svg class="infinity-loop-svg" width="500" height="250" style="width: min(460px, 84vw); height: auto; max-height: 190px; display: block; margin: 0 auto;" viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg">' +
+                '<div class="waitlist-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; max-width: 660px; width: 100%; margin: 0 auto; padding: 6px 20px; background: transparent; border: none;">' +
+                    '<div class="infinity-loop-wrap" aria-hidden="true" style="display: flex; justify-content: center; align-items: center; width: 100%; margin: 0 auto 8px; max-height: clamp(95px, 16vh, 150px);">' +
+                        '<svg class="infinity-loop-svg" width="500" height="250" style="width: auto; height: clamp(95px, 16vh, 150px); max-width: min(380px, 80vw); display: block; margin: 0 auto;" viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg">' +
                             '<defs>' +
                                 '<filter id="infinity-red-glow-' + escapeHtml(divKey) + '" x="-60%" y="-60%" width="220%" height="220%">' +
                                     '<feGaussianBlur stdDeviation="3.2" result="blur" />' +
@@ -826,17 +826,17 @@
                             '</g>' +
                         '</svg>' +
                     '</div>' +
-                    '<h1 class="waitlist-title" style="text-align: center; width: 100%; font-size: clamp(1.9rem, 3.8vw, 2.5rem); font-weight: 800; letter-spacing: -0.04em; margin: 0 auto 6px; color: var(--text);">ionX<span style="color: var(--accent);">' + escapeHtml(division.key) + '</span></h1>' +
-                    '<p class="waitlist-loop-heading" style="text-align: center; width: 100%; font-size: 1.12rem; font-weight: 700; color: var(--text); margin: 0 auto 8px;">Stay in the loop</p>' +
-                    '<p class="waitlist-subtitle" style="text-align: center; width: 100%; max-width: 560px; color: var(--text-secondary); font-size: 0.96rem; line-height: 1.6; margin: 0 auto 6px;">' + escapeHtml(division.description) + '</p>' +
-                    '<p class="waitlist-cta-line" style="text-align: center; width: 100%; max-width: 540px; color: var(--text); font-size: 0.93rem; font-weight: 600; line-height: 1.55; margin: 0 auto 16px;">Enter your email below to join the waitlist and be the first to know when we launch.</p>' +
+                    '<h1 class="waitlist-title" style="text-align: center; width: 100%; font-size: clamp(2rem, 4.4vh, 2.75rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1.15; margin: 0 auto 5px; color: var(--text);">ionX<span style="color: var(--accent);">' + escapeHtml(division.key) + '</span></h1>' +
+                    '<p class="waitlist-loop-heading" style="text-align: center; width: 100%; font-size: clamp(1.08rem, 2vh, 1.25rem); font-weight: 700; color: var(--text); margin: 0 auto 6px;">Stay in the loop</p>' +
+                    '<p class="waitlist-subtitle" style="text-align: center; width: 100%; max-width: 580px; color: var(--text-secondary); font-size: clamp(0.94rem, 1.7vh, 1.05rem); line-height: 1.55; margin: 0 auto 6px;">' + escapeHtml(division.description) + '</p>' +
+                    '<p class="waitlist-cta-line" style="text-align: center; width: 100%; max-width: 560px; color: var(--text); font-size: clamp(0.9rem, 1.6vh, 0.98rem); font-weight: 600; line-height: 1.5; margin: 0 auto 16px;">Enter your email below to join the waitlist and be the first to know when we launch.</p>' +
                     '<form class="waitlist-form" data-division="' + escapeHtml(division.key) + '" style="display: flex; justify-content: center; align-items: center; width: 100%; margin: 0 auto;">' +
-                        '<div class="waitlist-input-shell" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; margin: 0 auto; padding: 5px; background: #FFFFFF; border: 1.5px solid #D5D2C8; border-radius: 8px; box-shadow: 0 2px 8px rgba(20, 20, 19, 0.04);">' +
-                            '<input type="email" class="waitlist-input" name="email" required placeholder="Enter your email address" aria-label="Email address for waitlist" style="width: 230px; max-width: 58vw; height: 36px; border: 1px solid #E4E2DD; border-radius: 6px; background: #F8F7F4; padding: 6px 12px; font-family: var(--font-sans); font-size: 0.86rem; font-weight: 500; color: var(--text); text-align: center; outline: none; box-sizing: border-box;">' +
-                            '<button type="submit" class="btn btn-sm waitlist-btn" style="height: 36px; padding: 0 18px; font-size: 0.86rem; background-color: var(--accent); border-color: var(--accent); color: #FFFFFF; flex-shrink: 0;">Join Waitlist</button>' +
+                        '<div class="waitlist-input-shell" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; margin: 0 auto; padding: 6px; background: #FFFFFF; border: 1.5px solid #D5D2C8; border-radius: 8px; box-shadow: 0 2px 10px rgba(20, 20, 19, 0.05);">' +
+                            '<input type="email" class="waitlist-input" name="email" required placeholder="Enter your email address" aria-label="Email address for waitlist" style="width: 280px; max-width: 58vw; height: 40px; border: 1px solid #E4E2DD; border-radius: 6px; background: #F8F7F4; padding: 6px 14px; font-family: var(--font-sans); font-size: 0.92rem; font-weight: 500; color: var(--text); text-align: center; outline: none; box-sizing: border-box;">' +
+                            '<button type="submit" class="btn btn-sm waitlist-btn" style="height: 40px; padding: 0 22px; font-size: 0.92rem; font-weight: 600; background-color: var(--accent); border-color: var(--accent); color: #FFFFFF; flex-shrink: 0;">Join Waitlist</button>' +
                         '</div>' +
                     '</form>' +
-                    '<p class="waitlist-note" style="text-align: center; width: 100%; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin: 12px auto 0;">Zero spam. Priority launch updates for ionX' + escapeHtml(division.key) + '.</p>' +
+                    '<p class="waitlist-note" style="text-align: center; width: 100%; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted); margin: 10px auto 0;">Zero spam. Priority launch updates for ionX' + escapeHtml(division.key) + '.</p>' +
                 '</div>' +
             '</div>';
 
