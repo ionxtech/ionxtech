@@ -87,24 +87,32 @@ jobs:
         env:
           SLACK_DEPLOY_WEBHOOK_URL: ${{ secrets.SLACK_DEPLOY_WEBHOOK_URL }}
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          EVENT_COMMIT_MSG: ${{ github.event.head_commit.message }}
+          GITHUB_SHA: ${{ github.sha }}
+          GITHUB_ACTOR: ${{ github.actor }}
+          GITHUB_REF_NAME: ${{ github.ref_name }}
+          GITHUB_REPO: ${{ github.repository }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
+          JOB_STATUS: ${{ job.status }}
+          DURATION: ${{ steps.deploy_summary.outputs.duration }}
+          FAILED_STEP: ${{ steps.deploy_summary.outputs.failed_step }}
+          REASON: ${{ steps.deploy_summary.outputs.reason }}
         run: |
-          WEBHOOK="${SLACK_DEPLOY_WEBHOOK_URL:-$SLACK_WEBHOOK_URL}"
+          RAW_WEBHOOK="${SLACK_DEPLOY_WEBHOOK_URL:-$SLACK_WEBHOOK_URL}"
+          WEBHOOK=$(echo "$RAW_WEBHOOK" | tr -d '\r\n ' | xargs)
           if [[ -z "$WEBHOOK" ]]; then
             echo "SLACK_DEPLOY_WEBHOOK_URL / SLACK_WEBHOOK_URL secret is not configured; skipping Slack notification."
             exit 0
           fi
 
-          LOG_URL="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-          REPO_URL="https://github.com/${{ github.repository }}"
-          BRANCH="${{ github.ref_name }}"
-          ACTOR="${{ github.actor }}"
-          COMMIT_SHA="$(echo "${{ github.sha }}" | cut -c1-7)"
-          COMMIT_MSG=$(echo "${{ github.event.head_commit.message }}" | head -n 1 | sed 's/"/\\"/g')
-          DURATION="${{ steps.deploy_summary.outputs.duration }}"
-          FAILED_STEP="${{ steps.deploy_summary.outputs.failed_step }}"
-          REASON="${{ steps.deploy_summary.outputs.reason }}"
+          LOG_URL="https://github.com/${GITHUB_REPO}/actions/runs/${GITHUB_RUN_ID}"
+          REPO_URL="https://github.com/${GITHUB_REPO}"
+          BRANCH="${GITHUB_REF_NAME}"
+          ACTOR="${GITHUB_ACTOR}"
+          COMMIT_SHA="$(echo "${GITHUB_SHA}" | cut -c1-7)"
+          COMMIT_MSG=$(echo "${EVENT_COMMIT_MSG}" | head -n 1 | sed 's/["\\]/\\&/g')
 
-          if [[ "${{ job.status }}" == "success" ]]; then
+          if [[ "${JOB_STATUS}" == "success" ]]; then
             COLOR="#2eb886"
             TITLE=":large_green_circle: Deployment succeeded for ionXtech (${BRANCH})"
             STATUS_TEXT="SUCCESS (Production Deployed)"

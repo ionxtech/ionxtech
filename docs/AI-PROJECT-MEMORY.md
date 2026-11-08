@@ -559,7 +559,22 @@ This section documents features from the original website that were explicitly r
   - **ionXapps Catalog (`/apps/`):**
     - Reverted to the comprehensive technical Knowledge Panel format: APP numbers, Category tag, Package ID, Data Architecture, Offline mode indicator, specs table, Google Play button, and Privacy Policy button.
 
-### 2026-10-27 (Session 5)
+### 2026-11-09 (Session 6)
+- **CI/CD Pipeline Consolidation & GitHub Pages Automation Fix:**
+  - Resolved duplicate workflow runs on deployment (`pages build and deployment` + `deploy.yml`). Switched GitHub Pages deployment source from `build_type: legacy` to `build_type: workflow` via GitHub API, ensuring only a single deployment workflow runs on push to `main`.
+  - Fixed Slack deployment alert failure (`curl: (3) URL rejected: Port number was not a decimal number between 0 and 65535`):
+    - Re-set GitHub Actions secret `SLACK_DEPLOY_WEBHOOK_URL` cleanly using `--body` to eliminate carriage returns introduced by PowerShell pipeline streaming.
+    - Sanitized the webhook URL defensively in bash (`tr -d '\r\n ' | xargs`).
+    - Parameterized all GitHub Actions contextual fields (`COMMIT_MSG`, `ACTOR`, `BRANCH`, etc.) through workflow step `env` mapping to avoid bash argument injection and quoting errors.
+- **Mobile Footer Redesign:**
+  - Placed `ionXtech` brand logo and social links side-by-side on the top row (`grid-template-areas: "brand socials" "tagline tagline" "nav nav"`).
+  - Aligned mobile footer navigation links (`About`, `Our Team`, `Careers`, `FAQs`, `Contact Us`) onto a single horizontal line with `flex-wrap: nowrap` and `overflow-x: auto`.
+- **Zero-Scroll Waitlist Layout (`domains.html`, `hosting.html`):**
+  - Optimized viewport dimensions and responsive spacing so waitlist pages display entirely within a single viewport without scrolling on desktop screens.
+- **Homepage Product Showcase Alignment:**
+  - Balanced 2-column showcase pairing Keka Work Time Tracker with ionXlinks (URL Shortener).
+
+### 2026-11-08 (Session 5)
 - **App Showcase Cards Redesigned for High-End Professional Presentation:**
   - Removed technical clutter from app cards: "APP 01" badge, category pill (e.g. "Security & Privacy Utility"), data architecture item, package ID, offline mode item, and footer hints ("Click panel for full specs & FAQs" / "View Details").
   - Increased app logo size to `68px x 68px` with proportional larger title typography (`1.55rem`, weight 800) for balanced visual hierarchy.
