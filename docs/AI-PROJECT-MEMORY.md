@@ -268,15 +268,14 @@ This section documents features from the original website that were explicitly r
   - Added direct external CTA `Launch ionXlinks ↗` linking to `https://links.ionxtech.in` and internal CTA `Learn More` linking to `services.html`.
   - Added `WebApplication` Schema.org JSON-LD structured data for `ionXlinks` in `index.html` to help Google and Bing index and associate the microservice with the primary domain knowledge graph.
   - Updated home page `<meta name="description">` and `<meta name="keywords">` to include `Keka Work Time Tracker`, `ionXlinks`, `URL shortener`, and `links.ionxtech.in`.
-- **Automated Production Deployment Verification & Slack Alert Pipeline:**
-  - Created `.github/workflows/deploy.yml` triggering on push to `main` (and `workflow_dispatch`).
-  - Added live health verification step testing `https://ionxtech.in/` (HTTP 200 OK).
-  - Integrated automatic IndexNow search engine URL submission (`node assets/js/submit-indexnow.mjs`).
-  - Created zero-dependency Node.js notification script `assets/js/send-slack-alert.mjs` matching the Block Kit design system of `URL-shortner`:
-    - Forest Green (`#1B4332`) / Red (`#E01E5A`) color bar
-    - Dynamic fields: Service, Status, Branch, Commit SHA/Message, Author, Duration, Production URL, and Live Health Check
-    - Action buttons: `Open ionXtech`, `View Run Logs`, `GitHub Repo`, and `Open ionXlinks`
-    - Seamlessly authenticated via dedicated GitHub Actions Secret `SLACK_DEPLOY_WEBHOOK_URL` (with fallback to `SLACK_WEBHOOK_URL`), keeping deployment notifications isolated from form/waitlist alerts.
+- **Automated Production Deployment & Slack Alert Pipeline (Consolidated Single Workflow):**
+  - Copied the exact deployment notification mechanism from `C:\Users\Lenovo\ionxtech\URL-shortner\.github\workflows\deploy.yml`:
+    - Evaluates `duration`, `failed_step`, and `reason` diagnostics in a dedicated summary step.
+    - Generates Slack Block Kit payload via `cat > slack_deploy_payload.json` and posts directly via `curl -sS -X POST ... "$WEBHOOK"`.
+    - Resolves the webhook in bash (`WEBHOOK="${SLACK_DEPLOY_WEBHOOK_URL:-$SLACK_WEBHOOK_URL}"`), completely eliminating expression-level boolean coercion errors.
+    - Includes interactive buttons (`View Logs`, `Open Repo`, `Open ionXtech`).
+  - Switched GitHub Pages `build_type` from `legacy` to `workflow` via GitHub API (`gh api -X PUT repos/ionxtech/ionxtech/pages -F "build_type=workflow"`).
+  - Consolidated deployment into **one single pipeline** (`deploy.yml` with `actions/configure-pages@v5`, `actions/upload-pages-artifact@v3`, `actions/deploy-pages@v4`, and IndexNow submission), eliminating the duplicate `pages-build-deployment` workflow run from the GitHub Actions tab.
 - **Single-Screen No-Scroll Waitlist Pages (`domains.html` & `hosting.html`):**
   - Re-established `height: 100vh; height: 100dvh; overflow: hidden;` across `body.waitlist-page` in both `assets/css/style.css` and `assets/js/layout.js` (`renderWaitlistComingSoon`).
   - Optimized the vertical proportions to comfortably fit all screen heights without scrolling:
