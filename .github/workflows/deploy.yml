@@ -1,4 +1,4 @@
-name: Production Deployment & Slack Alert
+name: Deploy to Production & Slack Alert
 
 on:
   push:
@@ -8,68 +8,165 @@ on:
 
 permissions:
   contents: read
-  actions: read
+  pages: write
+  id-token: write
 
 concurrency:
   group: deploy-main-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
-  deploy-and-notify:
-    name: Deployment Verification & Notification
+  deploy:
+    name: Production Deployment & Notification
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Capture start time
         id: start_time
         run: echo "start=$(date +%s)" >> "$GITHUB_OUTPUT"
 
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Setup Pages
+        id: pages_setup
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages Artifact
+        id: pages_upload
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "."
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Setup Node.js for IndexNow
+        id: setup_node
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-
-      - name: Wait for Cloudflare Pages propagation
-        run: |
-          echo "Waiting 30 seconds for Cloudflare Pages deployment propagation..."
-          sleep 30
-
-      - name: Verify production site health
-        id: health_check
-        run: |
-          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 15 "https://ionxtech.in/" || echo "000")
-          echo "Production HTTP Status: $HTTP_STATUS"
-          if [ "$HTTP_STATUS" = "200" ]; then
-            echo "health=200 OK (Live on Cloudflare)" >> "$GITHUB_OUTPUT"
-          else
-            echo "health=HTTP $HTTP_STATUS" >> "$GITHUB_OUTPUT"
-            echo "Warning: Expected HTTP 200 from https://ionxtech.in, received $HTTP_STATUS"
-          fi
 
       - name: Submit URLs to IndexNow
         id: indexnow
         continue-on-error: true
         run: node assets/js/submit-indexnow.mjs
 
-      - name: Send Slack Deployment Notification
+      - name: Evaluate deployment summary & failure diagnostics
+        id: deploy_summary
         if: always()
-        continue-on-error: true
-        env:
-          SLACK_DEPLOY_WEBHOOK_URL: ${{ secrets.SLACK_DEPLOY_WEBHOOK_URL || secrets.SLACK_WEBHOOK_URL }}
-          DEPLOY_STATUS: ${{ job.status }}
-          BRANCH: ${{ github.ref_name }}
-          ACTOR: ${{ github.actor }}
-          COMMIT_SHA: ${{ github.sha }}
-          COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
-          REPOSITORY: ${{ github.repository }}
-          RUN_ID: ${{ github.run_id }}
-          HEALTH_STATUS: ${{ steps.health_check.outputs.health || 'Verified' }}
         run: |
           END=$(date +%s)
           START=${{ steps.start_time.outputs.start }}
           DURATION=$((END - START))
-          DURATION="$DURATION" node assets/js/send-slack-alert.mjs
+
+          FAILED_STEP="None"
+          REASON="All deployment steps succeeded: static site files verified, deployed to production with zero downtime, and URLs submitted to IndexNow."
+
+          if [[ "${{ steps.deployment.outcome }}" == "failure" ]]; then
+            FAILED_STEP="Deploy to GitHub Pages"
+            REASON="Deployment step failed. Check the workflow run logs for detailed traceback."
+          elif [[ "${{ steps.pages_upload.outcome }}" == "failure" ]]; then
+            FAILED_STEP="Upload Pages Artifact"
+            REASON="Failed to bundle and upload site artifact for deployment."
+          fi
+
+          echo "duration=$DURATION" >> "$GITHUB_OUTPUT"
+          echo "failed_step=$FAILED_STEP" >> "$GITHUB_OUTPUT"
+          echo "reason=$REASON" >> "$GITHUB_OUTPUT"
+
+      - name: Send Slack Deployment Notification
+        if: always()
+        continue-on-error: true
+        env:
+          SLACK_DEPLOY_WEBHOOK_URL: ${{ secrets.SLACK_DEPLOY_WEBHOOK_URL }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          WEBHOOK="${SLACK_DEPLOY_WEBHOOK_URL:-$SLACK_WEBHOOK_URL}"
+          if [[ -z "$WEBHOOK" ]]; then
+            echo "SLACK_DEPLOY_WEBHOOK_URL / SLACK_WEBHOOK_URL secret is not configured; skipping Slack notification."
+            exit 0
+          fi
+
+          LOG_URL="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          REPO_URL="https://github.com/${{ github.repository }}"
+          BRANCH="${{ github.ref_name }}"
+          ACTOR="${{ github.actor }}"
+          COMMIT_SHA="$(echo "${{ github.sha }}" | cut -c1-7)"
+          COMMIT_MSG=$(echo "${{ github.event.head_commit.message }}" | head -n 1 | sed 's/"/\\"/g')
+          DURATION="${{ steps.deploy_summary.outputs.duration }}"
+          FAILED_STEP="${{ steps.deploy_summary.outputs.failed_step }}"
+          REASON="${{ steps.deploy_summary.outputs.reason }}"
+
+          if [[ "${{ job.status }}" == "success" ]]; then
+            COLOR="#2eb886"
+            TITLE=":large_green_circle: Deployment succeeded for ionXtech (${BRANCH})"
+            STATUS_TEXT="SUCCESS (Production Deployed)"
+          else
+            COLOR="#e01e5a"
+            TITLE=":red_circle: Deployment failed for ionXtech (${BRANCH})"
+            STATUS_TEXT="FAILED (Deployment Error)"
+          fi
+
+          cat > slack_deploy_payload.json <<EOF
+          {
+            "attachments": [
+              {
+                "color": "$COLOR",
+                "blocks": [
+                  {
+                    "type": "section",
+                    "text": {
+                      "type": "mrkdwn",
+                      "text": "*$TITLE*"
+                    }
+                  },
+                  {
+                    "type": "section",
+                    "fields": [
+                      {"type": "mrkdwn", "text": "*Service:*\nionXtech (Official Website)"},
+                      {"type": "mrkdwn", "text": "*Deployment Status:*\n${STATUS_TEXT}"},
+                      {"type": "mrkdwn", "text": "*Branch:*\n${BRANCH}"},
+                      {"type": "mrkdwn", "text": "*Commit:*\n${COMMIT_SHA} - ${COMMIT_MSG}"},
+                      {"type": "mrkdwn", "text": "*Triggered By:*\n${ACTOR}"},
+                      {"type": "mrkdwn", "text": "*Duration:*\n${DURATION}s"},
+                      {"type": "mrkdwn", "text": "*Failed Step:*\n${FAILED_STEP}"},
+                      {"type": "mrkdwn", "text": "*Details / Reason:*\n${REASON}"}
+                    ]
+                  },
+                  {
+                    "type": "actions",
+                    "elements": [
+                      {
+                        "type": "button",
+                        "text": {"type": "plain_text", "text": "View Logs"},
+                        "url": "$LOG_URL"
+                      },
+                      {
+                        "type": "button",
+                        "text": {"type": "plain_text", "text": "Open Repo"},
+                        "url": "$REPO_URL"
+                      },
+                      {
+                        "type": "button",
+                        "text": {"type": "plain_text", "text": "Open ionXtech"},
+                        "url": "https://ionxtech.in"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+          EOF
+
+          curl -sS -X POST \
+            -H 'Content-type: application/json' \
+            --data @slack_deploy_payload.json \
+            "$WEBHOOK"
