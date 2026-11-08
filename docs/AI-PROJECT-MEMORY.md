@@ -272,6 +272,10 @@ This section documents features from the original website that were explicitly r
   - Fixed waitlist footer overlap on `domains.html` and `hosting.html` by changing `.waitlist-viewport` from `height: 100vh; overflow: hidden;` to `min-height: 100vh; overflow-y: auto;`.
   - Updated `services.html` (`ionXlinks - URL Shortener & Dynamic QR Generator` with real-user non-technical use-case cards and `Domain Name & Hosting Information`), `team.html` (removed subtitle and photo border), `about.html` (removed `PRINCIPLE 01`–`04` labels), and `careers.html` (removed numbered eyebrow labels, added a **Software Developer (Web & Cloud Services)** opening, and updated `165,000+` to `15,000+`).
   - Integrated the `ionXlinks` microservice (`https://links.ionxtech.in/`, `/login`, `/register`, `/forgot-password`) into `sitemap.xml` and `robots.txt`, and created matching `sitemap.xml` and `robots.txt` inside `C:\Users\Lenovo\ionxtech\URL-shortner\apps\dashboard\public\`.
+  - Implemented **IndexNow** (`https://www.indexnow.org/documentation`) across both `ionxtech.in` and `links.ionxtech.in`:
+    - Created root UTF-8 verification key files (`e4a9b2c7d8f1463095b8c2a7e1f4d609.txt`) in `c:\Users\Lenovo\ionxtech\ionxtech\` and `C:\Users\Lenovo\ionxtech\URL-shortner\apps\dashboard\public\`.
+    - Created zero-dependency IndexNow submission script `assets/js/submit-indexnow.mjs` that parses `sitemap.xml`, groups URLs by host (`ionxtech.in` and `links.ionxtech.in`), and submits bulk JSON POST payloads to `https://api.indexnow.org/indexnow`.
+    - Added GitHub Actions workflow `.github/workflows/indexnow.yml` to automatically notify IndexNow search engines on `main` branch updates or manual dispatch.
 
 ### 2026-10-31 (Session 27)
 - **Mobile "View All Apps" Placement & 3-Line (`☰` -> `✕`) Mobile Navigation Toggle:**
