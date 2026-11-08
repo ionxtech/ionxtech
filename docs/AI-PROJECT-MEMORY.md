@@ -566,6 +566,7 @@ This section documents features from the original website that were explicitly r
     - Re-set GitHub Actions secret `SLACK_DEPLOY_WEBHOOK_URL` cleanly using `--body` to eliminate carriage returns introduced by PowerShell pipeline streaming.
     - Sanitized the webhook URL defensively in bash (`tr -d '\r\n ' | xargs`).
     - Parameterized all GitHub Actions contextual fields (`COMMIT_MSG`, `ACTOR`, `BRANCH`, etc.) through workflow step `env` mapping to avoid bash argument injection and quoting errors.
+    - Updated Slack alert block fields: replaced bulky `Details / Reason:` and `Failed Step:` with compact and informative `Production URL: https://ionxtech.in` and `Health Check: 200 OK (Live on Cloudflare)` with live curl HTTP status evaluation.
 - **Mobile Footer Redesign:**
   - Placed `ionXtech` brand logo and social links side-by-side on the top row (`grid-template-areas: "brand socials" "tagline tagline" "nav nav"`).
   - Aligned mobile footer navigation links (`About`, `Our Team`, `Careers`, `FAQs`, `Contact Us`) onto a single horizontal line with `flex-wrap: nowrap` and `overflow-x: auto`.
