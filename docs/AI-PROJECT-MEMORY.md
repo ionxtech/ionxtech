@@ -262,6 +262,22 @@ This section documents features from the original website that were explicitly r
 
 ## 10. Decision Log
 
+### 2026-11-09 (Session 29)
+- **Home Page URL Shortener & Dynamic QR Generator Integration for SEO:**
+  - Added a dedicated showcase card for **`ionXlinks — URL Shortener`** directly alongside **`Keka Work Time Tracker`** on the home page (`index.html`) in a symmetrical 2-column `.app-grid` under the section heading `Featured Chrome Extension & URL Shortener`.
+  - Added direct external CTA `Launch ionXlinks ↗` linking to `https://links.ionxtech.in` and internal CTA `Learn More` linking to `services.html`.
+  - Added `WebApplication` Schema.org JSON-LD structured data for `ionXlinks` in `index.html` to help Google and Bing index and associate the microservice with the primary domain knowledge graph.
+  - Updated home page `<meta name="description">` and `<meta name="keywords">` to include `Keka Work Time Tracker`, `ionXlinks`, `URL shortener`, and `links.ionxtech.in`.
+- **Automated Production Deployment Verification & Slack Alert Pipeline:**
+  - Created `.github/workflows/deploy.yml` triggering on push to `main` (and `workflow_dispatch`).
+  - Added live health verification step testing `https://ionxtech.in/` (HTTP 200 OK).
+  - Integrated automatic IndexNow search engine URL submission (`node assets/js/submit-indexnow.mjs`).
+  - Created zero-dependency Node.js notification script `assets/js/send-slack-alert.mjs` matching the Block Kit design system of `URL-shortner`:
+    - Forest Green (`#1B4332`) / Red (`#E01E5A`) color bar
+    - Dynamic fields: Service, Status, Branch, Commit SHA/Message, Author, Duration, Production URL, and Live Health Check
+    - Action buttons: `Open ionXtech`, `View Run Logs`, `GitHub Repo`, and `Open ionXlinks`
+    - Seamlessly authenticated via GitHub Actions Secret `SLACK_WEBHOOK_URL`.
+
 ### 2026-11-08 (Session 28)
 - **Keka Work Time Tracker Chrome Extension, Forest Green X Brand Logo, OG Link Previews, Standardized `/apps/{app}/privacy-policy.html` Routes, Mobile UI Fixes, Waitlist Footer Fix & `ionXlinks` Sitemap Integration:**
   - Added **Keka Work Time Tracker** (`https://github.com/ARSN72/WorkHour`) under a dedicated **Chrome Extensions** category on `/apps/` (`apps/index.html`, `assets/js/site-data.js`, `assets/js/layout.js`), created its dedicated detail page (`apps/keka-work-time-tracker/index.html`) and privacy policy (`apps/keka-work-time-tracker/privacy-policy.html`), and featured it on the home page (`index.html`) below the `15,000+` counter.

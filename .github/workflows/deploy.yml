@@ -1,0 +1,75 @@
+name: Production Deployment & Slack Alert
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: deploy-main-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  deploy-and-notify:
+    name: Deployment Verification & Notification
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Capture start time
+        id: start_time
+        run: echo "start=$(date +%s)" >> "$GITHUB_OUTPUT"
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Wait for Cloudflare Pages propagation
+        run: |
+          echo "Waiting 30 seconds for Cloudflare Pages deployment propagation..."
+          sleep 30
+
+      - name: Verify production site health
+        id: health_check
+        run: |
+          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" --max-time 15 "https://ionxtech.in/" || echo "000")
+          echo "Production HTTP Status: $HTTP_STATUS"
+          if [ "$HTTP_STATUS" = "200" ]; then
+            echo "health=200 OK (Live on Cloudflare)" >> "$GITHUB_OUTPUT"
+          else
+            echo "health=HTTP $HTTP_STATUS" >> "$GITHUB_OUTPUT"
+            echo "Warning: Expected HTTP 200 from https://ionxtech.in, received $HTTP_STATUS"
+          fi
+
+      - name: Submit URLs to IndexNow
+        id: indexnow
+        continue-on-error: true
+        run: node assets/js/submit-indexnow.mjs
+
+      - name: Send Slack Deployment Notification
+        if: always()
+        continue-on-error: true
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          DEPLOY_STATUS: ${{ job.status }}
+          BRANCH: ${{ github.ref_name }}
+          ACTOR: ${{ github.actor }}
+          COMMIT_SHA: ${{ github.sha }}
+          COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
+          REPOSITORY: ${{ github.repository }}
+          RUN_ID: ${{ github.run_id }}
+          HEALTH_STATUS: ${{ steps.health_check.outputs.health || 'Verified' }}
+        run: |
+          END=$(date +%s)
+          START=${{ steps.start_time.outputs.start }}
+          DURATION=$((END - START))
+          DURATION="$DURATION" node assets/js/send-slack-alert.mjs
