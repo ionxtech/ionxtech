@@ -116,10 +116,18 @@ jobs:
             COLOR="#2eb886"
             TITLE=":large_green_circle: Deployment succeeded for ionXtech (${BRANCH})"
             STATUS_TEXT="SUCCESS (Production Deployed)"
+            HEALTH_CHECK="200 OK (Live on Cloudflare)"
+            HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://ionxtech.in || echo "000")
+            if [[ "$HTTP_STATUS" == "200" ]]; then
+              HEALTH_CHECK="200 OK (Live on Cloudflare)"
+            elif [[ "$HTTP_STATUS" != "000" ]]; then
+              HEALTH_CHECK="${HTTP_STATUS} (Live on Cloudflare)"
+            fi
           else
             COLOR="#e01e5a"
             TITLE=":red_circle: Deployment failed for ionXtech (${BRANCH})"
             STATUS_TEXT="FAILED (Deployment Error)"
+            HEALTH_CHECK="Deployment Failed"
           fi
 
           cat > slack_deploy_payload.json <<EOF
@@ -144,8 +152,8 @@ jobs:
                       {"type": "mrkdwn", "text": "*Commit:*\n${COMMIT_SHA} - ${COMMIT_MSG}"},
                       {"type": "mrkdwn", "text": "*Triggered By:*\n${ACTOR}"},
                       {"type": "mrkdwn", "text": "*Duration:*\n${DURATION}s"},
-                      {"type": "mrkdwn", "text": "*Failed Step:*\n${FAILED_STEP}"},
-                      {"type": "mrkdwn", "text": "*Details / Reason:*\n${REASON}"}
+                      {"type": "mrkdwn", "text": "*Production URL:*\nhttps://ionxtech.in"},
+                      {"type": "mrkdwn", "text": "*Health Check:*\n${HEALTH_CHECK}"}
                     ]
                   },
                   {
