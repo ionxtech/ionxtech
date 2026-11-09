@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.ionxtech.callscheduler",
+      "sha256_cert_fingerprints": [
+        "40:76:0C:AE:4E:C3:64:CB:51:E0:41:F7:50:F3:2C:4A:23:93:50:39:C9:E4:91:78:17:92:33:C2:F1:81:C5:7C"
+      ]
+    }
+  }
+]

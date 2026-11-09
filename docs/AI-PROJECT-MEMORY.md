@@ -253,6 +253,7 @@ This section documents features from the original website that were explicitly r
 | Constraint | Details |
 | :--------- | :------ |
 | **No build step** | The site deploys as raw static files to Cloudflare (`ionxtech.in`). No webpack, no Vite, no Astro. |
+| **NO automatic GitHub push** | **NEVER push to GitHub or create/merge pull requests automatically.** All changes must be built, tested, and validated locally ONLY. Pushing to GitHub requires explicit instruction and permission from the user. |
 | **Serverless form storage** | No PHP or Node.js server. Contact Us and Waitlist forms post to a Cloudflare Worker (`assets/js/cloudflare-r2-worker.js`) bound to Cloudflare R2 (`IONX_BUCKET`) and Slack (`SLACK_WEBHOOK_URL`). |
 | **Image filenames with spaces** | `QR Solution Logo.webp` and `QR Solution.webp` have spaces in their filenames. This is legacy and works, but new images should use hyphens. |
 | **Logo filename casing** | The logo file is `IonXtech.webp` (capital I). This cannot be renamed as it's referenced externally. |
@@ -261,6 +262,10 @@ This section documents features from the original website that were explicitly r
 ---
 
 ## 10. Decision Log
+
+### 2026-11-09 (Session 30)
+- **Android Digital Asset Links for Auto Call Scheduler:**
+  - Added `.well-known/assetlinks.json` at the site root for `com.ionxtech.callscheduler`, declaring URL handling and login credential sharing for the supplied SHA-256 signing certificate fingerprint.
 
 ### 2026-11-09 (Session 29)
 - **Home Page URL Shortener & Dynamic QR Generator Integration for SEO:**
