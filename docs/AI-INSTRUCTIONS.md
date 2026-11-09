@@ -52,6 +52,7 @@ ionXtech is an Indian technology startup headquartered in Indore, Madhya Pradesh
 - **Test mobile responsiveness.** The CSS is designed for desktop-first with breakpoints at 960px, 768px, and 480px.
 
 ### DO NOT
+- **Do NOT push to GitHub automatically.** NEVER run `git push`, create PRs, or trigger remote CI/CD deployments without the user's explicit request and permission. Always build, test, and verify changes locally only.
 - **Do NOT install npm, Node.js frameworks, React, Astro, or any build tooling.** This is a zero-dependency static site deployed directly to Cloudflare.
 - **Do NOT use Lucide Icons, FontAwesome, or any icon library.** The design is intentionally icon-free and typographic.
 - **Do NOT use emojis** anywhere in the rendered website.
