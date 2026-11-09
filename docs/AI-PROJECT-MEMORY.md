@@ -263,6 +263,11 @@ This section documents features from the original website that were explicitly r
 
 ## 10. Decision Log
 
+### 2026-11-09 (Session 31)
+- **404 Recovery Links and Nested-Path Assets:**
+  - Changed the 404 page's navigation, stylesheets, scripts, icons, and `data-root` to root-relative URLs so a 404 served from a nested path such as `/.well-known/assetlinks.json` does not send users to nested `index.html` or `apps/` URLs or lose its styling.
+  - Confirmed the assetlinks file was pushed to `feature/website-v2`, while the production deployment workflow runs only on `main`; the file must reach `main` for the live endpoint to update.
+
 ### 2026-11-09 (Session 30)
 - **Android Digital Asset Links for Auto Call Scheduler:**
   - Added `.well-known/assetlinks.json` at the site root for `com.ionxtech.callscheduler`, declaring URL handling and login credential sharing for the supplied SHA-256 signing certificate fingerprint.
