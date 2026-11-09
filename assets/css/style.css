@@ -1363,10 +1363,29 @@ footer {
     text-align: right;
 }
 
+.footer-legal-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.footer-legal-links a:hover {
+    color: var(--text-primary);
+    text-decoration: underline;
+}
+
+.footer-legal-links .footer-dot {
+    margin: 0 8px;
+    opacity: 0.5;
+}
+
 @media (max-width: 768px) {
     .footer-bottom .bottom-left,
     .footer-bottom .bottom-right {
         font-size: 0.75rem;
+    }
+    .footer-legal-links .footer-dot {
+        margin: 0 4px;
     }
 }
 

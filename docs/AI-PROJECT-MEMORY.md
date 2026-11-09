@@ -560,6 +560,13 @@ This section documents features from the original website that were explicitly r
     - Reverted to the comprehensive technical Knowledge Panel format: APP numbers, Category tag, Package ID, Data Architecture, Offline mode indicator, specs table, Google Play button, and Privacy Policy button.
 
 ### 2026-11-09 (Session 6)
+- **Google OAuth Compliance & Master Legal Documentation:**
+  - Expanded `privacy-policy/index.html` from a basic directory card list into the comprehensive Master Privacy Policy for ionXtech, digital services, and Google OAuth integrations.
+  - Added mandatory **Google API Services User Data Policy / Limited Use Disclosure** explicitly adhering to Google requirements for OAuth verification.
+  - Included detailed Google OAuth scopes handling (name, email, profile picture), zero data monetization disclosure, and user data deletion/revocation instructions (`myaccount.google.com/permissions` and `privacy@ionxtech.in`).
+  - Created root `privacy.html` mirroring `privacy-policy/index.html` with canonical link to prevent 404 on `/privacy` / `/privacy.html`.
+  - Updated `terms.html` to formal "Terms of Service" governing Google OAuth authentication, session security, and third-party API compliance.
+  - Added persistent `Privacy Policy` and `Terms of Service` links to `.footer-bottom` across all desktop and mobile pages.
 - **CI/CD Pipeline Consolidation & GitHub Pages Automation Fix:**
   - Resolved duplicate workflow runs on deployment (`pages build and deployment` + `deploy.yml`). Switched GitHub Pages deployment source from `build_type: legacy` to `build_type: workflow` via GitHub API, ensuring only a single deployment workflow runs on push to `main`.
   - Fixed Slack deployment alert failure (`curl: (3) URL rejected: Port number was not a decimal number between 0 and 65535`):

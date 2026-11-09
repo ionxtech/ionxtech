@@ -83,8 +83,12 @@
                 '</div>' +
             '</div>' +
             '<div class="container footer-bottom">' +
-                '<div class="bottom-left">&copy; 2025 - 2026</div>' +
-                '<div class="bottom-right">ionXtech. All rights reserved.</div>' +
+                '<div class="bottom-left">&copy; 2025 - 2026 ionXtech. All rights reserved.</div>' +
+                '<div class="bottom-right footer-legal-links">' +
+                    '<a href="' + rootPath + 'privacy-policy/">Privacy Policy</a>' +
+                    '<span class="footer-dot">&bull;</span>' +
+                    '<a href="' + rootPath + 'terms.html">Terms of Service</a>' +
+                '</div>' +
             '</div>'
         );
     }
