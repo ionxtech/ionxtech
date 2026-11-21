@@ -42,6 +42,7 @@ ionXtech is an Indian technology startup headquartered in Indore, Madhya Pradesh
 
 ### DO
 - **Always read `docs/AI-PROJECT-MEMORY.md`** before making changes. It records every architectural decision and convention agreed upon with the project owner.
+- **Read `docs/DESIGN-SYSTEM.md`** before making visual or layout changes. It summarizes the current palette, typography, page flow, and design constraints.
 - **Mandatory Ownership - Keep Memory Updated:** Whenever you make ANY code, design, layout, or content modification in the project, **it is your direct ownership to immediately update `docs/AI-PROJECT-MEMORY.md`** under the Decision Log and relevant sections. This guarantees seamless knowledge transfer to subsequent developers and AI assistants.
 - **Use the reusable component system.** Header, footer, app knowledge panels, FAQ lists, division rows, and metrics are all rendered by `layout.js` from `site-data.js`. Never hardcode these into individual pages.
 - **Add new apps or content by editing `site-data.js` only.** The templates in `layout.js` will pick them up automatically.

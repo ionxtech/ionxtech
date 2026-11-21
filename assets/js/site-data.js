@@ -502,6 +502,83 @@ window.IONX_DATA = {
                     answer: "You can download, inspect, and install the extension from the official GitHub repository at https://github.com/ARSN72/WorkHour."
                 }
             ]
+        },
+        {
+            id: "block-crazy",
+            order: 5,
+            name: "Block Craze",
+            developer: "Maheen Shaikh (ionXtech)",
+            tagline: "Vibrant Classic Block Puzzle Brain Game for Android",
+            category: "Puzzle Game",
+            packageId: "com.ionxtech.blockcraze",
+            rating: "4.8 / 5.0",
+            ratingValue: "4.8",
+            ratingCount: "850",
+            downloads: "1K+",
+            dataPolicy: "Local on-device storage & AdMob",
+            offlineSupport: "100% Offline gameplay supported",
+            androidVersion: "Android 8.0 and up",
+            logo: "assets/images/BlockCrazeLogo.webp",
+            logoAlt: "Block Craze Android puzzle game logo by Maheen Shaikh (ionXtech)",
+            banner: "assets/images/BlockCrazeLogo.webp",
+            bannerAlt: "Block Craze block puzzle game interface by Maheen Shaikh (ionXtech)",
+            pageSlug: "apps/block-crazy/",
+            privacySlug: "apps/block-crazy/privacy-policy.html",
+            playStoreUrl: "https://play.google.com/store/apps/details?id=com.ionxtech.blockcraze",
+            shortDescription: "Addictive and relaxing classic block puzzle game. Match colored tetromino blocks, clear lines, and beat high scores with 100% offline gameplay.",
+            overview: [
+                "Block Craze is a vibrant, brain-teasing puzzle game developed by Maheen Shaikh and published by ionXtech for Android. Designed for all ages, it brings a fresh visual polish to classic drag-and-drop block fitting mechanics without bloated loading times or intrusive permissions.",
+                "Whether you have two minutes or two hours, challenge your spatial reasoning by fitting colorful blocks onto the grid to clear horizontal and vertical lines. The game runs 100% offline with zero account registration, storing all high scores and theme preferences directly on your device."
+            ],
+            features: [
+                {
+                    title: "Classic Grid Fitting Mechanics",
+                    description: "Drag and place randomized block shapes onto the 8x8 grid to complete full rows and columns for satisfying board clears."
+                },
+                {
+                    title: "Strategic Combo Streaks",
+                    description: "Clear multiple lines in a single move or chain consecutive clears to trigger massive combo multipliers and high score streaks."
+                },
+                {
+                    title: "100% Offline Playability",
+                    description: "Play anywhere without an active Wi-Fi or mobile data connection. All game physics, animations, and scoring execute locally on your phone."
+                },
+                {
+                    title: "Smooth 60 FPS & Battery Efficient",
+                    description: "Lightweight APK footprint optimized for smooth frame rates, responsive touch feedback, and minimal battery consumption."
+                }
+            ],
+            specs: [
+                { label: "Application Name", value: "Block Craze" },
+                { label: "Developer", value: "Maheen Shaikh (ionXtech)" },
+                { label: "Package Identifier", value: "com.ionxtech.blockcraze" },
+                { label: "Category", value: "Puzzle / Brain Game" },
+                { label: "Data Storage", value: "100% Local On-Device Storage" },
+                { label: "Network Requirement", value: "100% Offline Supported" },
+                { label: "Target Platform", value: "Android 8.0+ (API 36 Ready)" }
+            ],
+            faqs: [
+                {
+                    question: "What is Block Craze?",
+                    answer: "Block Craze is an engaging and relaxing classic block puzzle game developed by Maheen Shaikh (ionXtech) for Android where you place colorful geometric blocks onto a grid to clear rows and columns."
+                },
+                {
+                    question: "Can I play Block Craze offline?",
+                    answer: "Yes. Block Craze is 100% playable offline without Wi-Fi or mobile data. All core grid mechanics, combo logic, and high score tracking run locally on your device."
+                },
+                {
+                    question: "Does Block Craze require an account or registration?",
+                    answer: "No. There is zero account registration or sign-in required. You can start playing immediately upon opening the game."
+                },
+                {
+                    question: "Where are my high scores saved?",
+                    answer: "All high scores, unlocked themes, and game preferences are stored exclusively in your device's local app storage and can be cleared in Android Settings."
+                },
+                {
+                    question: "Does Block Craze collect personal data or track location?",
+                    answer: "No. The game does not collect personal data, contacts, or precise location. Optional rewarded video ads are served via Google AdMob adhering to Google Play policies."
+                }
+            ]
         }
     ],
 
