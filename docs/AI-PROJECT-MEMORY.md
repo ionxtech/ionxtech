@@ -263,6 +263,20 @@ This section documents features from the original website that were explicitly r
 
 ## 10. Decision Log
 
+### 2026-11-21 (Session 33)
+- **Block Craze Mobile Game Branding, Developer Attribution, Explore Other Apps Limit, and Desktop Scroll Snap Fix:**
+  - **App Name & Developer Correction:** Corrected app name to **Block Craze** (`id: "block-crazy"`, `packageId: "com.ionxtech.blockcraze"`) and developer attribution to **Maheen Shaikh (ionXtech)** across `assets/js/site-data.js`, `apps/block-crazy/index.html`, `apps/block-crazy/privacy-policy.html`, `apps/block-crazy/privacy policy.html`, `privacy-policy/block-crazy.html`, and `apps/index.html`.
+  - **Official App Icon Assets:** Extracted and converted user's official game art asset into optimized 512×512 WebP and PNG files: [`BlockCrazeLogo.webp`](file:///c:/Users/Lenovo/ionxtech/ionxtech/assets/images/BlockCrazeLogo.webp) and `BlockCrazeLogo.png` (with backward-compatible `BlockCrazyLogo.*` fallbacks).
+  - **App Detail "Explore Other Applications" 2-App Limit:** In `assets/js/layout.js` (`renderAppDetailPage`), capped `otherAppsHtml` using `.slice(0, 2)` so the "Explore Other Applications" section displays strictly 2 application cards instead of exhausting all available apps.
+  - **Desktop Scroll-Snap Bi-Directional Navigation Fix:** In `assets/js/layout.js` (`initDesktopScrollSnap`), eliminated erratic scroll-up jumps. Replaced ambiguous selector querying with 4 explicit home landmarks (`.hero`, `.home-apps-section`, `.home-extension-section`, `.home-cta-section`). Added bottom boundary detection (`window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 80`) and dynamic nearest-target distance calculation so scrolling UP smoothly transitions to the immediate previous section rather than skipping to the top.
+  - **Privacy Policies & Central Directories Updated:** Standardized all privacy policies and directory links (`privacy-policy/index.html`, `privacy.html`, `apps/index.html`) to reference **Block Craze** and **Maheen Shaikh (ionXtech)**.
+  - **Local Build & Zero Auto-Push Constraint:** Verified JavaScript syntax and validated all changes locally. Strictly adhered to the user constraint: no automatic `git push` without user permission.
+
+### 2026-11-09 (Session 32)
+- **Standalone Website Design System Guide:**
+  - Added `docs/DESIGN-SYSTEM.md` with the current Warm Paper & Ink palette, typography, responsive behavior, page flow, and design constraints for contributors and AI agents.
+  - Updated `docs/AI-INSTRUCTIONS.md` to require reading the design guide before visual or layout changes.
+
 ### 2026-11-09 (Session 31)
 - **404 Recovery Links and Nested-Path Assets:**
   - Changed the 404 page's navigation, stylesheets, scripts, icons, and `data-root` to root-relative URLs so a 404 served from a nested path such as `/.well-known/assetlinks.json` does not send users to nested `index.html` or `apps/` URLs or lose its styling.

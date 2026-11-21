@@ -333,6 +333,7 @@
 
         const otherAppsHtml = data.apps
             .filter(function (a) { return a.id !== app.id; })
+            .slice(0, 2)
             .map(function (a) {
                 return renderKnowledgePanelCard(a, rootPath);
             }).join("");
@@ -961,21 +962,45 @@
         const isDesktop = window.matchMedia("(min-width: 992px) and (hover: hover) and (pointer: fine)").matches;
         if (!isDesktop) return;
 
-        const sections = Array.from(document.querySelectorAll(".hero, .section, footer"));
+        const sections = Array.from(document.querySelectorAll(".hero, .home-apps-section, .home-extension-section, .home-cta-section"));
         if (!sections.length) return;
 
         let isAnimating = false;
         let lastWheelTime = 0;
 
         function getCurrentSectionIndex() {
-            const scrollPos = window.scrollY + 100;
-            let current = 0;
+            // If near bottom of document, active section is the final section (CTA + footer)
+            if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 80) {
+                return sections.length - 1;
+            }
+
+            if (window.scrollY <= 60) {
+                return 0;
+            }
+
+            const headerOffset = 68;
+            const currentY = window.scrollY;
+            let bestIndex = 0;
+            let minDistance = Infinity;
+
             sections.forEach(function (sec, idx) {
-                if (sec.offsetTop <= scrollPos) {
-                    current = idx;
+                let targetY;
+                if (idx === sections.length - 1) {
+                    targetY = document.documentElement.scrollHeight - window.innerHeight;
+                } else if (idx === 0) {
+                    targetY = 0;
+                } else {
+                    targetY = Math.max(0, sec.offsetTop - headerOffset);
+                }
+
+                const dist = Math.abs(currentY - targetY);
+                if (dist < minDistance) {
+                    minDistance = dist;
+                    bestIndex = idx;
                 }
             });
-            return current;
+
+            return bestIndex;
         }
 
         function scrollToSection(index) {
@@ -984,10 +1009,11 @@
             const targetSection = sections[index];
             const headerOffset = 68;
             
-            // If targeting footer or bottom CTA, scroll to bottom so both remain visible together
             let targetY;
-            if (targetSection.tagName === "FOOTER" || targetSection.classList.contains("home-cta-section")) {
+            if (index === sections.length - 1 || targetSection.classList.contains("home-cta-section")) {
                 targetY = document.documentElement.scrollHeight - window.innerHeight;
+            } else if (index === 0) {
+                targetY = 0;
             } else {
                 targetY = Math.max(0, targetSection.offsetTop - headerOffset);
             }
