@@ -88,7 +88,7 @@ window.IONX_DATA = {
             key: "services",
             title: "ionXservices",
             status: "Live Service",
-            description: "Production cloud microservices and digital utilities, featuring ionXlinks URL shortener (links.ionxtech.in), custom APIs, and managed infrastructure."
+            description: "Production cloud microservices and digital utilities, featuring Push Notifications (app.ionxtech.in/services/push), URL Shortener & QR (app.ionxtech.in/services/links), and Developer APIs (app.ionxtech.in/developer)."
         }
     ],
 

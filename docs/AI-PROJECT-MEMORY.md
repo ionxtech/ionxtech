@@ -263,6 +263,31 @@ This section documents features from the original website that were explicitly r
 
 ## 10. Decision Log
 
+### 2026-11-22 (Session 36)
+- **Google Search Console Indexing & Canonical Remediation:**
+  - **Redirect Loop & 308 Elimination:** Identified that Cloudflare Pages forces Pretty URLs (308 redirect from `.html` to clean slugs). Updated [`sitemap.xml`](file:///c:/Users/Lenovo/ionxtech/ionxtech/sitemap.xml) and all `<link rel="canonical">` tags across all 37 HTML files to clean 200 OK URLs (e.g. `/terms`, `/privacy`, `/apps/keka-work-time-tracker/privacy-policy`).
+  - **Failed Canonical Validation Fixed:** Repaired 5 broken canonical targets in `privacy-policy/*.html` that previously pointed to 404 URLs (`/qr-solution/privacy-policy.html`, etc.), repointing them directly to active `200 OK` endpoints under `/apps/{app}/privacy-policy`.
+  - **Crawl Budget Optimization:** Removed internal auth utility pages (`/login`, `/register`, `/forgot-password`) from `sitemap.xml` to prevent "Discovered - currently not indexed" crawl queue bottlenecks.
+  - **Local Validation:** Audited all 37 HTML files with automated script to verify 100% self-canonical consistency without git push.
+
+### 2026-11-22 (Session 35)
+- **Corporate JSON-LD Graph Schema, Top Navigation Login CTA & Dedicated Product Feature Blocks:**
+  - **Corporate Schema (`index.html`):** Injected official Schema.org `@graph` definition containing `Organization` (`#organization` with `logo: https://app.ionxtech.in/logo.png`, `sameAs` LinkedIn/X/GitHub, `contactPoint` support email) and `WebSite` (`#website`) linked to publisher.
+  - **Top Navigation Login Button (`assets/js/layout.js` & `assets/css/style.css`):** Replaced the "Try Our Apps" button with a high-visibility CTA `<a href="https://app.ionxtech.in/login" class="btn-primary">Login &rarr;</a>`. Added dedicated `.btn-primary` styling using Forest Green (`var(--accent)` / `#1B4332`), white text, and focus outlines.
+  - **Dedicated Product Feature CTA Blocks (`services.html` & `index.html`):**
+    - **Push Notifications Feature:** Added dedicated showcase card linking directly to `https://app.ionxtech.in/services/push`.
+    - **URL Shortener & QR Feature:** Updated feature card and home showcase card linking directly to `https://app.ionxtech.in/services/links`.
+    - **Developer APIs:** Added dedicated showcase card linking directly to `https://app.ionxtech.in/developer`.
+  - **Local Build Enforcement:** Tested JSON-LD schema parsing and JavaScript syntax locally with zero remote push.
+
+### 2026-11-22 (Session 34)
+- **Sitemap Comprehensive Update with ISO `<lastmod>` Timestamps:**
+  - Added standard `<lastmod>` ISO 8601 timestamps (`YYYY-MM-DD`) to all 29 URL nodes across [`sitemap.xml`](file:///c:/Users/Lenovo/ionxtech/ionxtech/sitemap.xml).
+  - Explicitly flagged recently updated pages (`/`, `/apps/`, `/apps/block-crazy/`, `/apps/block-crazy/privacy-policy.html`, `/privacy-policy/`, and `/privacy.html`) with the latest modification timestamp (`2026-11-22`).
+  - Calibrated change frequencies and priorities for Google OAuth compliance pages (`terms.html` updated to monthly / 0.7 priority).
+  - Verified 100% parity with [`assets/js/submit-indexnow.mjs`](file:///c:/Users/Lenovo/ionxtech/ionxtech/assets/js/submit-indexnow.mjs) for seamless production indexing.
+  - Local build enforcement: Verified XML validation and IndexNow extraction without remote push.
+
 ### 2026-11-21 (Session 33)
 - **Block Craze Mobile Game Branding, Developer Attribution, Explore Other Apps Limit, and Desktop Scroll Snap Fix:**
   - **App Name & Developer Correction:** Corrected app name to **Block Craze** (`id: "block-crazy"`, `packageId: "com.ionxtech.blockcraze"`) and developer attribution to **Maheen Shaikh (ionXtech)** across `assets/js/site-data.js`, `apps/block-crazy/index.html`, `apps/block-crazy/privacy-policy.html`, `apps/block-crazy/privacy policy.html`, `privacy-policy/block-crazy.html`, and `apps/index.html`.
