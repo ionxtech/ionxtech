@@ -27,9 +27,9 @@
     function buildHeaderHTML(data, rootPath) {
         const path = window.location.pathname.replace(/\\/g, "/");
         const isApps = path.includes("/apps/");
-        const isDomains = path.endsWith("/domains.html") || path.endsWith("/domains/");
-        const isHosting = path.endsWith("/hosting.html") || path.endsWith("/hosting/");
-        const isServices = path.endsWith("/services.html") || path.endsWith("/services/");
+        const isDomains = path.endsWith("/domains.html") || path.endsWith("/domains/") || path.endsWith("/domains");
+        const isHosting = path.endsWith("/hosting.html") || path.endsWith("/hosting/") || path.endsWith("/hosting");
+        const isServices = path.endsWith("/services.html") || path.endsWith("/services/") || path.endsWith("/services");
 
         return (
             '<div class="container navbar">' +
@@ -40,9 +40,9 @@
                 '<nav id="nav-menu" class="nav-menu" aria-label="Primary Navigation" style="margin-left: auto;">' +
                     '<ul>' +
                         '<li class="nav-item"><a href="' + rootPath + 'apps/" class="' + (isApps ? 'active' : '') + '">ionXapps</a></li>' +
-                        '<li class="nav-item"><a href="' + rootPath + 'domains.html" class="' + (isDomains ? 'active' : '') + '">ionXdomains</a></li>' +
-                        '<li class="nav-item"><a href="' + rootPath + 'hosting.html" class="' + (isHosting ? 'active' : '') + '">ionXhosting</a></li>' +
-                        '<li class="nav-item"><a href="' + rootPath + 'services.html" class="' + (isServices ? 'active' : '') + '">ionXservices</a></li>' +
+                        '<li class="nav-item"><a href="' + rootPath + 'domains" class="' + (isDomains ? 'active' : '') + '">ionXdomains</a></li>' +
+                        '<li class="nav-item"><a href="' + rootPath + 'hosting" class="' + (isHosting ? 'active' : '') + '">ionXhosting</a></li>' +
+                        '<li class="nav-item"><a href="' + rootPath + 'services" class="' + (isServices ? 'active' : '') + '">ionXservices</a></li>' +
                     '</ul>' +
                 '</nav>' +
                 '<div class="header-actions">' +
@@ -72,11 +72,11 @@
                     '<span class="footer-tagline">' + escapeHtml(data.company.tagline) + '</span>' +
                 '</div>' +
                 '<nav class="footer-company-nav" aria-label="Company Links">' +
-                    '<a href="' + rootPath + 'about.html">About</a>' +
-                    '<a href="' + rootPath + 'team.html">Our Team</a>' +
-                    '<a href="' + rootPath + 'careers.html">Careers</a>' +
-                    '<a href="' + rootPath + 'faqs.html">FAQs</a>' +
-                    '<a href="' + rootPath + 'contact.html">Contact Us</a>' +
+                    '<a href="' + rootPath + 'about">About</a>' +
+                    '<a href="' + rootPath + 'team">Our Team</a>' +
+                    '<a href="' + rootPath + 'careers">Careers</a>' +
+                    '<a href="' + rootPath + 'faqs">FAQs</a>' +
+                    '<a href="' + rootPath + 'contact">Contact Us</a>' +
                 '</nav>' +
                 '<div class="footer-socials-inline" aria-label="Connect with ionXtech on social media">' +
                     socialItems +
@@ -87,7 +87,7 @@
                 '<div class="bottom-right footer-legal-links">' +
                     '<a href="' + rootPath + 'privacy-policy/">Privacy Policy</a>' +
                     '<span class="footer-dot">&bull;</span>' +
-                    '<a href="' + rootPath + 'terms.html">Terms of Service</a>' +
+                    '<a href="' + rootPath + 'terms">Terms of Service</a>' +
                 '</div>' +
             '</div>'
         );

@@ -263,7 +263,13 @@ This section documents features from the original website that were explicitly r
 
 ## 10. Decision Log
 
-### 2026-11-22 (Session 36)
+### 2026-11-22 (Session 37)
+- **Subdomain Redirect for `domains.ionxtech.in` & Nav Link Harmonization:**
+  - **Redirect Configuration:** Created [`_redirects`](file:///c:/Users/Lenovo/ionxtech/ionxtech/_redirects) in the site root to redirect `https://domains.ionxtech.in/*` to `https://ionxtech.in/domains` (301 Permanent Redirect) along with legacy `.html` redirects to maintain clean Pretty URLs.
+  - **Edge Middleware:** Created [`functions/_middleware.js`](file:///c:/Users/Lenovo/ionxtech/ionxtech/functions/_middleware.js) using Cloudflare Pages Functions to intercept edge requests for `domains.ionxtech.in` and return an immediate 301 redirect to `https://ionxtech.in/domains`.
+  - **Navigation Pretty URLs:** Updated [`assets/js/layout.js`](file:///c:/Users/Lenovo/ionxtech/ionxtech/assets/js/layout.js) header and footer links (`ionXdomains`, `ionXhosting`, `ionXservices`, `about`, `team`, `careers`, `faqs`, `contact`, `terms`) to use canonical Pretty URLs without `.html`, preventing 308 redirect hops.
+  - **Active State Detection:** Extended header navigation logic in `layout.js` to recognize extensionless URLs (`/domains`, `/hosting`, `/services`) as active.
+  - **Local Build Enforcement:** Verified JavaScript syntax and validated all changes locally without pushing to GitHub.
 - **Google Search Console Indexing & Canonical Remediation:**
   - **Redirect Loop & 308 Elimination:** Identified that Cloudflare Pages forces Pretty URLs (308 redirect from `.html` to clean slugs). Updated [`sitemap.xml`](file:///c:/Users/Lenovo/ionxtech/ionxtech/sitemap.xml) and all `<link rel="canonical">` tags across all 37 HTML files to clean 200 OK URLs (e.g. `/terms`, `/privacy`, `/apps/keka-work-time-tracker/privacy-policy`).
   - **Failed Canonical Validation Fixed:** Repaired 5 broken canonical targets in `privacy-policy/*.html` that previously pointed to 404 URLs (`/qr-solution/privacy-policy.html`, etc.), repointing them directly to active `200 OK` endpoints under `/apps/{app}/privacy-policy`.
