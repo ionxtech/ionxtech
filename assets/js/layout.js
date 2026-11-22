@@ -46,7 +46,7 @@
                     '</ul>' +
                 '</nav>' +
                 '<div class="header-actions">' +
-                    '<a href="' + rootPath + 'apps/" class="btn btn-sm">Try Our Apps</a>' +
+                    '<a href="https://app.ionxtech.in/login" class="btn-primary">Login &rarr;</a>' +
                     '<button class="nav-toggle" aria-controls="nav-menu" aria-expanded="false" aria-label="Toggle navigation menu"><span class="nav-toggle-bars"><span></span><span></span><span></span></span></button>' +
                 '</div>' +
             '</div>'

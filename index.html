@@ -69,31 +69,41 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "ionXtech",
-      "url": "https://ionxtech.in",
-      "logo": "https://ionxtech.in/assets/images/IonXtech.webp",
-      "email": "hello@ionxtech.in",
-      "description": "ionXtech builds privacy-first Android applications and digital infrastructure across ionXapps, ionXhosting, ionXdomains, and ionXservices.",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Anoop Nagar",
-        "addressLocality": "Indore",
-        "addressRegion": "Madhya Pradesh",
-        "postalCode": "452018",
-        "addressCountry": "IN"
-      },
-      "founder": {
-        "@type": "Person",
-        "name": "Arshan Mansuri",
-        "jobTitle": "Founder and CEO",
-        "url": "https://www.linkedin.com/in/arshanmansuri/"
-      },
-      "sameAs": [
-        "https://x.com/ionxtech",
-        "https://in.linkedin.com/company/ionxtechnology",
-        "https://www.instagram.com/ionxtech/",
-        "https://www.youtube.com/@ionXtechsolution"
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://ionxtech.in/#organization",
+          "name": "ionXtech",
+          "url": "https://ionxtech.in",
+          "logo": {
+            "@type": "ImageObject",
+            "@id": "https://ionxtech.in/#logo",
+            "url": "https://app.ionxtech.in/logo.png",
+            "caption": "ionXtech Logo",
+            "width": 512,
+            "height": 512
+          },
+          "sameAs": [
+            "https://in.linkedin.com/company/ionxtechnology",
+            "https://x.com/ionxtech",
+            "https://github.com/ionxtech"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "Customer Support",
+            "email": "support@ionxtech.in",
+            "availableLanguage": ["English", "Hindi"]
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://ionxtech.in/#website",
+          "url": "https://ionxtech.in",
+          "name": "ionXtech",
+          "publisher": {
+            "@id": "https://ionxtech.in/#organization"
+          }
+        }
       ]
     }
     </script>
@@ -253,7 +263,7 @@
                         </div>
                     </article>
 
-                    <article class="knowledge-panel home-showcase-card card-link" data-page="https://links.ionxtech.in" tabindex="0" role="link" aria-label="ionXlinks URL Shortener and Dynamic QR Generator">
+                    <article class="knowledge-panel home-showcase-card card-link" data-page="https://app.ionxtech.in/services/links" tabindex="0" role="link" aria-label="ionXlinks URL Shortener and Dynamic QR Generator">
                         <div>
                             <div class="kp-top">
                                 <div class="app-header">
@@ -272,7 +282,7 @@
                         </div>
                         <div class="kp-footer">
                             <div class="card-actions">
-                                <a href="https://links.ionxtech.in" class="btn btn-sm" target="_blank" rel="noopener noreferrer">Launch ionXlinks &nearr;</a>
+                                <a href="https://app.ionxtech.in/services/links" class="btn btn-sm btn-primary" target="_blank" rel="noopener noreferrer">Launch URL Shortener &rarr;</a>
                                 <a href="services.html" class="btn btn-secondary btn-sm">Learn More</a>
                             </div>
                         </div>
